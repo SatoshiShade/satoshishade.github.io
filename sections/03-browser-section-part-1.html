@@ -1,0 +1,198 @@
+
+<!-- 3) Browser Section - Part 1 of 3.html -->
+
+<section class="browser-section">
+
+    <div class="browser-header">
+        <p class="browser-eyebrow">All Registrars</p>
+        <h2 class="browser-headline">Pick Your Community</h2>
+        <p class="browser-subline">Search by registrar name or browse by category.</p>
+    </div>
+
+    <div class="js-only" id="browser-controls">
+
+        <div class="browser-search-wrap">
+            <span class="bsw-icon" aria-hidden="true">⌕</span>
+            <input id="domain-search" class="browser-search" type="search"
+                placeholder="Search registrars…" autocomplete="off" spellcheck="false"
+                aria-label="Search domains" />
+            <button class="bsw-clear" id="search-clear" aria-label="Clear search" hidden>✕</button>
+        </div>
+
+        <div class="browser-filters" role="group" aria-label="Filter by category">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="identity">Identity</button>
+            <button class="filter-pill" data-filter="community">Community</button>
+            <button class="filter-pill" data-filter="meme">Meme</button>
+            <button class="filter-pill" data-filter="gaming">Gaming</button>
+            <button class="filter-pill" data-filter="finance">Finance</button>
+            <button class="filter-pill" data-filter="creator">Creator</button>
+            <button class="filter-pill" data-filter="business">Business</button>
+        </div>
+
+    </div>
+
+    <noscript>
+        <style>
+            #browser-grid { display: none !important; }
+            #browser-more-wrap { display: none !important; }
+        </style>
+        <div class="noscript-notice">
+            <span class="noscript-icon" aria-hidden="true">⚠</span>
+            <p class="noscript-title">JavaScript Required</p>
+            <p class="noscript-body">Please enable JavaScript to use the search and filter on this page.</p>
+        </div>
+    </noscript>
+
+    <div class="browser-grid" id="browser-grid" aria-live="polite">
+
+        <!-- Identity -->
+        <a class="bc" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener" data-cat="identity" data-name="mytag">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">mytag.sol</span></div>
+            <p class="bc-desc">The universal name tag. Clean, simple, for everyone.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/mystory" target="_blank" rel="noopener" data-cat="identity" data-name="mystory">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">mystory.sol</span></div>
+            <p class="bc-desc">Your story, your name. The most personal identity on-chain.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener" data-cat="identity" data-name="walletlink">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">walletlink.sol</span></div>
+            <p class="bc-desc">Your wallet, as a shareable address. Like an email — but for receiving crypto.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+
+        <!-- Community -->
+        <a class="bc" href="https://v1.sns.id/sub-registrar/fames" target="_blank" rel="noopener" data-cat="community" data-name="fames">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">fames.sol</span></div>
+            <p class="bc-desc">Reserved for the ones who made it. Claim your name before someone else does.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener" data-cat="community" data-name="ogclub">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">ogclub.sol</span></div>
+            <p class="bc-desc">OG status, on-chain. For those who were early.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/ogwallet" target="_blank" rel="noopener" data-cat="community" data-name="ogwallet">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">ogwallet.sol</span></div>
+            <p class="bc-desc">Wallet for OGs. The ones who held through it all.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/gen-z" target="_blank" rel="noopener" data-cat="community" data-name="gen-z">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">gen-z.sol</span></div>
+            <p class="bc-desc">For the generation that grew up online. Claim your spot.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/snsclub" target="_blank" rel="noopener" data-cat="community" data-name="snsclub">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">snsclub.sol</span></div>
+            <p class="bc-desc">The home domain for SNS users. Show your roots on-chain.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+
+        <!-- Meme -->
+        <a class="bc" href="https://v1.sns.id/sub-registrar/bonkog" target="_blank" rel="noopener" data-cat="meme" data-name="bonkog">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">bonkog.sol</span></div>
+            <p class="bc-desc">OG BONK holder? Wear it on-chain with pride.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener" data-cat="meme" data-name="gbonk">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">gbonk.sol</span></div>
+            <p class="bc-desc">Good BONK only. The positive side of the meme coin universe.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/bonktag" target="_blank" rel="noopener" data-cat="meme" data-name="bonktag">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">bonktag.sol</span></div>
+            <p class="bc-desc">Your BONK identity. Simple, loud, unmistakable.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/memecoinape" target="_blank" rel="noopener" data-cat="meme" data-name="memecoinape">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">memecoinape.sol</span></div>
+            <p class="bc-desc">Proud meme coin degen? Put it on-chain. No apologies.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+
+        <!-- Gaming -->
+        <a class="bc" href="https://v1.sns.id/sub-registrar/gametag" target="_blank" rel="noopener" data-cat="gaming" data-name="gametag">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">gametag.sol</span></div>
+            <p class="bc-desc">Your gamer tag, now permanent and on-chain.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/playverse" target="_blank" rel="noopener" data-cat="gaming" data-name="playverse">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">playverse.sol</span></div>
+            <p class="bc-desc">For players who live across multiple games and worlds.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+
+        <!-- Creator -->
+        <a class="bc" href="https://v1.sns.id/sub-registrar/artistlink" target="_blank" rel="noopener" data-cat="creator" data-name="artistlink">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">artistlink.sol</span></div>
+            <p class="bc-desc">Your art, your name, your link. The creator's on-chain home.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/aicreator" target="_blank" rel="noopener" data-cat="creator" data-name="aicreator">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">aicreator.sol</span></div>
+            <p class="bc-desc">Building with AI? Claim your space at the frontier.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/creatorhub" target="_blank" rel="noopener" data-cat="creator" data-name="creatorhub">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">creatorhub.sol</span></div>
+            <p class="bc-desc">The hub for creators building in public on Solana.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+
+        <!-- Finance -->
+        <a class="bc" href="https://v1.sns.id/sub-registrar/assetlink" target="_blank" rel="noopener" data-cat="finance" data-name="assetlink">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">assetlink.sol</span></div>
+            <p class="bc-desc">One name for all your on-chain assets. Clean, professional, trusted.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+
+        <!-- Business -->
+        <a class="bc" href="https://v1.sns.id/sub-registrar/businesslink" target="_blank" rel="noopener" data-cat="business" data-name="businesslink">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">businesslink.sol</span></div>
+            <p class="bc-desc">Professional, on-chain. Your business identity on Solana.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/startuphub" target="_blank" rel="noopener" data-cat="business" data-name="startuphub">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">startuphub.sol</span></div>
+            <p class="bc-desc">For founders moving fast. Your startup's on-chain address.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+        <a class="bc" href="https://v1.sns.id/sub-registrar/daolink" target="_blank" rel="noopener" data-cat="business" data-name="daolink">
+            <div class="bc-glow"></div>
+            <div class="bc-name"><span class="bc-sub">yourname.</span><span class="bc-root">daolink.sol</span></div>
+            <p class="bc-desc">For DAOs and governance contributors. On-chain, on the record.</p>
+            <span class="bc-cta" aria-hidden="true">Register on sns.id</span>
+        </a>
+
+    </div>
+
+    <p class="browser-empty" id="browser-empty" hidden>No domains match — try a different search or category.</p>
+
+    <div id="browser-more-wrap" style="display:none;width:100%;text-align:center;margin-top:0.4rem;gap:0.5rem;display:none;flex-wrap:wrap;justify-content:center;">
+        <button id="browser-more-btn" class="browser-more-btn">Show More Domains</button>
+        <button id="browser-less-btn" class="browser-more-btn" style="display:none;">Show Less</button>
+    </div>
+
+</section>

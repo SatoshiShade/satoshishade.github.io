@@ -1,0 +1,234 @@
+
+<!-- 6) Footer.html -->
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+            <img class="footer-logo" alt="mytag.sol" src="https://app.webhash.com/Links/uploads/block_images/0c86e9bba8fb9f51a2410eb748bacec9.png" loading="lazy" />
+            <p class="footer-tagline">Your Name Tag. On Solana.</p>
+        </div>
+
+        <div class="footer-links">
+            <a class="footer-link" href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">
+                <span class="footer-x-icon">𝕏</span>&ensp;mytag.sol
+            </a>
+            <a class="footer-link" href="https://sns.id" target="_blank" rel="noopener noreferrer">
+                SNS Website
+            </a>
+            <a class="footer-link" href="https://docs.sns.id/collection/" target="_blank" rel="noopener noreferrer">
+                SNS Docs
+            </a>
+        </div>
+        <p class="footer-contact">Questions? <a href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">Reach us on 𝕏</a></p>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-disclaimer">
+        <p class="footer-disclaimer-label">Disclaimer</p>
+        <p>This is an independently operated Web3 project with no affiliation to any company, brand, coin, token, project, or individual — including the <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service (SNS)</a> team. The subdomain registrars featured here are privately owned. Registration fees are received by the respective registrar owner and processed on-chain via <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a> infrastructure. We operate no separate registration platform and store no user data. All wallet connections, terms of service, and transaction handling are managed exclusively by <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a> at <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a>.</p>
+        <p>This project and all associated content are provided <strong>"as is"</strong> without warranty of any kind, express or implied. We make no guarantees regarding availability, accuracy, continuity, or fitness for any particular purpose. This project may be discontinued at any time without notice. Registered subdomains remain functional as long as the <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service (SNS)</a> protocol continues to operate and maintains its current no-renewal policy — this is subject to future decisions by the SNS team, which are outside our control.</p>
+        <p>Subdomains are digital, on-chain assets on the Solana blockchain. All purchases are final and non-refundable. We accept no liability for any loss — including loss of access, loss of funds, or loss of data — arising from use of this page, third-party services, blockchain network issues, wallet errors, or changes to the <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a> protocol. Any posts, comments, or content published by this project represent personal opinions only and do not constitute financial or legal advice. Do your own research (DYOR) before purchasing. Use at your own risk. This page is hosted on <a href="https://webhash.com" target="_blank" rel="noopener noreferrer">WebHash</a>.</p>
+    </div>
+
+    <!-- Footnotes for benefit claims -->
+    <div class="footer-footnotes">
+        <p><sup>¹</sup> Prices for subdomains listed on this page start from 3 USDC, plus <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service (SNS)</a> platform fees and a small network transaction fee (gas). Total cost depends on the specific subdomain selected. All fees are displayed transparently at <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a> before purchase. Prices are subject to change at any time without notice.</p>
+        <p><sup>²</sup> Subdomain ownership is permanent as long as the <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service (SNS)</a> protocol continues to operate. <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a> has committed to no renewal fees for subdomain registrations; however, this is subject to future protocol decisions by the SNS team, which are outside our control. Please review current <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a> terms at <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a> before purchasing.</p>
+    </div>
+
+    <div class="footer-divider-sm"></div>
+
+    <div class="footer-bottom">
+        <span>&copy; 2026 mytag.sol Community &middot; Built on <a href="https://solana.com" target="_blank" rel="noopener noreferrer">Solana</a> &middot; Powered by <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a> &middot; Hosted on <a href="https://webhash.com" target="_blank" rel="noopener noreferrer">WebHash</a></span>
+    </div>
+
+</footer>
+
+<style>
+/* ── Requires Global.css: --color-*, --font-primary ── */
+.site-footer {
+    width: 100%; box-sizing: border-box;
+    padding: 2.5rem 1.2rem 2rem;
+    background: #05000f;
+    border-top: 1px solid rgba(217,177,255,0.32);
+    display: flex; flex-direction: column; gap: 1.6rem;
+    /* Prevent Brave/Chrome Android dark mode override */
+    color-scheme: only light;
+}
+
+/* ── Brand row ──────────────────────────────────────────────────────── */
+.footer-inner {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 1.4rem;
+}
+.footer-brand {
+    display: flex; flex-direction: row; align-items: center; gap: 0.8rem;
+    background-color: #05000f;
+}
+.footer-logo {
+    display: block; width: 44px; height: 44px;
+    border-radius: 10px; object-fit: cover;
+    opacity: 0.95; flex-shrink: 0;
+}
+.footer-tagline {
+    font-family: var(--font-primary, system-ui, sans-serif) !important;
+    font-size: 0.88rem !important; font-weight: 600 !important;
+    color: #FFC000 !important; letter-spacing: 0.02em !important;
+    margin: 0 !important; padding: 0 !important;
+}
+
+/* ── Nav links ──────────────────────────────────────────────────────── */
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.footer-link {
+    display: inline-flex; align-items: center;
+    padding: 0.45rem 1.1rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,192,0,0.40);
+    border-radius: 999px;
+    font-family: var(--font-primary, system-ui, sans-serif) !important;
+    font-size: 0.86rem !important; font-weight: 600 !important;
+    color: rgba(255,192,0,0.85) !important;
+    -webkit-text-fill-color: rgba(255,192,0,0.85);
+    text-decoration: none !important;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.footer-link:hover {
+    background: rgba(255,192,0,0.10);
+    border-color: rgba(255,192,0,0.70);
+    color: #FFC000 !important;
+    -webkit-text-fill-color: #FFC000;
+}
+/* 𝕏 character vertical alignment */
+.footer-x-icon {
+    display: inline-block;
+    position: relative; top: 0.04em;
+    line-height: 1;
+    color: #FFC000 !important;
+    -webkit-text-fill-color: #FFC000;
+}
+
+.footer-contact {
+    font-family: var(--font-primary, system-ui, sans-serif) !important;
+    font-size: 0.78rem !important;
+    color: rgba(255,255,255,0.32) !important;
+    margin: 0 !important; padding: 0 !important;
+}
+.footer-contact a {
+    color: rgba(255,192,0,0.55) !important;
+    -webkit-text-fill-color: rgba(255,192,0,0.55);
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+    transition: color 0.18s ease;
+}
+.footer-contact a:hover {
+    color: #FFC000 !important;
+    -webkit-text-fill-color: #FFC000;
+}
+
+/* ── Dividers ───────────────────────────────────────────────────────── */
+.footer-divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, rgba(217,177,255,0.35) 0%, rgba(217,177,255,0.15) 100%);
+}
+.footer-divider-sm {
+    width: 100%; height: 1px;
+    background: rgba(217,177,255,0.15);
+}
+
+/* ── Disclaimer ─────────────────────────────────────────────────────── */
+.footer-disclaimer-label {
+    font-family: var(--font-primary, system-ui, sans-serif) !important;
+    font-size: 0.65rem !important; font-weight: 700 !important;
+    letter-spacing: 0.12em !important; text-transform: uppercase !important;
+    color: rgba(255,255,255,0.28) !important;
+    margin: 0 0 0.6rem !important; padding: 0 !important;
+    max-width: 720px;
+}
+.footer-disclaimer p {
+    font-family: var(--font-primary, system-ui, sans-serif) !important;
+    font-size: 0.78rem !important;
+    color: rgba(255,255,255,0.42) !important; line-height: 1.75 !important;
+    text-align: left !important;
+    max-width: 720px; margin: 0 0 0.55rem !important; padding: 0 !important;
+}
+.footer-disclaimer p:last-child { margin-bottom: 0 !important; }
+.footer-disclaimer a {
+    color: rgba(255,192,0,0.65) !important;
+    -webkit-text-fill-color: rgba(255,192,0,0.65);
+    text-decoration: underline !important; text-underline-offset: 2px;
+    transition: color 0.18s ease;
+}
+.footer-disclaimer a:hover {
+    color: #FFC000 !important;
+    -webkit-text-fill-color: #FFC000;
+}
+
+/* ── Bottom bar ─────────────────────────────────────────────────────── */
+.footer-bottom {
+    font-family: var(--font-primary, system-ui, sans-serif) !important;
+    font-size: 0.74rem !important;
+    color: rgba(255,255,255,0.38) !important;
+    letter-spacing: 0.02em;
+}
+.footer-bottom a {
+    color: rgba(255,192,0,0.60) !important;
+    -webkit-text-fill-color: rgba(255,192,0,0.60);
+    text-decoration: none !important;
+    transition: color 0.18s ease;
+}
+.footer-bottom a:hover {
+    color: #FFC000 !important;
+    -webkit-text-fill-color: #FFC000;
+}
+
+/* ── Footnotes ──────────────────────────────────────────────────────── */
+.footer-footnotes {
+    display: flex; flex-direction: column; gap: 0.5rem;
+    max-width: 720px;
+}
+.footer-footnotes p {
+    font-family: var(--font-primary, system-ui, sans-serif) !important;
+    font-size: 0.72rem !important;
+    color: rgba(255,255,255,0.35) !important; line-height: 1.65 !important;
+    text-align: left !important; margin: 0 !important; padding: 0 !important;
+}
+.footer-footnotes a {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit;
+    text-decoration: underline !important; text-underline-offset: 2px;
+    text-decoration-color: rgba(255,255,255,0.25) !important;
+    transition: text-decoration-color 0.18s ease;
+}
+.footer-footnotes a:hover {
+    text-decoration-color: rgba(255,255,255,0.55) !important;
+}
+.footer-footnotes sup {
+    color: rgba(255,192,0,0.60) !important; font-size: 0.65rem;
+    vertical-align: super; margin-right: 0.15em;
+}
+
+/* ── Desktop ────────────────────────────────────────────────────────── */
+@media (min-width:640px) {
+    .site-footer { padding: 3rem clamp(1.5rem,3vw,2.5rem) 2.5rem; }
+    .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+    .footer-links { justify-content: flex-end; }
+}
+@media (min-width:1100px) {
+    .site-footer { max-width: 1060px; margin: 0 auto; padding: 3rem 2rem 2.5rem; }
+}
+@media (min-width:1400px) { .site-footer { max-width: 1200px; } }
+
+@media (prefers-reduced-motion:reduce) {
+    .footer-link, .footer-disclaimer a, .footer-bottom a { transition: none; }
+}
+@media print {
+    .site-footer { background: #fff !important; border-top: 1px solid #ccc; color-scheme: normal; }
+    .footer-disclaimer p { color: #555 !important; }
+    .footer-link { border: 1px solid #ccc; color: #333 !important; -webkit-text-fill-color: #333; }
+    .footer-bottom { color: #777 !important; }
+    .footer-bottom a { color: #555 !important; -webkit-text-fill-color: #555; }
+}
+</style>
