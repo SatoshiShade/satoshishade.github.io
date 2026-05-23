@@ -1,178 +1,183 @@
-/* ── Section wrapper ─────────────────────────────────────────────────── */
+/*
+	File: assets/css/02-top-picks.css
+	Description: Curated registrar cards shown above the full browser.
+	Last modified: 2026-05-23
+	Copyright: © 2026 mytag.sol Community. All rights reserved.
+*/
+
 .domains-section {
-    width: 100%; box-sizing: border-box;
-    padding: 3.5rem 1.2rem 4rem;
-    display: flex; flex-direction: column; align-items: center; gap: 2.4rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	width: 100%;
+	max-width: var(--content-width);
+	margin: 0 auto;
+	padding: 3.4rem 1.2rem 2.4rem;
 }
 
-/* ── Section header ──────────────────────────────────────────────────── */
-.domains-header { text-align: center; max-width: 480px; }
-.domains-eyebrow {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: 0.67rem !important; font-weight: 700 !important;
-    letter-spacing: 0.14em !important; text-transform: uppercase !important;
-    color: rgba(255,192,0,0.55) !important;
-    margin: 0 0 0.6rem !important; padding: 0 !important;
-}
-.domains-headline {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: clamp(1.6rem, 5vw, 2.4rem) !important;
-    font-weight: 700 !important; letter-spacing: -0.03em !important;
-    color: #ffffff !important; line-height: 1.1 !important;
-    margin: 0 0 0.5rem !important; padding: 0 !important;
-}
-.domains-subline {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: clamp(0.84rem, 2vw, 0.95rem) !important;
-    color: rgba(255,255,255,0.5) !important; line-height: 1.55 !important;
-    margin: 0 !important; padding: 0 !important;
+.top-picks-dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.45rem;
+	margin-top: -0.8rem;
 }
 
-/* ── Grid: 1 col → 3 col ─────────────────────────────────────────────── */
-.domains-grid {
-    display: grid; grid-template-columns: 1fr;
-    gap: 1rem; width: 100%; max-width: 960px;
+.top-pick-dot {
+	width: 9px;
+	height: 9px;
+	padding: 0;
+	border: 1px solid rgba(255, 192, 0, 0.44);
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	transition: background 0.18s ease, transform 0.18s ease;
 }
 
-/* ── Domain card ─────────────────────────────────────────────────────── */
+.top-pick-dot.active {
+	background: var(--color-gold);
+	transform: scale(1.18);
+}
+
+.top-picks-carousel {
+	position: relative;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	width: 100%;
+	min-height: 260px;
+	overflow: hidden;
+}
+
 .domain-card {
-    position: relative; overflow: hidden;
-    display: flex; flex-direction: column; gap: 0.7rem;
-    padding: 1.4rem 1.4rem 1.2rem;
-    background: linear-gradient(145deg, #1a0b44 0%, #0e001f 100%);
-    border: 1px solid rgba(217,177,255,0.14);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-    text-decoration: none !important; color: inherit;
-    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
-    cursor: pointer;
-}
-.domain-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(255,192,0,0.35);
-    box-shadow: 0 14px 44px rgba(0,0,0,0.6), 0 0 24px rgba(255,192,0,0.08);
-}
-.domain-card:active { transform: translateY(-1px); }
-
-/* Ambient glow blob — unique per card, sits behind content */
-.dc-glow {
-    position: absolute; top: -40%; right: -20%;
-    width: 55%; padding-top: 55%;
-    border-radius: 50%; pointer-events: none;
-    opacity: 0.13; filter: blur(38px);
-    transition: opacity 0.3s ease;
-}
-.domain-card:hover .dc-glow { opacity: 0.22; }
-.dc-glow--universal { background: #a78bfa; }
-.dc-glow--genz      { background: #34d399; }
-.dc-glow--og        { background: #fbbf24; }
-
-/* Top row: badge */
-.dc-top { display: flex; align-items: center; }
-.dc-badge {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: 0.62rem !important; font-weight: 700 !important;
-    letter-spacing: 0.1em !important; text-transform: uppercase !important;
-    color: rgba(255,192,0,0.65) !important;
-    background: rgba(255,192,0,0.08);
-    border: 1px solid rgba(255,192,0,0.18);
-    border-radius: 6px; padding: 0.18em 0.55em;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	display: grid;
+	grid-template-rows: auto auto 1fr auto;
+	gap: 0.75rem;
+	width: min(82vw, 430px);
+	min-height: 220px;
+	overflow: hidden;
+	padding: 1.25rem;
+	border: 1px solid rgba(217, 177, 255, 0.42);
+	border-radius: var(--radius-card);
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 34%),
+		linear-gradient(135deg, rgba(31, 14, 82, 0.76), rgba(14, 0, 31, 0.72));
+	box-shadow: var(--shadow-card);
+	color: inherit;
+	text-decoration: none;
+	opacity: 0.46;
+	transform: translate(-50%, -50%) translateX(var(--card-offset, 0)) scale(0.9);
+	transition: border-color 0.28s ease, box-shadow 0.28s ease, opacity 0.28s ease, transform 0.28s ease;
 }
 
-/* Domain name — the hero of each card */
-.dc-name {
-    display: flex; flex-wrap: wrap; align-items: baseline;
-    gap: 0; line-height: 1.15;
-}
-.dc-name-sub {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: clamp(1.05rem, 3.5vw, 1.3rem) !important;
-    font-weight: 700 !important;
-    color: rgba(255,255,255,0.35) !important;
-    letter-spacing: -0.02em;
-}
-.dc-name-root {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: clamp(1.05rem, 3.5vw, 1.3rem) !important;
-    font-weight: 700 !important;
-    color: #FFC000 !important;
-    letter-spacing: -0.02em;
+.domain-card[data-position="-2"],
+.domain-card[data-position="2"] {
+	opacity: 0;
+	pointer-events: none;
 }
 
-/* Description */
-.dc-desc {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: 0.82rem !important;
-    color: rgba(255,255,255,0.55) !important;
-    line-height: 1.5 !important;
-    margin: 0 !important; padding: 0 !important;
-    flex: 1;
+.domain-card[data-position="-1"] {
+	--card-offset: -48%;
 }
 
-/* CTA row */
-.dc-cta {
-    display: flex; align-items: center; gap: 0.3rem;
-    margin-top: 0.3rem;
-}
-.dc-cta-text {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: 0.82rem !important; font-weight: 700 !important;
-    color: #FFC000 !important; letter-spacing: 0.02em;
-}
-.dc-cta-arrow {
-    font-size: 0.9rem; color: #FFC000 !important;
-    display: inline-block;
-    transition: transform 0.22s ease;
-}
-.domain-card:hover .dc-cta-arrow { transform: translateX(4px); }
-
-/* Divider line above CTA */
-.dc-cta::before {
-    content: '';
-    display: block; width: 100%; height: 1px;
-    background: rgba(217,177,255,0.1);
-    margin-right: 0.6rem;
-    flex: 1;
+.domain-card[data-position="1"] {
+	--card-offset: 48%;
 }
 
-/* ── Breakpoints ─────────────────────────────────────────────────────── */
-@media (max-width:359px) {
-    .domains-section { padding: 2.5rem 1rem 3rem; gap: 1.8rem; }
+.domain-card.active,
+.domain-card:focus-visible {
+	border-color: var(--color-border-strong);
+	box-shadow: var(--shadow-card-hover);
+	opacity: 1;
+	transform: translate(-50%, -50%) translateX(var(--card-offset, 0)) scale(1);
+	z-index: 2;
 }
 
-@media (min-width:600px) {
-    .domains-grid { grid-template-columns: 1fr 1fr; }
-    /* Third card spans full width on 2-col layout until 3-col kicks in */
-    .domain-card:last-child { grid-column: 1 / -1; max-width: 460px; margin: 0 auto; width: 100%; }
+.domain-card.active {
+	--card-offset: 0;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 34%),
+		linear-gradient(135deg, rgba(31, 14, 82, 1), rgba(14, 0, 31, 0.98));
+	border-color: rgba(255, 192, 0, 0.68);
+	z-index: 3;
 }
 
-@media (min-width:820px) {
-    .domains-grid { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
-    .domain-card:last-child { grid-column: auto; max-width: none; margin: 0; }
+.card-badge {
+	justify-self: start;
+	padding: 0.22rem 0.58rem;
+	border: 1px solid rgba(255, 192, 0, 0.28);
+	border-radius: 6px;
+	background: rgba(255, 192, 0, 0.08);
+	color: rgba(255, 192, 0, 0.86);
+	font-size: 0.66rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	line-height: 1;
+	text-transform: uppercase;
 }
 
-@media (min-width:860px) {
-    .domains-section { padding: 4rem clamp(1.5rem,3vw,2.5rem) 5rem; gap: 2.8rem; }
+.domain-name {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	line-height: 1.14;
 }
 
-@media (min-width:1100px) {
-    .domains-section { max-width: 1060px; margin: 0 auto; padding: 4rem 2rem 5rem; }
-    .dc-name-sub, .dc-name-root { font-size: 1.25rem !important; }
+.domain-name span,
+.domain-name strong {
+	font-size: clamp(1.22rem, 3.6vw, 1.52rem);
+	font-weight: 700;
+	letter-spacing: 0;
 }
 
-@media (min-width:1400px) {
-    .domains-section { max-width: 1200px; }
+.domain-name span {
+	color: rgba(255, 255, 255, 0.42);
+	white-space: nowrap;
 }
 
-@media (prefers-reduced-motion:reduce) {
-    .domain-card { transition: none; }
-    .dc-cta-arrow { transition: none; }
-    .dc-glow { transition: none; }
+.domain-name strong {
+	color: var(--color-gold);
+	word-break: break-word;
 }
+
+.domain-card p {
+	color: var(--color-text-muted);
+	font-size: clamp(0.94rem, 1.8vw, 1rem);
+	line-height: 1.6;
+}
+
+.card-cta {
+	display: inline-flex;
+	align-items: center;
+	justify-self: start;
+	min-height: 34px;
+	padding: 0.45rem 0.78rem;
+	border: 1px solid rgba(255, 192, 0, 0.36);
+	border-radius: var(--radius-pill);
+	background: rgba(255, 192, 0, 0.1);
+	color: var(--color-gold);
+	font-size: 0.82rem;
+	font-weight: 700;
+}
+
+@media (min-width: 640px) {
+	.domains-section {
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+
+	.top-picks-carousel {
+		min-height: 280px;
+	}
+}
+
 @media print {
-    .domain-card { border: 1px solid #ccc; background: #fff; box-shadow: none; break-inside: avoid; }
-    .dc-glow { display: none; }
-    .dc-name-sub { color: #999 !important; }
-    .dc-name-root, .dc-cta-text, .dc-cta-arrow { color: #000 !important; }
-    .dc-desc { color: #333 !important; }
+	.domain-card {
+		background: #ffffff !important;
+		border: 1px solid #cccccc !important;
+		box-shadow: none !important;
+		break-inside: avoid;
+	}
 }

@@ -1,94 +1,82 @@
-/* ── Requires Global.css: --color-*, --font-primary ── */
+/*
+	File: assets/css/05-x-section.css
+	Description: Social follow call-to-action section.
+	Last modified: 2026-05-23
+	Copyright: © 2026 mytag.sol Community. All rights reserved.
+*/
+
 .social-section {
-    width: 100%; box-sizing: border-box;
-    padding: 2.5rem 1.2rem 3rem;
-    display: flex; justify-content: center;
-    /* Prevent Brave/Chrome Android dark mode override on this section */
-    color-scheme: only light;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	max-width: var(--content-width);
+	margin: 0 auto;
+	padding: 2.5rem 1.2rem 3.5rem;
+	color-scheme: only light;
 }
+
 .social-inner {
-    display: flex; flex-direction: column; align-items: center; gap: 1.6rem;
-    width: 100%; max-width: 520px; text-align: center;
-    padding: 2.4rem 2rem;
-    background: linear-gradient(135deg, rgba(31,14,82,0.6) 0%, rgba(14,0,31,0.6) 100%);
-    border: 1px solid rgba(217,177,255,0.38);
-    border-radius: 24px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.45);
-    position: relative; overflow: hidden;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.45rem;
+	width: min(100%, 620px);
+	overflow: hidden;
+	padding: 2rem 1.3rem;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-card);
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 34%),
+		linear-gradient(135deg, rgba(31, 14, 82, 0.62), rgba(14, 0, 31, 0.64));
+	box-shadow: var(--shadow-card);
+	text-align: center;
 }
-.social-inner::before {
-    content: '';
-    position: absolute; top: -40%; right: -20%;
-    width: 55%; padding-top: 55%; border-radius: 50%;
-    background: #a78bfa; opacity: 0.07; filter: blur(48px);
-    pointer-events: none;
-}
-.social-eyebrow {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: 0.72rem !important; font-weight: 700 !important;
-    letter-spacing: 0.14em !important; text-transform: uppercase !important;
-    color: #FFC000 !important;
-    margin: 0 0 0.5rem !important; padding: 0 !important;
-}
-.social-headline {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: clamp(1.3rem, 4vw, 1.9rem) !important;
-    font-weight: 700 !important; letter-spacing: -0.03em !important;
-    color: #ffffff !important; line-height: 1.15 !important;
-    margin: 0 0 0.5rem !important; padding: 0 !important;
-}
-.social-subline {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: clamp(0.88rem, 2vw, 0.97rem) !important;
-    color: rgba(255,255,255,0.62) !important; line-height: 1.6 !important;
-    margin: 0 !important; padding: 0 !important;
-}
-.social-subline strong { color: rgba(255,255,255,0.85) !important; font-weight: 600 !important; }
 
-/* ── Gold CTA button ────────────────────────────────────────────────── */
 .social-btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    padding: 0.8rem 2rem;
-    background: #FFD000;
-    background-color: #FFD000;
-    -webkit-appearance: none;
-    border: 2px solid #FFD000;
-    border-radius: 999px;
-    text-decoration: none !important;
-    /* Force dark text — beats Brave/Samsung dark mode link override */
-    color: #0a0015 !important;
-    -webkit-text-fill-color: #0a0015 !important;
-    forced-color-adjust: none;
-    box-shadow: 0 4px 24px rgba(255,208,0,0.30);
-    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-.social-btn:hover {
-    background: #FFE033;
-    background-color: #FFE033;
-    border-color: #FFE033;
-    color: #0a0015 !important;
-    -webkit-text-fill-color: #0a0015 !important;
-    box-shadow: 0 6px 32px rgba(255,208,0,0.45);
-    transform: translateY(-2px);
-}
-.social-btn:active { transform: translateY(0); }
-.social-btn-text {
-    font-family: var(--font-primary, system-ui, sans-serif) !important;
-    font-size: 1rem !important; font-weight: 700 !important;
-    letter-spacing: -0.01em;
-    /* Triple-lock dark color for Brave Android */
-    color: #0a0015 !important;
-    -webkit-text-fill-color: #0a0015 !important;
-    text-shadow: none !important;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	padding: 0.74rem 1.5rem;
+	border: 2px solid var(--color-gold-bright);
+	border-radius: var(--radius-pill);
+	background: var(--color-gold-bright);
+	box-shadow: 0 4px 24px rgba(255, 208, 0, 0.28);
+	color: #0a0015 !important;
+	-webkit-text-fill-color: #0a0015;
+	font-size: 0.98rem;
+	font-weight: 700;
+	text-decoration: none;
+	transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
-@media (min-width:640px) {
-    .social-section { padding: clamp(2.5rem,4vw,3.5rem) clamp(1.5rem,3vw,2.5rem) clamp(3rem,4vw,4rem); }
-    .social-inner { padding: 2.8rem; }
+.social-btn:hover {
+	background: #ffe680;
+	border-color: #ffe680;
+	box-shadow: 0 6px 32px rgba(255, 208, 0, 0.42);
+	color: #0a0015 !important;
+	-webkit-text-fill-color: #0a0015;
+	transform: translateY(-2px);
 }
-@media (min-width:1100px) {
-    .social-section { max-width: 1060px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+
+.social-btn:active {
+	transform: translateY(0);
 }
-@media (min-width:1400px) { .social-section { max-width: 1200px; } }
-@media (prefers-reduced-motion:reduce) { .social-btn { transition: none; } }
-@media print { .social-section { display: none; } }
+
+@media (min-width: 640px) {
+	.social-section {
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+
+	.social-inner {
+		padding: 2.6rem 2rem;
+	}
+}
+
+@media print {
+	.social-section {
+		display: none;
+	}
+}

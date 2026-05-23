@@ -1,94 +1,227 @@
-!function(){
-    var ctrl=document.getElementById("browser-controls");
-    if(ctrl) ctrl.style.display="flex";
+/*
+	File: assets/js/03-browser-section.js
+	Description: Registrar search, category filters, and show-more controls.
+	Last modified: 2026-05-23
+	Copyright: © 2026 mytag.sol Community. All rights reserved.
+*/
 
-    var grid=document.getElementById("browser-grid");
-    if(!grid) return;
-    var cards=Array.from(grid.querySelectorAll(".bc"));
-    var searchEl=document.getElementById("domain-search");
-    var clearBtn=document.getElementById("search-clear");
-    var emptyEl=document.getElementById("browser-empty");
-    var filterBtns=document.querySelectorAll(".filter-pill");
-    var moreWrap=document.getElementById("browser-more-wrap");
-    var moreBtn=document.getElementById("browser-more-btn");
-    var lessBtn=document.getElementById("browser-less-btn");
+(function () {
+	"use strict";
 
-    var activeFilter="all";
-    var searchVal="";
-    var INITIAL_LIMIT=6;
-    var showAll=false;
+	var controls = document.getElementById("browser-controls");
+	var grid = document.getElementById("browser-grid");
+	var cards;
+	var searchInput;
+	var clearButton;
+	var emptyMessage;
+	var countMessage;
+	var filterButtons;
+	var moreWrap;
+	var moreButton;
+	var lessButton;
+	var activeFilter = "all";
+	var searchValue = "";
+	var initialLimit = 8;
+	var showAll = false;
+	var searchTimer;
+	var searchDelayMs = 180;
 
-    function update(){
-        var matched=[];
-        cards.forEach(function(c){
-            var catOk=activeFilter==="all"||c.dataset.cat===activeFilter;
-            var q=searchVal.toLowerCase().replace(/\.sol$/,"");
-            var nameOk=!q||c.dataset.name.indexOf(q)>-1||c.dataset.cat.indexOf(q)>-1;
-            if(catOk&&nameOk) matched.push(c);
-        });
+	if (controls) {
+		controls.style.display = "flex";
+	}
 
-        var limited=!showAll&&matched.length>INITIAL_LIMIT;
-        var toShow=limited?matched.slice(0,INITIAL_LIMIT):matched;
+	if (!grid) {
+		return;
+	}
 
-        cards.forEach(function(c){ c.classList.add("bc-hidden"); });
-        toShow.forEach(function(c){ c.classList.remove("bc-hidden"); });
+	cards = Array.prototype.slice.call(grid.querySelectorAll(".bc"));
+	searchInput = document.getElementById("domain-search");
+	clearButton = document.getElementById("search-clear");
+	emptyMessage = document.getElementById("browser-empty");
+	countMessage = document.getElementById("browser-count");
+	filterButtons = Array.prototype.slice.call(document.querySelectorAll(".filter-pill"));
+	moreWrap = document.getElementById("browser-more-wrap");
+	moreButton = document.getElementById("browser-more-btn");
+	lessButton = document.getElementById("browser-less-btn");
 
-        /* Show More / Show Less buttons */
-        if(moreWrap){
-            var needButtons=matched.length>INITIAL_LIMIT;
-            moreWrap.style.display=needButtons?"flex":"none";
-            if(moreBtn) moreBtn.style.display=limited?"inline-flex":"none";
-            if(lessBtn) lessBtn.style.display=(!limited&&needButtons)?"inline-flex":"none";
-            if(moreBtn&&limited) moreBtn.textContent="Show "+(matched.length-INITIAL_LIMIT)+" More";
-        }
+	function normalize(value) {
+		return value.toLowerCase().trim().replace(/\.sol$/u, "");
+	}
 
-        if(emptyEl) emptyEl.hidden=matched.length>0;
-    }
+	function matchesCard(card) {
+		var query = normalize(searchValue);
+		var categoryMatches = activeFilter === "all" || card.dataset.cat === activeFilter;
+		var nameMatches = !query || card.dataset.name.indexOf(query) > -1 || card.dataset.cat.indexOf(query) > -1;
 
-    filterBtns.forEach(function(btn){
-        btn.addEventListener("click",function(){
-            filterBtns.forEach(function(b){ b.classList.remove("active"); });
-            btn.classList.add("active");
-            activeFilter=btn.dataset.filter;
-            showAll=false;
-            update();
-        });
-    });
+		return categoryMatches && nameMatches;
+	}
 
-    if(searchEl){
-        searchEl.addEventListener("input",function(){
-            searchVal=searchEl.value;
-            if(clearBtn) clearBtn.hidden=!searchVal;
-            showAll=false;
-            update();
-        });
-    }
+	function cardMatchesSearch(card, query) {
+		return !query || card.dataset.name.indexOf(query) > -1 || card.dataset.cat.indexOf(query) > -1;
+	}
 
-    if(clearBtn){
-        clearBtn.addEventListener("click",function(){
-            if(searchEl) searchEl.value="";
-            searchVal=""; clearBtn.hidden=true;
-            showAll=false; update();
-            if(searchEl) searchEl.focus();
-        });
-    }
+	function setActiveFilter(nextFilter) {
+		var targetButton;
 
-    if(moreBtn){
-        moreBtn.addEventListener("click",function(){
-            showAll=true;
-            update();
-        });
-    }
+		activeFilter = nextFilter;
+		targetButton = filterButtons.find(function (button) {
+			return button.dataset.filter === nextFilter;
+		});
 
-    if(lessBtn){
-        lessBtn.addEventListener("click",function(){
-            showAll=false;
-            update();
-            /* Scroll back up to the browser section header smoothly */
-            var sec=document.querySelector(".browser-section");
-            if(sec) sec.scrollIntoView({behavior:"smooth",block:"start"});
-        });
-    }
+		filterButtons.forEach(function (button) {
+			button.classList.toggle("active", button === targetButton);
+		});
+	}
 
-    update();
-}();
+	function maybeSwitchFilterForSearch() {
+		var query = normalize(searchValue);
+		var allMatches;
+		var firstCategory;
+		var singleCategory;
+
+		if (!query) {
+			return;
+		}
+
+		allMatches = cards.filter(function (card) {
+			return cardMatchesSearch(card, query);
+		});
+
+		if (allMatches.length === 0) {
+			return;
+		}
+
+		firstCategory = allMatches[0].dataset.cat;
+		singleCategory = allMatches.every(function (card) {
+			return card.dataset.cat === firstCategory;
+		});
+
+		setActiveFilter(singleCategory ? firstCategory : "all");
+	}
+
+	function updateMoreControls(matchedCount, limited) {
+		var needsButtons = matchedCount > initialLimit;
+
+		if (!moreWrap) {
+			return;
+		}
+
+		moreWrap.style.display = needsButtons ? "flex" : "none";
+
+		if (moreButton) {
+			moreButton.style.display = limited ? "inline-flex" : "none";
+			moreButton.textContent = "Show " + (matchedCount - initialLimit) + " More";
+		}
+
+		if (lessButton) {
+			lessButton.style.display = !limited && needsButtons ? "inline-flex" : "none";
+		}
+	}
+
+	function updateCount(matchedCount, visibleCount) {
+		var label;
+
+		if (!countMessage) {
+			return;
+		}
+
+		label = cards.length === 1 ? "registrar" : "registrars";
+
+		if (matchedCount === cards.length) {
+			countMessage.textContent = "Showing " + visibleCount + " of " + cards.length + " " + label + ".";
+			return;
+		}
+
+		countMessage.textContent = "Showing " + visibleCount + " matches from " + cards.length + " " + label + ".";
+	}
+
+	function update() {
+		var matched = cards.filter(matchesCard);
+		var limited = !showAll && matched.length > initialLimit;
+		var visible = limited ? matched.slice(0, initialLimit) : matched;
+
+		cards.forEach(function (card) {
+			card.classList.add("bc-filtering");
+		});
+
+		cards.forEach(function (card) {
+			card.classList.add("bc-hidden");
+		});
+
+		visible.forEach(function (card) {
+			card.classList.remove("bc-hidden");
+		});
+
+		window.setTimeout(function () {
+			window.requestAnimationFrame(function () {
+				visible.forEach(function (card) {
+					card.classList.remove("bc-filtering");
+				});
+			});
+		}, 24);
+
+		updateMoreControls(matched.length, limited);
+		updateCount(matched.length, visible.length);
+
+		if (emptyMessage) {
+			emptyMessage.hidden = matched.length > 0;
+		}
+	}
+
+	filterButtons.forEach(function (button) {
+		button.addEventListener("click", function () {
+			setActiveFilter(button.dataset.filter);
+			showAll = false;
+			update();
+		});
+	});
+
+	if (searchInput) {
+		searchInput.addEventListener("input", function () {
+			searchValue = searchInput.value;
+
+			if (clearButton) {
+				clearButton.hidden = !searchValue;
+			}
+
+			window.clearTimeout(searchTimer);
+			searchTimer = window.setTimeout(function () {
+				showAll = false;
+				maybeSwitchFilterForSearch();
+				update();
+			}, searchDelayMs);
+		});
+	}
+
+	if (clearButton) {
+		clearButton.addEventListener("click", function () {
+			searchValue = "";
+
+			if (searchInput) {
+				searchInput.value = "";
+				searchInput.focus();
+			}
+
+			window.clearTimeout(searchTimer);
+			clearButton.hidden = true;
+			showAll = false;
+			update();
+		});
+	}
+
+	if (moreButton) {
+		moreButton.addEventListener("click", function () {
+			showAll = true;
+			update();
+		});
+	}
+
+	if (lessButton) {
+		lessButton.addEventListener("click", function () {
+			showAll = false;
+			update();
+		});
+	}
+
+	update();
+}());

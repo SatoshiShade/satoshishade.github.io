@@ -1,33 +1,33 @@
-/* ── CSS Variables ─────────────────────────────────────────────────── */
-:root {
-	/* Brand colours */
-	--color-gold:            #FFC000;
-	--color-gold-bright:     #FFD000;
-	--color-gold-hover:      #FFE033;
-	--color-gold-dim:        rgba(255,192,0,0.60);
-	
-	/* Page background */
-	--color-bg:              #05000f;
-	
-	/* Card gradients */
-	--color-card-from:       #1f0e52;
-	--color-card-to:         #110025;
-	
-	/* Purple accent (borders, dividers, glows) */
-	--color-purple-soft:     rgba(217,177,255,0.32);
-	--color-purple-faint:    rgba(217,177,255,0.15);
-	
-	/* Typography */
-	--font-primary:          system-ui, -apple-system, BlinkMacSystemFont,
-                             'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+/*
+	File: assets/css/00-global.css
+	Description: Shared tokens, reset, typography, layout helpers, and accessibility defaults.
+	Last modified: 2026-05-23
+	Copyright: © 2026 mytag.sol Community. All rights reserved.
+*/
 
-	/* Transitions */
-	--transition-smooth:     all 0.28s cubic-bezier(0.25,0.1,0.25,1);
-	--transition-fast:       all 0.18s ease;
+:root {
+	--color-bg: #05000f;
+	--color-surface: #110025;
+	--color-surface-2: #1f0e52;
+	--color-gold: #ffc000;
+	--color-gold-bright: #ffd84d;
+	--color-text: #ffffff;
+	--color-text-muted: rgba(255, 255, 255, 0.66);
+	--color-text-faint: rgba(255, 255, 255, 0.42);
+	--color-border: rgba(217, 177, 255, 0.34);
+	--color-border-strong: rgba(255, 192, 0, 0.48);
+	--shadow-card: 0 8px 32px rgba(0, 0, 0, 0.46);
+	--shadow-card-hover: 0 14px 42px rgba(0, 0, 0, 0.58);
+	--radius-card: 14px;
+	--radius-pill: 999px;
+	--content-width: 1060px;
+	--content-width-wide: 1200px;
+	--font-primary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* ── Page Reset ────────────────────────────────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -40,27 +40,23 @@ html {
 }
 
 body {
-	font-family: var(--font-primary);
-	background-color: var(--color-bg);
-	color: #ffffff;
-	line-height: 1.5;
 	min-height: 100vh;
 	overflow-x: hidden;
-	/* Prevent Brave/Chrome Android dark mode override globally */
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-primary);
+	line-height: 1.5;
 	color-scheme: only light;
 }
 
-/* ── Typography Baseline ───────────────────────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
-	font-family: var(--font-primary);
-	font-weight: 700;
-	line-height: 1.15;
-	color: #ffffff;
+main {
+	width: 100%;
 }
 
-p {
-	font-family: var(--font-primary);
-	line-height: 1.6;
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
 }
 
 a {
@@ -72,98 +68,143 @@ a:hover {
 	color: var(--color-gold-bright);
 }
 
-img {
-	display: block;
-	max-width: 100%;
-	height: auto;
+button,
+input {
+	font: inherit;
 }
 
 button {
-	font-family: var(--font-primary);
 	cursor: pointer;
 }
 
-/* ── Shared Utilities ──────────────────────────────────────────────── */
+strong {
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.94);
+}
 
-/* Hide an element visually but keep it accessible to screen readers */
 .sr-only {
 	position: absolute;
-	width: 1px; height: 1px;
-	padding: 0; margin: -1px;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
 	overflow: hidden;
-	clip: rect(0,0,0,0);
+	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 	border: 0;
 }
 
-/* Hide an element completely from the rendered page */
-.hide-from-page {
-	display: none !important;
-	visibility: hidden !important;
-}
-
-/* Gold highlight for .sol suffix in typewriter and domain cards */
 .highlight-sol {
-	color: var(--color-gold) !important;
+	color: var(--color-gold);
 }
 
-/* Hidden by default — revealed by JS when JavaScript is available.
-   Used by the domain browser controls (search, filter pills). */
 .js-only {
 	display: none;
 	width: 100%;
 }
 
+.section-header {
+	width: 100%;
+	max-width: 560px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.section-header--center {
+	text-align: center;
+}
+
+.section-eyebrow {
+	margin-bottom: 0.55rem;
+	color: var(--color-gold);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.13em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.section-headline {
+	margin-bottom: 0.55rem;
+	color: var(--color-text);
+	font-size: clamp(1.65rem, 4vw, 2.45rem);
+	font-weight: 700;
+	letter-spacing: 0;
+	line-height: 1.08;
+	text-wrap: balance;
+}
+
+.section-subline {
+	color: var(--color-text-muted);
+	font-size: clamp(0.9rem, 2vw, 1rem);
+	line-height: 1.65;
+	text-wrap: balance;
+}
+
+p,
+li,
+.intro-body,
+.bc p,
+.faq-a p,
+.footer-disclaimer p,
+.footer-footnotes p {
+	text-wrap: pretty;
+}
+
 .section-divider {
-    width: 90%; max-width: 680px;
-    margin: 0 auto;
-    height: 1px;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(217,177,255,0.45) 20%,
-        rgba(255,192,0,0.35) 50%,
-        rgba(217,177,255,0.45) 80%,
-        transparent 100%
-    );
+	width: min(520px, 74%);
+	height: 1px;
+	margin: 0.4rem auto 0;
+	background: linear-gradient(90deg, transparent, rgba(217, 177, 255, 0.24), rgba(255, 192, 0, 0.2), rgba(217, 177, 255, 0.24), transparent);
 }
 
-/* ── Shared Keyframes ──────────────────────────────────────────────── */
-
-/* Typewriter cursor blink — used by Hero Section */
-@keyframes blink-smooth {
-	0%, 100% { opacity: 0.85; }
-	50%       { opacity: 0.00; }
-}
-
-/* ── Focus Styles (Accessibility) ─────────────────────────────────── */
 :focus-visible {
 	outline: 2px solid var(--color-gold);
 	outline-offset: 3px;
-	border-radius: 4px;
+	border-radius: 6px;
 }
 
-/* ── Reduced Motion ───────────────────────────────────────────────── */
+@keyframes blink-smooth {
+	0%,
+	100% {
+		opacity: 0.85;
+	}
+
+	50% {
+		opacity: 0;
+	}
+}
+
+@media (min-width: 1400px) {
+	:root {
+		--content-width: var(--content-width-wide);
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
-	html { scroll-behavior: auto; }
-	*, *::before, *::after {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
 		transition-duration: 0.01ms !important;
 	}
 }
 
-/* ── Print ────────────────────────────────────────────────────────── */
 @media print {
 	body {
 		background: #ffffff !important;
 		color: #000000 !important;
 		color-scheme: normal;
 	}
+
 	a {
 		color: #000000 !important;
 		text-decoration: underline !important;
-	}
-	.hide-from-page {
-		display: none !important;
 	}
 }
