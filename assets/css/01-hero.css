@@ -158,8 +158,18 @@
 	box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.28);
 }
 
-.benefits-panel .section-eyebrow {
+.benefits-header {
+	margin-bottom: 1.2rem;
 	text-align: center;
+}
+
+.benefits-title {
+	color: var(--color-text);
+	font-size: clamp(1.28rem, 3.4vw, 1.62rem);
+	font-weight: 700;
+	letter-spacing: 0;
+	line-height: 1.18;
+	text-wrap: balance;
 }
 
 .benefits-grid {

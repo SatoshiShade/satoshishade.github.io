@@ -52,7 +52,9 @@
 			</div>
 
 			<div class="benefits-panel" aria-label="Benefits of subdomains">
-				<p class="section-eyebrow">Why subdomains?</p>
+				<div class="benefits-header">
+					<h2 class="benefits-title">Why subdomains?</h2>
+				</div>
 				<div class="benefits-grid">
 					<div class="benefit-pill">
 						<img class="bp-icon-img bp-icon-rotate" src="assets/img/benefits/tag.png" alt="" aria-hidden="true" />
@@ -95,9 +97,6 @@
 			</div>
 
 			<div class="top-picks-carousel" aria-label="Featured registrar picks">
-				<button class="top-picks-arrow top-picks-arrow--prev" type="button" aria-label="Show previous top pick"></button>
-				<button class="top-picks-arrow top-picks-arrow--next" type="button" aria-label="Show next top pick"></button>
-
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer" aria-label="Register a mytag.sol subdomain">
 					<span class="card-badge">Identity</span>
 					<div class="domain-name"><span>yourname.</span><strong>mytag.sol</strong></div>
@@ -127,11 +126,15 @@
 				</a>
 			</div>
 
-			<div class="top-picks-dots" aria-label="Select featured registrar">
-				<button class="top-pick-dot" type="button" aria-label="Show mytag.sol" data-pick-index="0"></button>
-				<button class="top-pick-dot active" type="button" aria-label="Show mystory.sol" data-pick-index="1"></button>
-				<button class="top-pick-dot" type="button" aria-label="Show ogclub.sol" data-pick-index="2"></button>
-				<button class="top-pick-dot" type="button" aria-label="Show gen-z.sol" data-pick-index="3"></button>
+			<div class="top-picks-controls" aria-label="Select featured registrar">
+				<button class="top-picks-arrow top-picks-arrow--prev" type="button" aria-label="Show previous top pick"></button>
+				<div class="top-picks-dots">
+					<button class="top-pick-dot" type="button" aria-label="Show mytag.sol" data-pick-index="0"></button>
+					<button class="top-pick-dot active" type="button" aria-label="Show mystory.sol" data-pick-index="1"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show ogclub.sol" data-pick-index="2"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show gen-z.sol" data-pick-index="3"></button>
+				</div>
+				<button class="top-picks-arrow top-picks-arrow--next" type="button" aria-label="Show next top pick"></button>
 			</div>
 		</section>
 
