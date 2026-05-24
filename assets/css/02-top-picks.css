@@ -21,6 +21,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: 0.62rem;
+	width: 100%;
 	min-height: 42px;
 	margin-top: -0.1rem;
 	padding: 0.18rem 0.28rem;
@@ -188,9 +189,12 @@
 }
 
 .top-picks-arrow {
+	-webkit-appearance: none;
+	appearance: none;
 	position: relative;
 	z-index: 1;
 	display: inline-flex;
+	flex: 0 0 38px;
 	align-items: center;
 	justify-content: center;
 	width: 38px;
@@ -229,6 +233,26 @@
 }
 
 @media (max-width: 639px) {
+	.top-picks-controls {
+		gap: 0.5rem;
+		margin-top: 0;
+	}
+
+	.top-picks-arrow {
+		display: inline-flex;
+		flex-basis: 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+	.top-picks-dots {
+		gap: 0.26rem;
+	}
+
+	.top-pick-dot {
+		width: 25px;
+	}
+
 	.top-picks-carousel {
 		min-height: 266px;
 	}
