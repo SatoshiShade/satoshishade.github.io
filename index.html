@@ -60,10 +60,27 @@
 				top: auto !important;
 				width: 100% !important;
 				max-width: 430px !important;
-				min-height: 0 !important;
+				min-height: 230px !important;
+				height: 100% !important;
 				margin: 0 auto !important;
 				opacity: 1 !important;
 				transform: none !important;
+			}
+
+			.domain-card.active {
+				border-color: rgba(217, 177, 255, 0.42) !important;
+				box-shadow: var(--shadow-card) !important;
+				background:
+					linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 34%),
+					linear-gradient(135deg, rgba(31, 14, 82, 0.76), rgba(14, 0, 31, 0.72)) !important;
+			}
+
+			.domain-card:first-child {
+				border-color: rgba(255, 192, 0, 0.68) !important;
+				box-shadow: var(--shadow-card-hover) !important;
+				background:
+					linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 34%),
+					linear-gradient(135deg, rgba(31, 14, 82, 1), rgba(14, 0, 31, 0.98)) !important;
 			}
 
 			.faq-a,
@@ -90,6 +107,7 @@
 				.top-picks-carousel {
 					grid-template-columns: repeat(2, minmax(0, 430px)) !important;
 					justify-content: center !important;
+					align-items: stretch !important;
 				}
 			}
 		</style>
