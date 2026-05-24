@@ -32,6 +32,8 @@
 		}
 	}
 
+	questions.forEach(closeItem);
+
 	questions.forEach(function (question) {
 		question.addEventListener("click", function () {
 			var isOpen = question.getAttribute("aria-expanded") === "true";

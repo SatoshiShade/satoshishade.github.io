@@ -5,7 +5,7 @@
 	Last modified: 2026-05-23
 	Copyright: © 2026 mytag.sol Community. All rights reserved.
 -->
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,8 @@
 
 	<title>mytag.sol | Solana Subdomain Registrars</title>
 
+	<script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+
 	<link rel="stylesheet" href="assets/css/00-global.css" />
 	<link rel="stylesheet" href="assets/css/01-hero.css" />
 	<link rel="stylesheet" href="assets/css/02-top-picks.css" />
@@ -21,8 +23,70 @@
 	<link rel="stylesheet" href="assets/css/04-faq.css" />
 	<link rel="stylesheet" href="assets/css/05-x-section.css" />
 	<link rel="stylesheet" href="assets/css/06-footer.css" />
+	<noscript>
+		<style>
+			.slogan-typewriter-container .typing-wrapper > #typing-line,
+			.slogan-typewriter-container .cursor,
+			.top-picks-controls,
+			.js-only {
+				display: none !important;
+			}
+
+			.top-picks-carousel {
+				display: grid !important;
+				grid-template-columns: 1fr !important;
+				gap: 0.85rem !important;
+				min-height: 0 !important;
+				overflow: visible !important;
+			}
+
+			.domain-card {
+				position: relative !important;
+				left: auto !important;
+				top: auto !important;
+				width: 100% !important;
+				max-width: 430px !important;
+				min-height: 0 !important;
+				margin: 0 auto !important;
+				opacity: 1 !important;
+				transform: none !important;
+			}
+
+			.faq-a,
+			.faq-a[hidden] {
+				display: block !important;
+				max-height: none !important;
+				visibility: visible !important;
+			}
+
+			.faq-chevron {
+				display: none !important;
+			}
+
+			.faq-q {
+				cursor: default !important;
+				pointer-events: none !important;
+			}
+
+			.browser-more-wrap {
+				display: none !important;
+			}
+
+			@media (min-width: 760px) {
+				.top-picks-carousel {
+					grid-template-columns: repeat(2, minmax(0, 430px)) !important;
+					justify-content: center !important;
+				}
+			}
+		</style>
+	</noscript>
 </head>
 <body>
+	<div class="compat-notice" role="status">
+		<p class="notice-title">Browser Update Recommended</p>
+		<p class="notice-body">This page uses modern browser features for layout and interaction. If something looks broken, please open it in an up-to-date browser. All registration links remain available below.</p>
+	</div>
+
 	<main>
 		<!-- Hero: Introduces the core identity use case before showing registrar options. -->
 		<section class="hero-section" aria-labelledby="hero-title">
@@ -95,6 +159,13 @@
 				<h2 id="top-picks-title" class="section-headline">Top Picks</h2>
 				<p class="section-subline">Start with the strongest identity namespaces.</p>
 			</div>
+
+			<noscript>
+				<div class="noscript-notice">
+					<p class="noscript-title">JavaScript Disabled</p>
+					<p class="noscript-body">Carousel controls are unavailable, so all featured picks are shown below.</p>
+				</div>
+			</noscript>
 
 			<div class="top-picks-carousel" aria-label="Featured registrar picks">
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer" aria-label="Register a mytag.sol subdomain">
@@ -173,7 +244,7 @@
 			<noscript>
 				<div class="noscript-notice">
 					<p class="noscript-title">JavaScript Required</p>
-					<p class="noscript-body">Enable JavaScript to use search and filters. The registration links still appear below.</p>
+					<p class="noscript-body">Enable JavaScript to use search, filters, and show-more controls. All registration links are still shown below.</p>
 				</div>
 			</noscript>
 
@@ -218,13 +289,20 @@
 				<h2 id="faq-title" class="section-headline">Frequently Asked</h2>
 			</div>
 
+			<noscript>
+				<div class="noscript-notice">
+					<p class="noscript-title">JavaScript Disabled</p>
+					<p class="noscript-body">FAQ accordions are unavailable, so every answer is expanded below.</p>
+				</div>
+			</noscript>
+
 			<div class="faq-list" id="faq-list">
 				<div class="faq-item">
 					<button class="faq-q" type="button" aria-expanded="false">
 						<span>What exactly is a .sol subdomain?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>A .sol subdomain is a readable name under an existing .sol domain, such as <strong>yourname.mytag.sol</strong>. It can resolve to a Solana wallet address in compatible wallets and apps, so people can send to a name instead of a long public key.</p>
 					</div>
 				</div>
@@ -234,7 +312,7 @@
 						<span>Where do registrations happen?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>Registration links open the official <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service</a> interface. Wallet connection, checkout, terms, and transaction confirmation happen there, not on this directory page.</p>
 					</div>
 				</div>
@@ -244,7 +322,7 @@
 						<span>Are there renewals?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>The listed subdomain registrars are currently presented as one-time registrations with no annual renewal flow. This depends on current protocol behavior and registrar configuration, which may change outside this page's control.</p>
 					</div>
 				</div>
@@ -254,7 +332,7 @@
 						<span>What does it cost?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>Prices for listed registrars currently start from <strong>3 USDC</strong> for longer names. Shorter names may cost more. SNS may also charge platform fees, and every registration requires a Solana network transaction fee. Always review the final amount on sns.id before confirming.</p>
 					</div>
 				</div>
@@ -264,7 +342,7 @@
 						<span>Can a subdomain be transferred?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>SNS subdomains can support transfer and record updates, but they are not identical to root .sol domains. SNS documentation notes that parent-domain and registrar rules can affect subdomain behavior, and wallet support may be more limited than for root .sol names.</p>
 					</div>
 				</div>
@@ -274,7 +352,7 @@
 						<span>Which wallets support .sol names?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>Many Solana wallets and apps support .sol name resolution, including widely used wallets such as Phantom, Solflare, and Backpack. Support can differ between root domains and subdomains, so test the exact name in the wallet or app before relying on it for payments.</p>
 					</div>
 				</div>
@@ -284,7 +362,7 @@
 						<span>Is this an official SNS project?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>No. mytag.sol is an independently operated community project. It is not affiliated with, endorsed by, or operated by SNS, Solana, any wallet, any token project, or any listed community namespace.</p>
 					</div>
 				</div>
@@ -294,7 +372,7 @@
 						<span>What should be checked before buying?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
-					<div class="faq-a" hidden>
+					<div class="faq-a">
 						<p>Always do your own research before registering a name. Review the current price, fees, wallet support, subdomain behavior, and official information on <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a> and the <a href="https://docs.sns.id/collection/" target="_blank" rel="noopener noreferrer">SNS documentation</a> before confirming any transaction.</p>
 					</div>
 				</div>

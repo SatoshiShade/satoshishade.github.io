@@ -101,12 +101,21 @@
 
 .faq-a {
 	overflow: hidden;
-	max-height: 0;
+	max-height: none;
 	transition: max-height 0.24s ease;
+}
+
+.js .faq-a {
+	max-height: 0;
 }
 
 .faq-a:not([hidden]) {
 	max-height: 560px;
+}
+
+.no-js .faq-a,
+.no-js .faq-a:not([hidden]) {
+	max-height: none;
 }
 
 .faq-a[hidden] {
