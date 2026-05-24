@@ -13,7 +13,7 @@
 	max-width: var(--content-width);
 	margin: 0 auto;
 	padding: 2rem 1.2rem 0;
-	color-scheme: only light;
+	color-scheme: dark;
 }
 
 .hero-header {
@@ -131,6 +131,13 @@
 	letter-spacing: 0;
 	line-height: 1.25;
 	white-space: nowrap;
+}
+
+.noscript-line {
+	width: 100%;
+	max-width: 100%;
+	overflow: visible;
+	font-size: clamp(1.05rem, 5.1vw, 1.36rem);
 }
 
 .cursor {
