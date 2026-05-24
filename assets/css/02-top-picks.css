@@ -9,7 +9,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1.6rem;
+	gap: 1rem;
 	width: 100%;
 	max-width: var(--content-width);
 	margin: 0 auto;
@@ -20,7 +20,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 0.55rem;
-	margin-top: -0.55rem;
+	margin-top: -0.2rem;
 }
 
 .top-pick-dot {
@@ -58,7 +58,7 @@
 	align-items: center;
 	justify-items: center;
 	width: 100%;
-	min-height: 286px;
+	min-height: 254px;
 	overflow: hidden;
 	touch-action: pan-y;
 }
@@ -196,6 +196,9 @@
 
 .top-picks-arrow::before {
 	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
 	width: 10px;
 	height: 10px;
 	border-top: 2px solid rgba(255, 192, 0, 0.9);
@@ -207,7 +210,7 @@
 }
 
 .top-picks-arrow--prev::before {
-	transform: rotate(-135deg);
+	transform: translate(-42%, -50%) rotate(-135deg);
 }
 
 .top-picks-arrow--next {
@@ -215,7 +218,7 @@
 }
 
 .top-picks-arrow--next::before {
-	transform: rotate(45deg);
+	transform: translate(-58%, -50%) rotate(45deg);
 }
 
 .top-picks-arrow:hover {
@@ -225,6 +228,10 @@
 }
 
 @media (max-width: 639px) {
+	.top-picks-carousel {
+		min-height: 268px;
+	}
+
 	.domain-card[data-position="-1"],
 	.domain-card[data-position="1"] {
 		opacity: 0;
@@ -243,7 +250,7 @@
 	}
 
 	.top-picks-carousel {
-		min-height: 280px;
+		min-height: 254px;
 	}
 
 	.top-picks-arrow {
