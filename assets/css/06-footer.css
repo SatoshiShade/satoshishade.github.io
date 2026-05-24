@@ -73,6 +73,19 @@
 	color: var(--color-gold);
 }
 
+.footer-contact {
+	color: rgba(255, 255, 255, 0.52);
+	font-size: 0.82rem;
+	line-height: 1.55;
+}
+
+.footer-contact a {
+	color: rgba(255, 192, 0, 0.84);
+	font-weight: 700;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
 .footer-divider,
 .footer-divider-sm {
 	width: 100%;
