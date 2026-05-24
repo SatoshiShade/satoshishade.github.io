@@ -17,7 +17,6 @@
 	var cursor = document.createElement("span");
 	var examples = [
 		"alex.mytag.sol",
-		"agent.aitag.sol",
 		"sarah.mystory.sol",
 		"luna.fames.sol",
 		"nova.artistlink.sol",
@@ -67,12 +66,12 @@
 				deleting = false;
 				exampleIndex = (exampleIndex + 1) % examples.length;
 				renderTag("");
-				window.setTimeout(tick, 780);
+				window.setTimeout(tick, 1100);
 				return;
 			}
 
 			renderTag(current.slice(0, characterIndex));
-			speed = 38;
+			speed = 52;
 		} else {
 			renderTag(current.slice(0, characterIndex + 1));
 			characterIndex += 1;
@@ -81,14 +80,14 @@
 				window.setTimeout(function () {
 					deleting = true;
 					tick();
-				}, 2100);
+				}, 3200);
 				return;
 			}
 
-			speed = characterIndex < 4 ? 220 : 92;
+			speed = characterIndex < 4 ? 260 : 116;
 		}
 
-		window.setTimeout(tick, speed + Math.random() * 26 - 8);
+		window.setTimeout(tick, speed + Math.random() * 30 - 8);
 	}
 
 	tick();

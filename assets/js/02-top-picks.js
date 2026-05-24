@@ -13,7 +13,7 @@
 	var dots = Array.prototype.slice.call(document.querySelectorAll(".top-pick-dot"));
 	var currentIndex = 1;
 	var intervalId;
-	var intervalMs = 4200;
+	var intervalMs = 6500;
 
 	if (!carousel || cards.length === 0) {
 		return;
