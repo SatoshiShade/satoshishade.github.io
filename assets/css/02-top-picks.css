@@ -9,33 +9,47 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 2rem;
+	gap: 1.6rem;
 	width: 100%;
 	max-width: var(--content-width);
 	margin: 0 auto;
-	padding: 3.4rem 1.2rem 2.4rem;
+	padding: 3.1rem 1rem 2.4rem;
 }
 
 .top-picks-dots {
 	display: flex;
 	justify-content: center;
-	gap: 0.45rem;
-	margin-top: -0.8rem;
+	gap: 0.55rem;
+	margin-top: -0.55rem;
 }
 
 .top-pick-dot {
-	width: 9px;
-	height: 9px;
+	width: 34px;
+	height: 34px;
 	padding: 0;
-	border: 1px solid rgba(255, 192, 0, 0.44);
+	border: 0;
 	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.08);
+	background: transparent;
 	transition: background 0.18s ease, transform 0.18s ease;
 }
 
+.top-pick-dot::before {
+	content: "";
+	display: block;
+	width: 10px;
+	height: 10px;
+	margin: auto;
+	border: 1px solid rgba(255, 192, 0, 0.48);
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.1);
+}
+
 .top-pick-dot.active {
-	background: var(--color-gold);
 	transform: scale(1.18);
+}
+
+.top-pick-dot.active::before {
+	background: var(--color-gold);
 }
 
 .top-picks-carousel {
@@ -44,8 +58,9 @@
 	align-items: center;
 	justify-items: center;
 	width: 100%;
-	min-height: 260px;
+	min-height: 286px;
 	overflow: hidden;
+	touch-action: pan-y;
 }
 
 .domain-card {
@@ -55,8 +70,8 @@
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
 	gap: 0.75rem;
-	width: min(82vw, 430px);
-	min-height: 220px;
+	width: min(90vw, 430px);
+	min-height: 232px;
 	overflow: hidden;
 	padding: 1.25rem;
 	border: 1px solid rgba(217, 177, 255, 0.42);
@@ -79,11 +94,11 @@
 }
 
 .domain-card[data-position="-1"] {
-	--card-offset: -48%;
+	--card-offset: -54%;
 }
 
 .domain-card[data-position="1"] {
-	--card-offset: 48%;
+	--card-offset: 54%;
 }
 
 .domain-card.active,
@@ -162,6 +177,65 @@
 	font-weight: 700;
 }
 
+.top-picks-arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 5;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid rgba(255, 192, 0, 0.34);
+	border-radius: 50%;
+	background: rgba(5, 0, 15, 0.74);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+	transform: translateY(-50%);
+	transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.top-picks-arrow::before {
+	content: "";
+	width: 10px;
+	height: 10px;
+	border-top: 2px solid rgba(255, 192, 0, 0.9);
+	border-right: 2px solid rgba(255, 192, 0, 0.9);
+}
+
+.top-picks-arrow--prev {
+	left: calc(50% - 282px);
+}
+
+.top-picks-arrow--prev::before {
+	transform: rotate(-135deg);
+}
+
+.top-picks-arrow--next {
+	right: calc(50% - 282px);
+}
+
+.top-picks-arrow--next::before {
+	transform: rotate(45deg);
+}
+
+.top-picks-arrow:hover {
+	border-color: rgba(255, 192, 0, 0.68);
+	background: rgba(255, 192, 0, 0.1);
+	transform: translateY(-50%) scale(1.04);
+}
+
+@media (max-width: 639px) {
+	.domain-card[data-position="-1"],
+	.domain-card[data-position="1"] {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.domain-card {
+		padding: 1.15rem;
+	}
+}
+
 @media (min-width: 640px) {
 	.domains-section {
 		padding-right: 2rem;
@@ -170,6 +244,12 @@
 
 	.top-picks-carousel {
 		min-height: 280px;
+	}
+}
+
+@media (min-width: 860px) {
+	.top-picks-arrow {
+		display: inline-flex;
 	}
 }
 
