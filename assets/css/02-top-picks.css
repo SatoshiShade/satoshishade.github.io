@@ -186,10 +186,10 @@
 	justify-content: center;
 	width: 42px;
 	height: 42px;
-	border: 1px solid rgba(255, 192, 0, 0.34);
+	border: 1px solid rgba(255, 192, 0, 0.78);
 	border-radius: 50%;
-	background: rgba(5, 0, 15, 0.74);
-	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+	background: #090018;
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
 	transform: translateY(-50%);
 	transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
 }
@@ -219,8 +219,8 @@
 }
 
 .top-picks-arrow:hover {
-	border-color: rgba(255, 192, 0, 0.68);
-	background: rgba(255, 192, 0, 0.1);
+	border-color: var(--color-gold);
+	background: #14002f;
 	transform: translateY(-50%) scale(1.04);
 }
 
@@ -245,9 +245,7 @@
 	.top-picks-carousel {
 		min-height: 280px;
 	}
-}
 
-@media (min-width: 860px) {
 	.top-picks-arrow {
 		display: inline-flex;
 	}
