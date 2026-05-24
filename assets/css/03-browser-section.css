@@ -266,33 +266,32 @@
 
 .noscript-notice {
 	position: relative;
-	display: grid;
-	grid-template-columns: auto 1fr;
-	column-gap: 0.8rem;
-	width: min(100%, 460px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: min(100%, 520px);
 	margin: 0 auto;
-	padding: 1.05rem 1.1rem;
+	padding: 1.15rem 1.25rem 1.2rem;
 	border: 1px solid rgba(255, 255, 255, 0.14);
 	border-radius: 16px;
 	background: rgba(255, 255, 255, 0.055);
 	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.24);
-	text-align: left;
+	text-align: center;
 }
 
 .noscript-notice::before {
 	content: "!";
-	grid-row: 1 / span 2;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 1.36rem;
-	height: 1.36rem;
-	margin-top: 0.08rem;
-	border: 1px solid rgba(255, 192, 0, 0.5);
-	border-radius: 50%;
-	background: rgba(255, 192, 0, 0.1);
-	color: var(--color-gold);
-	font-size: 0.78rem;
+	width: 1.55rem;
+	height: 1.38rem;
+	margin-bottom: 0.48rem;
+	padding-top: 0.18rem;
+	background: rgba(255, 192, 0, 0.92);
+	clip-path: polygon(50% 0, 100% 100%, 0 100%);
+	color: #120018;
+	font-size: 0.72rem;
 	font-weight: 800;
 	line-height: 1;
 }
