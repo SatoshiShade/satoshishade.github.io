@@ -12,7 +12,7 @@
 	width: 100%;
 	max-width: var(--content-width);
 	margin: 0 auto;
-	padding: 2.5rem 1.2rem 3.5rem;
+	padding: 2.7rem 1.2rem 3.7rem;
 	color-scheme: dark;
 }
 
@@ -21,18 +21,18 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1.45rem;
-	width: 100%;
-	max-width: 620px;
+	gap: 1.55rem;
+	width: min(100%, 660px);
 	min-width: 0;
 	overflow: hidden;
-	padding: 2rem 1.3rem;
-	border: 1px solid var(--color-border);
+	padding: 2.2rem 1.35rem 2.35rem;
+	border: 1px solid rgba(255, 192, 0, 0.24);
 	border-radius: var(--radius-card);
 	background:
-		linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 34%),
-		linear-gradient(135deg, rgba(31, 14, 82, 0.62), rgba(14, 0, 31, 0.64));
-	box-shadow: var(--shadow-card);
+		radial-gradient(circle at 50% 0, rgba(255, 192, 0, 0.105), transparent 34%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.048), transparent 38%),
+		linear-gradient(135deg, rgba(31, 14, 82, 0.72), rgba(14, 0, 31, 0.7));
+	box-shadow: 0 10px 34px rgba(0, 0, 0, 0.46);
 	text-align: center;
 	opacity: 1;
 	transform: none;
@@ -53,22 +53,23 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	max-width: 100%;
+	width: auto;
+	max-width: min(100%, 320px);
 	min-height: 44px;
-	padding: 0.74rem 1.5rem;
+	padding: 0.76rem 1.55rem;
 	border: 2px solid var(--color-gold-bright);
 	border-radius: var(--radius-pill);
 	background: var(--color-gold-bright);
-	box-shadow: 0 4px 24px rgba(255, 208, 0, 0.28);
+	box-shadow: 0 8px 26px rgba(255, 208, 0, 0.28);
 	color: #0a0015 !important;
 	-webkit-text-fill-color: #0a0015;
-	font-size: 0.98rem;
+	font-size: clamp(0.92rem, 2.6vw, 0.98rem);
 	font-weight: 700;
 	line-height: 1.2;
 	text-align: center;
 	text-decoration: none;
-	white-space: normal;
-	transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+	white-space: nowrap;
+	transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .social-btn:hover {
@@ -91,7 +92,7 @@
 	}
 
 	.social-inner {
-		padding: 2.6rem 2rem;
+		padding: 2.7rem 2.2rem 2.85rem;
 	}
 }
 
@@ -101,13 +102,13 @@
 	}
 
 	.social-inner {
-		gap: 1.15rem;
-		padding: 1.65rem 1rem;
+		gap: 1.2rem;
+		padding: 1.75rem 1rem 1.9rem;
 	}
 
 	.social-btn {
-		width: 100%;
-		padding: 0.72rem 1rem;
+		max-width: 100%;
+		padding: 0.72rem 1.1rem;
 	}
 }
 

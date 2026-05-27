@@ -25,6 +25,7 @@
 	var showAll = false;
 	var searchTimer;
 	var searchDelayMs = 180;
+	var scrollBackDelayMs = 40;
 	var featuredRanks = {
 		gbonk: 10,
 		mytag: 9,
@@ -195,6 +196,21 @@
 		}
 	}
 
+	function scrollToFinder() {
+		var section = grid.closest(".browser-section");
+
+		if (!section) {
+			return;
+		}
+
+		window.setTimeout(function () {
+			section.scrollIntoView({
+				behavior: "smooth",
+				block: "start"
+			});
+		}, scrollBackDelayMs);
+	}
+
 	filterButtons.forEach(function (button) {
 		button.addEventListener("click", function () {
 			setActiveFilter(button.dataset.filter);
@@ -247,6 +263,7 @@
 		lessButton.addEventListener("click", function () {
 			showAll = false;
 			update();
+			scrollToFinder();
 		});
 	}
 

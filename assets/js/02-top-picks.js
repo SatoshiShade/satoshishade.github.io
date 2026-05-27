@@ -15,7 +15,7 @@
 	var nextButton = document.querySelector(".top-picks-arrow--next");
 	var currentIndex = 0;
 	var intervalId;
-	var intervalMs = 6500;
+	var intervalMs = 7800;
 	var touchStartX = 0;
 	var touchStartY = 0;
 	var touchTracking = false;
@@ -60,7 +60,7 @@
 
 		switchingTimer = window.setTimeout(function () {
 			carousel.classList.remove("is-switching");
-		}, 680);
+		}, 860);
 	}
 
 	function start() {

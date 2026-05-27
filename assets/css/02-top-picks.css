@@ -96,7 +96,7 @@
 }
 
 .top-picks-carousel.is-switching .domain-card.active {
-	animation: active-card-glow 0.62s ease both;
+	animation: active-card-glow 0.82s ease both;
 }
 
 .domain-card {
@@ -120,7 +120,7 @@
 	text-decoration: none;
 	opacity: 0.46;
 	transform: translate(-50%, -50%) translateX(var(--card-offset, 0)) scale(0.9);
-	transition: border-color 0.28s ease, box-shadow 0.28s ease, opacity 0.28s ease, transform 0.28s ease;
+	transition: border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
 }
 
 .domain-card::after {
@@ -134,7 +134,7 @@
 	background: radial-gradient(circle, rgba(255, 192, 0, 0.045), transparent 68%);
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 0.28s ease;
+	transition: opacity 0.4s ease;
 }
 
 .domain-card.active::after {

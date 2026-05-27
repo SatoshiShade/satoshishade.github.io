@@ -1,6 +1,6 @@
 /*
 	File: assets/js/05-section-effects.js
-	Description: Touch-friendly section movement and reveal states.
+	Description: Touch-friendly section reveal states.
 	Last modified: 2026-05-27
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
