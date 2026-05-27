@@ -181,6 +181,7 @@ strong {
 	letter-spacing: 0;
 	line-height: 1.08;
 	text-wrap: balance;
+	font-synthesis: none;
 }
 
 .section-subline {
@@ -224,8 +225,7 @@ sup {
 .js .page-snap-section:not(.hero-section) .top-picks-controls,
 .js .page-snap-section:not(.hero-section) #browser-controls,
 .js .page-snap-section:not(.hero-section) .browser-grid,
-.js .page-snap-section:not(.hero-section) .faq-list,
-.js .page-snap-section:not(.hero-section) .social-inner {
+.js .page-snap-section:not(.hero-section) .faq-list {
 	opacity: 0.28;
 	transform: translateY(18px) scale(0.985);
 	transition: opacity 0.54s ease, transform 0.54s ease;
@@ -236,8 +236,7 @@ sup {
 .js .page-snap-section.is-visible:not(.hero-section) .top-picks-controls,
 .js .page-snap-section.is-visible:not(.hero-section) #browser-controls,
 .js .page-snap-section.is-visible:not(.hero-section) .browser-grid,
-.js .page-snap-section.is-visible:not(.hero-section) .faq-list,
-.js .page-snap-section.is-visible:not(.hero-section) .social-inner {
+.js .page-snap-section.is-visible:not(.hero-section) .faq-list {
 	opacity: 1;
 	transform: translateY(0) scale(1);
 }
@@ -283,18 +282,14 @@ sup {
 @media (max-width: 759px) {
 	html.js {
 		scroll-padding-top: 0;
-		scroll-snap-type: y mandatory;
 	}
 
 	.page-snap-section {
-		min-height: 78svh;
-		scroll-snap-align: start;
-		scroll-snap-stop: always;
+		min-height: 0;
 	}
 
 	.hero-section {
 		min-height: auto;
-		scroll-snap-align: none;
 	}
 
 	.page-snap-section:not(.hero-section)::before {
@@ -344,8 +339,7 @@ sup {
 	.js .page-snap-section:not(.hero-section) .top-picks-controls,
 	.js .page-snap-section:not(.hero-section) #browser-controls,
 	.js .page-snap-section:not(.hero-section) .browser-grid,
-	.js .page-snap-section:not(.hero-section) .faq-list,
-	.js .page-snap-section:not(.hero-section) .social-inner {
+	.js .page-snap-section:not(.hero-section) .faq-list {
 		opacity: 1;
 		transform: none;
 	}
