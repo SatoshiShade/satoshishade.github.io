@@ -8,7 +8,7 @@
 (function () {
 	"use strict";
 
-	var sections = Array.prototype.slice.call(document.querySelectorAll(".page-snap-section"));
+	var sections = Array.prototype.slice.call(document.querySelectorAll(".reveal-section"));
 	var observer;
 
 	if (sections.length === 0) {

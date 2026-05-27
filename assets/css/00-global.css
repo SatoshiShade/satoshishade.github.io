@@ -216,39 +216,39 @@ sup {
 	background: linear-gradient(90deg, transparent, rgba(217, 177, 255, 0.24), rgba(255, 192, 0, 0.2), rgba(217, 177, 255, 0.24), transparent);
 }
 
-.page-snap-section {
+.reveal-section {
 	position: relative;
 }
 
-.js .page-snap-section:not(.hero-section) .section-header,
-.js .page-snap-section:not(.hero-section) .top-picks-carousel,
-.js .page-snap-section:not(.hero-section) .top-picks-controls,
-.js .page-snap-section:not(.hero-section) #browser-controls,
-.js .page-snap-section:not(.hero-section) .browser-grid,
-.js .page-snap-section:not(.hero-section) .faq-list {
+.js .reveal-section:not(.hero-section) .section-header,
+.js .reveal-section:not(.hero-section) .top-picks-carousel,
+.js .reveal-section:not(.hero-section) .top-picks-controls,
+.js .reveal-section:not(.hero-section) #browser-controls,
+.js .reveal-section:not(.hero-section) .browser-grid,
+.js .reveal-section:not(.hero-section) .faq-list {
 	opacity: 0.28;
 	transform: translateY(18px) scale(0.985);
 	transition: opacity 0.54s ease, transform 0.54s ease;
 }
 
-.js .page-snap-section.is-visible:not(.hero-section) .section-header,
-.js .page-snap-section.is-visible:not(.hero-section) .top-picks-carousel,
-.js .page-snap-section.is-visible:not(.hero-section) .top-picks-controls,
-.js .page-snap-section.is-visible:not(.hero-section) #browser-controls,
-.js .page-snap-section.is-visible:not(.hero-section) .browser-grid,
-.js .page-snap-section.is-visible:not(.hero-section) .faq-list {
+.js .reveal-section.is-visible:not(.hero-section) .section-header,
+.js .reveal-section.is-visible:not(.hero-section) .top-picks-carousel,
+.js .reveal-section.is-visible:not(.hero-section) .top-picks-controls,
+.js .reveal-section.is-visible:not(.hero-section) #browser-controls,
+.js .reveal-section.is-visible:not(.hero-section) .browser-grid,
+.js .reveal-section.is-visible:not(.hero-section) .faq-list {
 	opacity: 1;
 	transform: translateY(0) scale(1);
 }
 
-.js .page-snap-section.is-visible:not(.hero-section) .top-picks-carousel,
-.js .page-snap-section.is-visible:not(.hero-section) #browser-controls,
-.js .page-snap-section.is-visible:not(.hero-section) .faq-list {
+.js .reveal-section.is-visible:not(.hero-section) .top-picks-carousel,
+.js .reveal-section.is-visible:not(.hero-section) #browser-controls,
+.js .reveal-section.is-visible:not(.hero-section) .faq-list {
 	transition-delay: 0.08s;
 }
 
-.js .page-snap-section.is-visible:not(.hero-section) .top-picks-controls,
-.js .page-snap-section.is-visible:not(.hero-section) .browser-grid {
+.js .reveal-section.is-visible:not(.hero-section) .top-picks-controls,
+.js .reveal-section.is-visible:not(.hero-section) .browser-grid {
 	transition-delay: 0.14s;
 }
 
@@ -284,7 +284,7 @@ sup {
 		scroll-padding-top: 0;
 	}
 
-	.page-snap-section {
+	.reveal-section {
 		min-height: 0;
 	}
 
@@ -292,32 +292,6 @@ sup {
 		min-height: auto;
 	}
 
-	.page-snap-section:not(.hero-section)::before {
-		content: attr(data-chapter);
-		display: inline-flex;
-		align-items: center;
-		align-self: flex-start;
-		min-height: 1.72rem;
-		margin: 0 auto 0.45rem;
-		padding: 0.2rem 0.72rem;
-		border: 1px solid rgba(255, 192, 0, 0.26);
-		border-radius: var(--radius-pill);
-		background: rgba(255, 192, 0, 0.08);
-		color: rgba(255, 192, 0, 0.88);
-		font-size: 0.66rem;
-		font-weight: 800;
-		letter-spacing: 0.11em;
-		line-height: 1;
-		text-transform: uppercase;
-		opacity: 0;
-		transform: translateY(10px);
-		transition: opacity 0.48s ease, transform 0.48s ease;
-	}
-
-	.page-snap-section.is-visible:not(.hero-section)::before {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -334,12 +308,12 @@ sup {
 		transition-duration: 0.01ms !important;
 	}
 
-	.js .page-snap-section:not(.hero-section) .section-header,
-	.js .page-snap-section:not(.hero-section) .top-picks-carousel,
-	.js .page-snap-section:not(.hero-section) .top-picks-controls,
-	.js .page-snap-section:not(.hero-section) #browser-controls,
-	.js .page-snap-section:not(.hero-section) .browser-grid,
-	.js .page-snap-section:not(.hero-section) .faq-list {
+	.js .reveal-section:not(.hero-section) .section-header,
+	.js .reveal-section:not(.hero-section) .top-picks-carousel,
+	.js .reveal-section:not(.hero-section) .top-picks-controls,
+	.js .reveal-section:not(.hero-section) #browser-controls,
+	.js .reveal-section:not(.hero-section) .browser-grid,
+	.js .reveal-section:not(.hero-section) .faq-list {
 		opacity: 1;
 		transform: none;
 	}
