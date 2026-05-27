@@ -2,7 +2,7 @@
 	File: assets/js/01-hero.js
 	Description: Typewriter animation for example SNS subdomain tags.
 	Last modified: 2026-05-23
-	Copyright: © 2026 mytag.sol Community. All rights reserved.
+	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
 (function () {

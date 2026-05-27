@@ -2,7 +2,7 @@
 	File: assets/js/02-top-picks.js
 	Description: Auto-focus carousel behavior for featured subdomain registrar cards.
 	Last modified: 2026-05-23
-	Copyright: © 2026 mytag.sol Community. All rights reserved.
+	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
 (function () {
@@ -13,13 +13,14 @@
 	var dots = Array.prototype.slice.call(document.querySelectorAll(".top-pick-dot"));
 	var previousButton = document.querySelector(".top-picks-arrow--prev");
 	var nextButton = document.querySelector(".top-picks-arrow--next");
-	var currentIndex = 1;
+	var currentIndex = 0;
 	var intervalId;
 	var intervalMs = 6500;
 	var touchStartX = 0;
 	var touchStartY = 0;
 	var touchTracking = false;
 	var suppressNextClick = false;
+	var switchingTimer;
 
 	if (!carousel || cards.length === 0) {
 		return;
@@ -42,6 +43,12 @@
 	function setActive(index) {
 		currentIndex = (index + cards.length) % cards.length;
 
+		window.clearTimeout(switchingTimer);
+		carousel.classList.remove("is-switching");
+		window.requestAnimationFrame(function () {
+			carousel.classList.add("is-switching");
+		});
+
 		cards.forEach(function (card, cardIndex) {
 			card.classList.toggle("active", cardIndex === currentIndex);
 			card.dataset.position = String(getPosition(cardIndex));
@@ -50,6 +57,10 @@
 		dots.forEach(function (dot, dotIndex) {
 			dot.classList.toggle("active", dotIndex === currentIndex);
 		});
+
+		switchingTimer = window.setTimeout(function () {
+			carousel.classList.remove("is-switching");
+		}, 680);
 	}
 
 	function start() {

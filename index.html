@@ -3,7 +3,7 @@
 	File: index.html
 	Description: Static landing page for the mytag.sol subdomain registrar directory.
 	Last modified: 2026-05-23
-	Copyright: © 2026 mytag.sol Community. All rights reserved.
+	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 -->
 <html class="no-js" lang="en">
 <head>
@@ -52,6 +52,11 @@
 				gap: 0.85rem !important;
 				min-height: 0 !important;
 				overflow: visible !important;
+			}
+
+			.top-picks-carousel::before,
+			.top-picks-carousel::after {
+				display: none !important;
 			}
 
 			.domain-card {
@@ -121,7 +126,7 @@
 
 	<main>
 		<!-- Hero: Introduces the core identity use case before showing registrar options. -->
-		<section class="hero-section" aria-labelledby="hero-title">
+		<section class="hero-section page-snap-section is-visible" data-chapter="Intro" aria-labelledby="hero-title">
 			<div class="hero-header">
 				<img class="image-logo" src="assets/img/logo-with-slogan.png" alt="mytag.sol" loading="eager" />
 				<div class="hero-intro">
@@ -169,8 +174,8 @@
 					<div class="benefit-pill">
 						<img class="bp-icon-img" src="assets/img/benefits/lock.svg" alt="" aria-hidden="true" />
 						<div class="bp-text">
-							<strong>Yours In Your Wallet</strong>
-							<span>Once registered, your subdomain is assigned to your wallet under current subdomain rules.<sup>2</sup></span>
+							<strong>Your Name, On-Chain</strong>
+							<span>Registered to your wallet under current subdomain rules.<sup>2</sup></span>
 						</div>
 					</div>
 					<div class="benefit-pill">
@@ -185,11 +190,11 @@
 		</section>
 
 		<!-- Top picks: Curated registrar cards with stronger positioning than the full browser. -->
-		<section class="domains-section" aria-labelledby="top-picks-title">
+		<section class="domains-section page-snap-section" data-chapter="Curated Picks" aria-labelledby="top-picks-title">
 			<div class="section-header">
 				<p class="section-eyebrow">Curated picks</p>
 				<h2 id="top-picks-title" class="section-headline">Top Picks</h2>
-				<p class="section-subline">Start with the strongest identity namespaces.</p>
+				<p class="section-subline">Start with the cleanest names, rare communities, and strongest on-chain identity signals.</p>
 			</div>
 
 			<noscript>
@@ -200,31 +205,38 @@
 			</noscript>
 
 			<div class="top-picks-carousel" aria-label="Featured registrar picks">
+				<a class="domain-card active" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer" aria-label="Register a gbonk.sol subdomain">
+					<div class="card-topline"><span class="card-badge">Meme</span></div>
+					<div class="domain-name"><span>yourname.</span><strong>gbonk.sol</strong></div>
+					<p>The premium BONK-flavored identity. Scarcer, louder, and built for the strongest community signal.</p>
+					<span class="card-cta">Register on SNS</span>
+				</a>
+
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer" aria-label="Register a mytag.sol subdomain">
-					<span class="card-badge">Identity</span>
+					<div class="card-topline"><span class="card-badge">Identity</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>mytag.sol</strong></div>
 					<p>The universal name tag. Clean, simple, for everyone.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 
-				<a class="domain-card active" href="https://v1.sns.id/sub-registrar/mystory" target="_blank" rel="noopener noreferrer" aria-label="Register a mystory.sol subdomain">
-					<span class="card-badge">Identity</span>
-					<div class="domain-name"><span>yourname.</span><strong>mystory.sol</strong></div>
-					<p>Your story, your name. The most personal identity on-chain.</p>
-					<span class="card-cta">Register on SNS</span>
-				</a>
-
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer" aria-label="Register an ogclub.sol subdomain">
-					<span class="card-badge">Community</span>
+					<div class="card-topline"><span class="card-badge">Community</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>ogclub.sol</strong></div>
 					<p>OG status, on-chain. For those who were early.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 
-				<a class="domain-card" href="https://v1.sns.id/sub-registrar/gen-z" target="_blank" rel="noopener noreferrer" aria-label="Register a gen-z.sol subdomain">
-					<span class="card-badge">Community</span>
-					<div class="domain-name"><span>yourname.</span><strong>gen-z.sol</strong></div>
-					<p>For the generation that grew up online. Claim your spot.</p>
+				<a class="domain-card" href="https://v1.sns.id/sub-registrar/bonkog" target="_blank" rel="noopener noreferrer" aria-label="Register a bonkog.sol subdomain">
+					<div class="card-topline"><span class="card-badge">Meme</span></div>
+					<div class="domain-name"><span>yourname.</span><strong>bonkog.sol</strong></div>
+					<p>OG BONK energy with a sharper collector signal for meme-native wallets.</p>
+					<span class="card-cta">Register on SNS</span>
+				</a>
+
+				<a class="domain-card" href="https://v1.sns.id/sub-registrar/mystory" target="_blank" rel="noopener noreferrer" aria-label="Register a mystory.sol subdomain">
+					<div class="card-topline"><span class="card-badge">Identity</span></div>
+					<div class="domain-name"><span>yourname.</span><strong>mystory.sol</strong></div>
+					<p>Your story, your name. The most personal identity on-chain.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 			</div>
@@ -232,10 +244,11 @@
 			<div class="top-picks-controls" aria-label="Select featured registrar">
 				<button class="top-picks-arrow top-picks-arrow--prev" type="button" aria-label="Show previous top pick"></button>
 				<div class="top-picks-dots">
-					<button class="top-pick-dot" type="button" aria-label="Show mytag.sol" data-pick-index="0"></button>
-					<button class="top-pick-dot active" type="button" aria-label="Show mystory.sol" data-pick-index="1"></button>
+					<button class="top-pick-dot active" type="button" aria-label="Show gbonk.sol" data-pick-index="0"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show mytag.sol" data-pick-index="1"></button>
 					<button class="top-pick-dot" type="button" aria-label="Show ogclub.sol" data-pick-index="2"></button>
-					<button class="top-pick-dot" type="button" aria-label="Show gen-z.sol" data-pick-index="3"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show bonkog.sol" data-pick-index="3"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show mystory.sol" data-pick-index="4"></button>
 				</div>
 				<button class="top-picks-arrow top-picks-arrow--next" type="button" aria-label="Show next top pick"></button>
 			</div>
@@ -244,7 +257,7 @@
 		<div class="section-divider" aria-hidden="true"></div>
 
 		<!-- Registrar browser: Searchable directory of all live registrar links. -->
-		<section class="browser-section" aria-labelledby="browser-title">
+		<section class="browser-section page-snap-section" data-chapter="Subdomain Finder" aria-labelledby="browser-title">
 			<div class="section-header">
 				<p class="section-eyebrow">All registrars</p>
 				<h2 id="browser-title" class="section-headline">Subdomain Finder</h2>
@@ -315,7 +328,7 @@
 		<div class="section-divider" aria-hidden="true"></div>
 
 		<!-- FAQ: Trust-building answers with careful legal and protocol wording. -->
-		<section class="faq-section" aria-labelledby="faq-title">
+		<section class="faq-section page-snap-section" data-chapter="Questions" aria-labelledby="faq-title">
 			<div class="section-header section-header--center">
 				<p class="section-eyebrow">Got questions?</p>
 				<h2 id="faq-title" class="section-headline">Frequently Asked</h2>
@@ -331,71 +344,51 @@
 			<div class="faq-list" id="faq-list">
 				<div class="faq-item">
 					<button class="faq-q" type="button" aria-expanded="false">
-						<span>What exactly is a .sol subdomain?</span>
+						<span>What is this?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>A .sol subdomain is a readable name under an existing .sol domain, such as <strong>yourname.mytag.sol</strong>. It can resolve to a Solana wallet address in compatible wallets and apps, so people can send to a name instead of a long public key.</p>
+						<p>A .sol subdomain is a readable Solana Name Service name under an existing .sol domain, such as <strong>yourname.mytag.sol</strong>. It can point to on-chain data, especially a Solana wallet address, so compatible apps can use a name instead of a long public key.</p>
 					</div>
 				</div>
 
 				<div class="faq-item">
 					<button class="faq-q" type="button" aria-expanded="false">
-						<span>Where do registrations happen?</span>
+						<span>Where can I use it?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>Registration links open the official <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service</a> interface. Wallet connection, checkout, terms, and transaction confirmation happen there, not on this directory page.</p>
+						<p>SNS names are built for payments, profiles, identity, and dApps across Solana. The official integration list includes widely used wallets and explorers such as Phantom, Solflare, Backpack, Trust Wallet, Solscan, and more. Support can differ by app, and subdomain support may differ from root .sol names, so test the exact name before relying on it for payments. See the <a href="https://docs.sns.id/collection/list-of-integrations" target="_blank" rel="noopener noreferrer">SNS integration list</a> and <a href="https://docs.sns.id/collection/solana-name-service/using-sns" target="_blank" rel="noopener noreferrer">SNS usage docs</a>.</p>
 					</div>
 				</div>
 
 				<div class="faq-item">
 					<button class="faq-q" type="button" aria-expanded="false">
-						<span>Are there renewals?</span>
+						<span>What does it cost, and are there renewals?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>The listed subdomain registrars are currently presented as one-time registrations with no annual renewal flow. This depends on current protocol behavior and registrar configuration, which may change outside this page's control.</p>
+						<p>Listed registrars currently start from <strong>3 USDC</strong> for eligible longer names, plus SNS fees, platform fees, and Solana network fees. They are currently presented as one-time registrations with no annual renewal flow, but pricing, tiers, fees, and registrar settings can change. Always confirm the final amount on <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a> before purchasing.</p>
 					</div>
 				</div>
 
 				<div class="faq-item">
 					<button class="faq-q" type="button" aria-expanded="false">
-						<span>What does it cost?</span>
+						<span>Is it really mine?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>Prices for listed registrars currently start from <strong>3 USDC</strong> for longer names. Shorter names may cost more. SNS may also charge platform fees, and every registration requires a Solana network transaction fee. Always review the final amount on sns.id before confirming.</p>
+						<p>After registration, the subdomain is assigned to your wallet under the current SNS subdomain registrar flow. It is not the same as buying a root .sol domain. SNS documentation notes that parent-domain and registrar rules can still affect subdomain behavior, so this page uses careful wording instead of overpromising.</p>
 					</div>
 				</div>
 
 				<div class="faq-item">
 					<button class="faq-q" type="button" aria-expanded="false">
-						<span>Can a subdomain be transferred?</span>
+						<span>Where does checkout happen?</span>
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>SNS subdomains can support transfer and record updates, but they are not identical to root .sol domains. SNS documentation notes that parent-domain and registrar rules can affect subdomain behavior, and wallet support may be more limited than for root .sol names.</p>
-					</div>
-				</div>
-
-				<div class="faq-item">
-					<button class="faq-q" type="button" aria-expanded="false">
-						<span>Which wallets support .sol names?</span>
-						<span class="faq-chevron" aria-hidden="true"></span>
-					</button>
-					<div class="faq-a">
-						<p>Many Solana wallets and apps support .sol name resolution, including widely used wallets such as Phantom, Solflare, and Backpack. Support can differ between root domains and subdomains, so test the exact name in the wallet or app before relying on it for payments.</p>
-					</div>
-				</div>
-
-				<div class="faq-item">
-					<button class="faq-q" type="button" aria-expanded="false">
-						<span>Is this an official SNS project?</span>
-						<span class="faq-chevron" aria-hidden="true"></span>
-					</button>
-					<div class="faq-a">
-						<p>No. mytag.sol is an independently operated community project. It is not affiliated with, endorsed by, or operated by SNS, Solana, any wallet, any token project, or any listed community namespace.</p>
+						<p>Every registration link opens the official <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service</a> interface. Wallet connection, checkout, terms, and transaction confirmation happen there, not on this directory page.</p>
 					</div>
 				</div>
 
@@ -405,21 +398,21 @@
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>Always do your own research before registering a name. Review the current price, fees, wallet support, subdomain behavior, and official information on <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a> and the <a href="https://docs.sns.id/collection/" target="_blank" rel="noopener noreferrer">SNS documentation</a> before confirming any transaction.</p>
+						<p>Check the final price, fees, spelling, wallet support, registrar settings, and subdomain limitations before confirming. mytag.sol is an independent directory, not an official SNS, Solana, wallet, or token-project website. Use the <a href="https://docs.sns.id/dev/sns-sdk/subdomains" target="_blank" rel="noopener noreferrer">SNS subdomain docs</a> for protocol details.</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
 		<!-- Social CTA: Lightweight community touchpoint without wallet interaction. -->
-		<section class="social-section" aria-labelledby="social-title">
+		<section class="social-section page-snap-section" data-chapter="Community" aria-labelledby="social-title">
 			<div class="social-inner">
 				<div class="section-header section-header--center">
 					<p class="section-eyebrow">Community updates</p>
-					<h2 id="social-title" class="section-headline">Follow @mytagsol on &#120143;</h2>
+					<h2 id="social-title" class="section-headline">Follow Us on &#120143;</h2>
 					<p class="section-subline">New namespaces, registrar updates, and Solana identity notes.</p>
 				</div>
-				<a class="social-btn" href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">&#120143;&ensp;@mytagsol</a>
+				<a class="social-btn" href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">@mytagsol on &#120143;</a>
 			</div>
 		</section>
 	</main>
@@ -433,7 +426,7 @@
 			</div>
 
 			<nav class="footer-links" aria-label="Footer links">
-				<a class="footer-link" href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">&#120143;&ensp;@mytagsol</a>
+				<a class="footer-link" href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">@mytagsol on &#120143;</a>
 				<a class="footer-link" href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS Website</a>
 				<a class="footer-link" href="https://docs.sns.id/collection/" target="_blank" rel="noopener noreferrer">SNS Docs</a>
 			</nav>
@@ -454,7 +447,7 @@
 
 		<div class="footer-footnotes">
 			<p><sup>1</sup> Listed registrars currently start from 3 USDC for eligible longer names, plus platform fees and Solana network fees. Prices, tiers, fees, accepted tokens, and availability can change at any time without prior notice. Final pricing is shown before purchase. "Less than a coffee" is a simple price comparison; real coffee prices vary by country, city, venue, currency, and date.</p>
-			<p><sup>2</sup> Wallet-assignment and no-renewal wording reflects current subdomain registration behavior and may change with future protocol or registrar decisions outside this page's control.</p>
+			<p><sup>2</sup> "Registered to your wallet" reflects the current subdomain registrar flow. SNS documentation notes that subdomains can differ from root .sol domains, including parent-domain and registrar considerations as well as limited wallet support.</p>
 		</div>
 
 		<div class="footer-divider-sm"></div>
@@ -468,5 +461,6 @@
 	<script src="assets/js/02-top-picks.js"></script>
 	<script src="assets/js/03-browser-section.js"></script>
 	<script src="assets/js/04-faq.js"></script>
+	<script src="assets/js/05-section-effects.js"></script>
 </body>
 </html>

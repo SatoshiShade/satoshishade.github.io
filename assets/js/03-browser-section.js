@@ -2,7 +2,7 @@
 	File: assets/js/03-browser-section.js
 	Description: Registrar search, category filters, and show-more controls.
 	Last modified: 2026-05-23
-	Copyright: © 2026 mytag.sol Community. All rights reserved.
+	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
 (function () {
@@ -25,6 +25,14 @@
 	var showAll = false;
 	var searchTimer;
 	var searchDelayMs = 180;
+	var featuredRanks = {
+		gbonk: 10,
+		mytag: 9,
+		ogclub: 8,
+		bonkog: 7,
+		mystory: 6,
+		bonktag: 5
+	};
 
 	if (controls) {
 		controls.style.display = "flex";
@@ -35,6 +43,25 @@
 	}
 
 	cards = Array.prototype.slice.call(grid.querySelectorAll(".bc"));
+	cards.sort(function (a, b) {
+		var rankA = featuredRanks[a.dataset.name] || 0;
+		var rankB = featuredRanks[b.dataset.name] || 0;
+
+		if (rankA !== rankB) {
+			return rankB - rankA;
+		}
+
+		return a.dataset.name.localeCompare(b.dataset.name);
+	});
+
+	cards.forEach(function (card) {
+		if (featuredRanks[card.dataset.name]) {
+			card.classList.add("bc-featured");
+		}
+
+		grid.appendChild(card);
+	});
+
 	searchInput = document.getElementById("domain-search");
 	clearButton = document.getElementById("search-clear");
 	emptyMessage = document.getElementById("browser-empty");

@@ -2,7 +2,7 @@
 	File: assets/css/02-top-picks.css
 	Description: Curated registrar cards shown above the full browser.
 	Last modified: 2026-05-23
-	Copyright: © 2026 mytag.sol Community. All rights reserved.
+	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
 .domains-section {
@@ -69,9 +69,34 @@
 	align-items: center;
 	justify-items: center;
 	width: 100%;
-	min-height: 252px;
+	min-height: 276px;
 	overflow: hidden;
-	touch-action: pan-y;
+	touch-action: pan-y pinch-zoom;
+}
+
+.top-picks-carousel::before,
+.top-picks-carousel::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 4;
+	width: min(18vw, 120px);
+	pointer-events: none;
+}
+
+.top-picks-carousel::before {
+	left: 0;
+	background: linear-gradient(90deg, var(--color-bg), rgba(5, 0, 15, 0));
+}
+
+.top-picks-carousel::after {
+	right: 0;
+	background: linear-gradient(270deg, var(--color-bg), rgba(5, 0, 15, 0));
+}
+
+.top-picks-carousel.is-switching .domain-card.active {
+	animation: active-card-glow 0.62s ease both;
 }
 
 .domain-card {
@@ -96,6 +121,24 @@
 	opacity: 0.46;
 	transform: translate(-50%, -50%) translateX(var(--card-offset, 0)) scale(0.9);
 	transition: border-color 0.28s ease, box-shadow 0.28s ease, opacity 0.28s ease, transform 0.28s ease;
+}
+
+.domain-card::after {
+	content: "";
+	position: absolute;
+	right: -36px;
+	top: -36px;
+	width: 108px;
+	height: 108px;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgba(255, 192, 0, 0.045), transparent 68%);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.28s ease;
+}
+
+.domain-card.active::after {
+	opacity: 0.46;
 }
 
 .domain-card[data-position="-2"],
@@ -144,6 +187,15 @@
 	text-transform: uppercase;
 }
 
+.card-topline {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.45rem;
+	min-width: 0;
+}
+
 .domain-name {
 	display: flex;
 	flex-wrap: wrap;
@@ -153,7 +205,7 @@
 
 .domain-name span,
 .domain-name strong {
-	font-size: clamp(1.22rem, 3.6vw, 1.52rem);
+	font-size: clamp(1.34rem, 4vw, 1.72rem);
 	font-weight: 700;
 	letter-spacing: 0;
 }
@@ -170,8 +222,8 @@
 
 .domain-card p {
 	color: var(--color-text-muted);
-	font-size: clamp(0.94rem, 1.8vw, 1rem);
-	line-height: 1.6;
+	font-size: clamp(1rem, 2vw, 1.08rem);
+	line-height: 1.58;
 }
 
 .card-cta {
@@ -186,6 +238,16 @@
 	color: var(--color-gold);
 	font-size: 0.82rem;
 	font-weight: 700;
+	transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.domain-card.active:hover .card-cta,
+.domain-card:focus-visible .card-cta {
+	border-color: rgba(255, 216, 77, 0.72);
+	background: rgba(255, 192, 0, 0.12);
+	box-shadow: 0 0 8px rgba(255, 192, 0, 0.05);
+	color: var(--color-gold-bright);
+	transform: translateX(2px);
 }
 
 .top-picks-arrow {
@@ -216,20 +278,35 @@
 	height: 10px;
 	border-top: 2px solid rgba(255, 192, 0, 0.9);
 	border-right: 2px solid rgba(255, 192, 0, 0.9);
+	transform-origin: 50% 50%;
 }
 
 .top-picks-arrow--prev::before {
-	transform: translate(-42%, -50%) rotate(-135deg);
+	transform: translate(-35%, -50%) rotate(-135deg);
 }
 
 .top-picks-arrow--next::before {
-	transform: translate(-58%, -50%) rotate(45deg);
+	transform: translate(-65%, -50%) rotate(45deg);
 }
 
 .top-picks-arrow:hover {
 	border-color: var(--color-gold);
 	background: #14002f;
 	transform: scale(1.04);
+}
+
+@keyframes active-card-glow {
+	0% {
+		box-shadow: var(--shadow-card);
+	}
+
+	38% {
+		box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 192, 0, 0.055);
+	}
+
+	100% {
+		box-shadow: var(--shadow-card-hover);
+	}
 }
 
 @media (max-width: 639px) {
@@ -254,7 +331,7 @@
 	}
 
 	.top-picks-carousel {
-		min-height: 266px;
+		min-height: 294px;
 	}
 
 	.domain-card[data-position="-1"],
@@ -275,7 +352,7 @@
 	}
 
 	.top-picks-carousel {
-		min-height: 252px;
+		min-height: 276px;
 	}
 }
 
