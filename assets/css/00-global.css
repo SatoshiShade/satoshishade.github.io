@@ -1,7 +1,7 @@
 /*
 	File: assets/css/00-global.css
 	Description: Shared tokens, reset, typography, layout helpers, and accessibility defaults.
-	Last modified: 2026-05-23
+	Last modified: 2026-05-28
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -12,8 +12,8 @@
 	--color-gold: #ffc000;
 	--color-gold-bright: #ffd84d;
 	--color-text: #ffffff;
-	--color-text-muted: rgba(255, 255, 255, 0.66);
-	--color-text-faint: rgba(255, 255, 255, 0.42);
+	--color-text-muted: rgba(255, 255, 255, 0.72);
+	--color-text-faint: rgba(255, 255, 255, 0.5);
 	--color-border: rgba(217, 177, 255, 0.34);
 	--color-border-strong: rgba(255, 192, 0, 0.48);
 	--shadow-card: 0 8px 32px rgba(0, 0, 0, 0.46);
@@ -22,6 +22,7 @@
 	--radius-pill: 999px;
 	--content-width: 1060px;
 	--content-width-wide: 1200px;
+	--section-divider-bg: linear-gradient(90deg, transparent, rgba(217, 177, 255, 0.24), rgba(255, 192, 0, 0.2), rgba(217, 177, 255, 0.24), transparent);
 	--font-primary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -185,6 +186,9 @@ strong {
 }
 
 .section-subline {
+	max-width: 46ch;
+	margin-right: auto;
+	margin-left: auto;
 	color: var(--color-text-muted);
 	font-size: clamp(0.9rem, 2vw, 1rem);
 	line-height: 1.65;
@@ -204,6 +208,7 @@ li,
 sup {
 	position: relative;
 	top: -0.38em;
+	margin-left: 0.08em;
 	font-size: 0.68em;
 	line-height: 0;
 	vertical-align: baseline;
@@ -213,11 +218,14 @@ sup {
 	width: min(520px, 74%);
 	height: 1px;
 	margin: 0.4rem auto 0;
-	background: linear-gradient(90deg, transparent, rgba(217, 177, 255, 0.24), rgba(255, 192, 0, 0.2), rgba(217, 177, 255, 0.24), transparent);
+	background: var(--section-divider-bg);
 }
 
 .reveal-section {
 	position: relative;
+	--reveal-brightness: 1;
+	--reveal-scale: 1;
+	--reveal-y: 0;
 }
 
 .js .reveal-section:not(.hero-section) .section-header,
@@ -226,9 +234,11 @@ sup {
 .js .reveal-section:not(.hero-section) #browser-controls,
 .js .reveal-section:not(.hero-section) .browser-grid,
 .js .reveal-section:not(.hero-section) .faq-list {
-	opacity: 0.28;
-	transform: translateY(18px) scale(0.985);
-	transition: opacity 0.54s ease, transform 0.54s ease;
+	opacity: 1;
+	filter: brightness(var(--reveal-brightness));
+	transform: translate3d(0, var(--reveal-y), 0) scale(var(--reveal-scale));
+	transition: filter 0.22s linear, transform 0.22s ease-out;
+	will-change: filter, transform;
 }
 
 .js .reveal-section.is-visible:not(.hero-section) .section-header,
@@ -238,7 +248,8 @@ sup {
 .js .reveal-section.is-visible:not(.hero-section) .browser-grid,
 .js .reveal-section.is-visible:not(.hero-section) .faq-list {
 	opacity: 1;
-	transform: translateY(0) scale(1);
+	filter: brightness(var(--reveal-brightness));
+	transform: translate3d(0, var(--reveal-y), 0) scale(var(--reveal-scale));
 }
 
 .js .reveal-section.is-visible:not(.hero-section) .top-picks-carousel,
@@ -313,9 +324,12 @@ sup {
 	.js .reveal-section:not(.hero-section) .top-picks-controls,
 	.js .reveal-section:not(.hero-section) #browser-controls,
 	.js .reveal-section:not(.hero-section) .browser-grid,
-	.js .reveal-section:not(.hero-section) .faq-list {
+	.js .reveal-section:not(.hero-section) .faq-list,
+	.js .social-section .social-inner {
 		opacity: 1;
+		filter: none;
 		transform: none;
+		will-change: auto;
 	}
 }
 

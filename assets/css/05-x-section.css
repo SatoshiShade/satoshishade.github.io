@@ -1,7 +1,7 @@
 /*
 	File: assets/css/05-x-section.css
 	Description: Social follow call-to-action section.
-	Last modified: 2026-05-23
+	Last modified: 2026-05-28
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -39,14 +39,17 @@
 }
 
 .js .social-section .social-inner {
-	opacity: 0.28;
-	transform: translateY(18px);
-	transition: opacity 0.54s ease, transform 0.54s ease;
+	opacity: 1;
+	filter: brightness(var(--reveal-brightness));
+	transform: translate3d(0, var(--reveal-y), 0) scale(var(--reveal-scale));
+	transition: filter 0.22s linear, transform 0.22s ease-out;
+	will-change: filter, transform;
 }
 
 .js .social-section.is-visible .social-inner {
 	opacity: 1;
-	transform: translateY(0);
+	filter: brightness(var(--reveal-brightness));
+	transform: translate3d(0, var(--reveal-y), 0) scale(var(--reveal-scale));
 }
 
 .social-btn {

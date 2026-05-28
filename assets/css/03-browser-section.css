@@ -1,7 +1,7 @@
 /*
 	File: assets/css/03-browser-section.css
 	Description: Searchable registrar browser, filters, result cards, and empty states.
-	Last modified: 2026-05-23
+	Last modified: 2026-05-28
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -21,6 +21,9 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 0.9rem;
+	max-width: 640px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .browser-search-wrap {
@@ -138,13 +141,15 @@
 }
 
 .bc {
+	--bc-accent: rgba(255, 192, 0, 0.3);
+	--bc-accent-soft: rgba(255, 192, 0, 0.045);
 	position: relative;
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
-	gap: 0.58rem;
+	gap: 0.48rem;
 	min-height: 172px;
 	overflow: hidden;
-	padding: 1rem;
+	padding: 1.08rem 1.12rem 1.22rem;
 	border: 1px solid rgba(217, 177, 255, 0.42);
 	border-radius: var(--radius-card);
 	background:
@@ -165,17 +170,45 @@
 	width: 84px;
 	height: 84px;
 	border-radius: 50%;
-	background: radial-gradient(circle, rgba(255, 192, 0, 0.045), transparent 68%);
+	background: radial-gradient(circle, var(--bc-accent-soft), transparent 68%);
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.2s ease;
 }
 
 .bc-featured {
-	border-color: rgba(255, 192, 0, 0.3);
+	border-color: var(--bc-accent);
 	background:
 		linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 36%),
 		linear-gradient(135deg, rgba(38, 16, 92, 0.78), rgba(14, 0, 31, 0.7));
+}
+
+.bc[data-cat="identity"] {
+	--bc-accent: rgba(255, 192, 0, 0.3);
+	--bc-accent-soft: rgba(255, 192, 0, 0.045);
+}
+
+.bc[data-cat="community"] {
+	--bc-accent: rgba(217, 177, 255, 0.34);
+	--bc-accent-soft: rgba(217, 177, 255, 0.065);
+}
+
+.bc[data-cat="meme"] {
+	--bc-accent: rgba(255, 159, 45, 0.34);
+	--bc-accent-soft: rgba(255, 159, 45, 0.07);
+}
+
+.bc[data-cat="business"],
+.bc[data-cat="finance"] {
+	--bc-accent: rgba(96, 190, 255, 0.28);
+	--bc-accent-soft: rgba(96, 190, 255, 0.055);
+}
+
+.bc[data-cat="creator"],
+.bc[data-cat="gaming"],
+.bc[data-cat="ai"] {
+	--bc-accent: rgba(120, 255, 214, 0.24);
+	--bc-accent-soft: rgba(120, 255, 214, 0.048);
 }
 
 .bc-featured::after,
@@ -185,6 +218,7 @@
 
 .bc-badge {
 	justify-self: start;
+	max-width: 28ch;
 	padding: 0.2rem 0.52rem;
 	border: 1px solid rgba(255, 192, 0, 0.24);
 	border-radius: 6px;
@@ -217,12 +251,13 @@
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.08rem;
+	max-width: 28ch;
 	line-height: 1.12;
 }
 
 .bc-name span {
-	color: rgba(255, 255, 255, 0.52);
-	font-size: 0.8rem;
+	color: rgba(255, 255, 255, 0.58);
+	font-size: 0.86rem;
 	font-weight: 600;
 	white-space: nowrap;
 }
@@ -237,7 +272,10 @@
 }
 
 .bc p {
-	color: rgba(255, 255, 255, 0.72);
+	max-width: 28ch;
+	margin-top: -0.16rem;
+	margin-bottom: 0.28rem;
+	color: rgba(255, 255, 255, 0.78);
 	font-size: 0.78rem;
 	line-height: 1.45;
 }
@@ -365,8 +403,8 @@
 
 @media (min-width: 760px) {
 	.browser-filters {
-		width: min(100%, 510px);
-		max-width: 510px;
+		width: min(100%, 500px);
+		max-width: 500px;
 	}
 
 	.browser-grid {
@@ -376,8 +414,8 @@
 
 @media (min-width: 1020px) {
 	.browser-filters {
-		width: min(100%, 750px);
-		max-width: 750px;
+		width: min(100%, 640px);
+		max-width: 640px;
 	}
 
 	.browser-grid {

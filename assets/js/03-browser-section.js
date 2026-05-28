@@ -1,7 +1,7 @@
 /*
 	File: assets/js/03-browser-section.js
 	Description: Registrar search, category filters, and show-more controls.
-	Last modified: 2026-05-23
+	Last modified: 2026-05-28
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 

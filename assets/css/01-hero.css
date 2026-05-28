@@ -1,7 +1,7 @@
 /*
 	File: assets/css/01-hero.css
 	Description: Hero, explainer graphic, animated example tag, and benefit strip.
-	Last modified: 2026-05-23
+	Last modified: 2026-05-28
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -81,7 +81,10 @@
 
 .hero-stage {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
+	margin-top: 0.15rem;
 }
 
 .slogan-typewriter-container {
@@ -96,6 +99,30 @@
 	box-shadow: var(--shadow-card);
 	text-align: center;
 	container-type: inline-size;
+	isolation: isolate;
+}
+
+.slogan-typewriter-container::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 33%;
+	z-index: 0;
+	width: 74%;
+	height: 54%;
+	border-radius: 50%;
+	background: radial-gradient(ellipse at center, rgba(255, 192, 0, 0.32), rgba(217, 177, 255, 0.15) 48%, transparent 76%);
+	filter: blur(20px);
+	opacity: 0.28;
+	transform: translate(-50%, -50%) scale(0.92);
+	animation: slogan-glow-pulse 5.6s ease-in-out infinite;
+	pointer-events: none;
+}
+
+.slogan-wrapper,
+.typing-wrapper {
+	position: relative;
+	z-index: 1;
 }
 
 .slogan-wrapper {
@@ -143,25 +170,40 @@
 .cursor {
 	display: inline-block;
 	flex: 0 0 auto;
-	width: 0.16em;
-	height: 1.42em;
+	align-self: center;
+	width: 0.14em;
+	height: 1.58em;
 	margin-left: 0.14em;
 	border-radius: 1px;
 	background: var(--color-gold);
 	box-shadow: 0 0 6px rgba(255, 192, 0, 0.45);
 	color: transparent;
-	transform: translateY(-0.1em);
+	transform: translateY(0.01em);
 	animation: blink-smooth 1.1s infinite ease-in-out;
 	pointer-events: none;
+}
+
+.hero-stage::after {
+	content: "";
+	display: none;
+	width: min(112px, 30vw);
+	height: 18px;
+	margin-top: 0.95rem;
+	background: linear-gradient(90deg, rgba(217, 177, 255, 0.24), rgba(255, 192, 0, 0.78) 50%, rgba(217, 177, 255, 0.24));
+	clip-path: polygon(0 24%, 50% 68%, 100% 24%, 100% 38%, 50% 84%, 0 38%);
+	filter: drop-shadow(0 0 9px rgba(255, 192, 0, 0.14));
+	opacity: 0.58;
+	transform-origin: 50% 50%;
+	animation: scroll-chevron-pulse 2.6s ease-in-out infinite;
 }
 
 .benefits-panel {
 	width: calc(100% + 2.4rem);
 	margin: 0.9rem -1.2rem 0;
-	padding: 1.8rem 1.2rem 2.15rem;
+	padding: 1.8rem 1.2rem 2.25rem;
 	border: 0;
 	background:
-		linear-gradient(90deg, transparent, rgba(217, 177, 255, 0.18), rgba(255, 192, 0, 0.15), rgba(217, 177, 255, 0.18), transparent) top center / min(520px, 74%) 1px no-repeat,
+		var(--section-divider-bg) top center / min(520px, 74%) 1px no-repeat,
 		linear-gradient(180deg, rgba(8, 0, 22, 0), rgba(8, 0, 22, 0.72) 18%, rgba(8, 0, 22, 0.72) 82%, rgba(8, 0, 22, 0));
 	box-shadow: none;
 }
@@ -183,40 +225,49 @@
 .benefits-grid {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 0.7rem;
-	max-width: var(--content-width);
+	gap: 0;
+	max-width: 720px;
 	margin: 0 auto;
 }
 
 .benefit-pill {
-	display: flex;
+	position: relative;
+	display: grid;
+	grid-template-columns: 42px minmax(0, 1fr);
 	align-items: center;
-	gap: 0.9rem;
+	gap: 1rem;
 	min-width: 0;
-	padding: 0.9rem 1rem;
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-card);
-	background: linear-gradient(135deg, rgba(31, 14, 82, 0.76), rgba(17, 0, 37, 0.64));
-	box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
-	transition: border-color 0.22s ease, transform 0.22s ease;
+	min-height: 82px;
+	padding: 0.95rem 0;
+	border: 0;
+	border-bottom: 1px solid rgba(217, 177, 255, 0.14);
+	background: transparent;
+	box-shadow: none;
+	transition: transform 0.22s ease;
+}
+
+.benefit-pill:last-child {
+	border-bottom: 0;
 }
 
 .benefit-pill:hover {
-	border-color: var(--color-border-strong);
 	transform: translateY(-1px);
 }
 
 .bp-icon-img {
 	flex-shrink: 0;
+	display: block;
+	justify-self: center;
 	width: 32px;
 	height: 32px;
-	border-radius: 6px;
+	border-radius: 7px;
 	object-fit: contain;
 	opacity: 0.9;
+	filter: drop-shadow(0 0 10px rgba(255, 192, 0, 0.08));
 }
 
 .bp-icon-rotate {
-	transform: rotate(-45deg);
+	transform: rotate(-45deg) translate(1px, 1px);
 }
 
 .bp-text {
@@ -237,7 +288,7 @@
 }
 
 .bp-text span {
-	color: var(--color-text-muted);
+	color: rgba(255, 255, 255, 0.76);
 	font-size: clamp(0.8rem, 2.1vw, 0.84rem);
 	line-height: 1.45;
 	text-wrap: balance;
@@ -246,6 +297,12 @@
 @media (min-width: 520px) {
 	.benefits-grid {
 		grid-template-columns: 1fr 1fr;
+		column-gap: 2rem;
+		max-width: 840px;
+	}
+
+	.benefit-pill:nth-last-child(-n + 2) {
+		border-bottom: 0;
 	}
 }
 
@@ -277,7 +334,6 @@
 		width: 100%;
 		margin-right: 0;
 		margin-left: 0;
-		border-radius: 0;
 	}
 }
 
@@ -289,21 +345,37 @@
 	.explainer-img {
 		width: min(78%, 520px);
 	}
+}
 
-	.benefits-grid {
-		grid-template-columns: repeat(4, 1fr);
+@keyframes slogan-glow-pulse {
+	0%,
+	100% {
+		opacity: 0.28;
+		transform: translate(-50%, -50%) scale(0.9);
 	}
 
-	.benefit-pill {
-		flex-direction: column;
-		align-items: center;
-		padding: 1.15rem 1rem;
-		text-align: center;
+	50% {
+		opacity: 0.86;
+		transform: translate(-50%, -50%) scale(1.08);
+	}
+}
+
+@keyframes scroll-chevron-pulse {
+	0%,
+	100% {
+		opacity: 0.32;
+		transform: translateY(0) scale(0.96);
 	}
 
-	.bp-text {
-		align-items: center;
-		text-align: center;
+	50% {
+		opacity: 0.72;
+		transform: translateY(4px) scale(1);
+	}
+}
+
+@media (max-width: 699px) {
+	.hero-stage::after {
+		display: block;
 	}
 }
 
@@ -315,5 +387,12 @@
 		background: #ffffff !important;
 		box-shadow: none !important;
 		color: #000000 !important;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.slogan-typewriter-container::before,
+	.hero-stage::after {
+		animation: none;
 	}
 }
