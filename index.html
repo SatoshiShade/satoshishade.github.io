@@ -33,10 +33,38 @@
 
 			.hero-name-input-row {
 				cursor: default !important;
+				width: min(100%, 338px) !important;
+				max-width: 338px !important;
+			}
+
+			.hero-name-input-wrap {
+				flex: 1 1 auto !important;
+				min-width: 0 !important;
+				max-width: none !important;
 			}
 
 			.hero-name-input[readonly] {
 				pointer-events: none !important;
+				text-align: right !important;
+			}
+
+			.hero-name-suffix {
+				width: auto !important;
+				max-width: none !important;
+			}
+
+			.hero-name-options-fallback {
+				--picker-active-width: 42% !important;
+				--picker-near-left: 22% !important;
+				--picker-near-right: 78% !important;
+				--picker-near-width: 24% !important;
+				width: min(100%, 338px) !important;
+				max-width: 338px !important;
+			}
+
+			.hero-name-options-fallback::before,
+			.hero-name-options-fallback::after {
+				display: none !important;
 			}
 
 			.hero-input-caret {
@@ -117,8 +145,8 @@
 </head>
 <body>
 	<div class="compat-notice" role="status">
-		<p class="notice-title">Browser Update Recommended</p>
-		<p class="notice-body">This page uses modern browser features for layout and interaction. If something looks broken, please open it in an up-to-date browser. All registration links remain available below.</p>
+		<p class="notice-title">Limited Experience</p>
+		<p class="notice-body">JavaScript is disabled or this browser is missing modern layout support. Interactive previews, filters, and carousels may be limited, but registration links remain available below.</p>
 	</div>
 
 	<main>
@@ -134,7 +162,7 @@
 			</div>
 
 			<div class="hero-explainer">
-				<img class="explainer-img" src="assets/img/explainer.png" alt="A wallet address changing into a readable mytag.sol name tag." loading="lazy" />
+				<img class="explainer-img" src="assets/img/explainer.png" alt="A wallet address changing into a readable mytag.sol name tag." loading="eager" decoding="async" />
 			</div>
 
 			<div class="hero-stage" aria-label="Solana name tag preview">
@@ -145,7 +173,10 @@
 
 					<div class="hero-name-shell">
 						<div class="hero-name-input-row">
-							<input id="hero-name-input" class="hero-name-input" type="text" value="yourname" maxlength="18" pattern="(?!.*--)[a-z0-9](?:[a-z0-9-]{0,16}[a-z0-9])?" autocomplete="off" autocapitalize="none" inputmode="text" spellcheck="false" title="Use lowercase letters, numbers, and single hyphens. 1 to 18 characters." aria-label="Name before the dot" aria-describedby="hero-name-status" readonly tabindex="-1" />
+							<span class="hero-name-input-wrap">
+								<span id="hero-name-preview" class="hero-name-preview" aria-hidden="true">yourname</span>
+								<input id="hero-name-input" class="hero-name-input" type="text" value="yourname" maxlength="18" pattern="(?!.*--)[a-z0-9](?:[a-z0-9-]{0,16}[a-z0-9])?" autocomplete="off" autocapitalize="none" inputmode="text" spellcheck="false" title="Use lowercase letters, numbers, and single hyphens. 1 to 18 characters." aria-label="Name before the dot" aria-describedby="hero-name-status" readonly tabindex="-1" />
+							</span>
 							<span class="hero-input-caret" aria-hidden="true"></span>
 							<span class="hero-name-dot" aria-hidden="true">.</span>
 							<span id="hero-name-suffix" class="hero-name-suffix"><span class="suffix-card is-current">mytag.sol</span></span>
@@ -175,15 +206,15 @@
 							<button class="hero-name-option" type="button" data-suffix="memecoinape.sol" data-url="https://v1.sns.id/sub-registrar/memecoinape" data-position="-2" aria-pressed="false">memecoinape</button>
 							<button class="hero-name-option" type="button" data-suffix="ogclub.sol" data-url="https://v1.sns.id/sub-registrar/ogclub" data-position="-1" aria-pressed="false">ogclub</button>
 						</div>
-						<noscript>
+							<noscript>
 							<div class="hero-name-options-fallback" aria-label="Registrar links">
 								<a class="hero-name-option-fallback is-active" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer">mytag</a>
-								<a class="hero-name-option-fallback is-prev" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer">ogclub</a>
-								<a class="hero-name-option-fallback is-next" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer">gbonk</a>
-								<a class="hero-name-option-fallback is-far-left" href="https://v1.sns.id/sub-registrar/fames" target="_blank" rel="noopener noreferrer">fames</a>
-								<a class="hero-name-option-fallback is-far" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer">walletlink</a>
+								<a class="hero-name-option-fallback is-prev" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer">gbonk</a>
+								<a class="hero-name-option-fallback is-next" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer">walletlink</a>
+								<a class="hero-name-option-fallback is-far-left" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer">ogclub</a>
+								<a class="hero-name-option-fallback is-far" href="https://v1.sns.id/sub-registrar/fames" target="_blank" rel="noopener noreferrer">fames</a>
 							</div>
-						</noscript>
+							</noscript>
 						<div class="hero-tool-actions">
 							<a id="hero-register-link" class="hero-tool-primary" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer">Register on SNS</a>
 							<a class="hero-tool-secondary" href="#registrar-browser">Browse all</a>
@@ -304,7 +335,7 @@
 			<div class="section-header">
 				<p class="section-eyebrow">All registrars</p>
 				<h2 id="browser-title" class="section-headline">Subdomain Finder</h2>
-				<p class="section-subline">Search a namespace, filter by identity type, then register through the official checkout.</p>
+				<p class="section-subline">Search a namespace, filter by identity type, then register through SNS checkout.</p>
 			</div>
 
 			<div class="js-only" id="browser-controls">
@@ -431,7 +462,7 @@
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>Every registration link opens the official <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service</a> interface. Wallet connection, checkout, terms, and transaction confirmation happen there, not on this page.</p>
+						<p>Every registration link opens an external <a href="https://sns.id" target="_blank" rel="noopener noreferrer">Solana Name Service</a> page. Wallet connection, checkout, terms, and transaction confirmation happen there, not on this page.</p>
 					</div>
 				</div>
 
@@ -441,7 +472,7 @@
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>Check the exact spelling, final price, SNS fee, Solana transaction fee, availability, allowed characters, registrar settings, wallet or app support, and subdomain limitations before confirming. mytag.sol is an independent registrar hub, not an official SNS, Solana, wallet, or token-project website. Use the <a href="https://docs.sns.id/dev/sns-sdk/subdomains" target="_blank" rel="noopener noreferrer">SNS subdomain docs</a> for protocol details.</p>
+						<p>Before purchasing, verify the exact spelling, availability, final price, SNS fee, Solana transaction fee, allowed characters, registrar settings, wallet or app support, and subdomain limitations on SNS. mytag.sol is an independent information and link hub, not an official SNS, Solana, wallet, or token-project website. Use the <a href="https://docs.sns.id/dev/sns-sdk/subdomains" target="_blank" rel="noopener noreferrer">SNS subdomain docs</a> for protocol details.</p>
 					</div>
 				</div>
 			</div>
@@ -477,16 +508,14 @@
 
 		<div class="footer-divider"></div>
 
-		<p class="footer-contact">Contact for questions, corrections, or registrar updates: <a href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">@mytagsol on &#120143;</a>.</p>
+		<p class="footer-contact">Questions or updates? <a href="https://x.com/mytagsol" target="_blank" rel="noopener noreferrer">Reach us on &#120143;</a>.</p>
 
 		<div class="footer-disclaimer">
 			<p class="footer-disclaimer-label">Disclaimer</p>
-			<p>mytag.sol is an independently operated hub for privately owned subdomain registrars. It is not affiliated with, endorsed by, or operated by the Solana Name Service team, Solana, any wallet provider, any token project, or any listed community namespace.</p>
-			<p>All registration links open the official SNS interface. This static page does not connect wallets, process payments, take custody of assets, provide refunds, run analytics cookies, or store user data. Registration and checkout are handled by external SNS infrastructure "as is" and "as available"; purchases happen through the external checkout, and we cannot offer refunds.</p>
-			<p>Name previews, search, filters, and featured picks are interface aids only. They do not check live availability, reserve names, validate registrar-specific naming rules, guarantee eligibility, or confirm that a shown name can be purchased. Final availability, spelling, pricing, fees, and transaction details are shown on SNS before purchase.</p>
-			<p>Registration prices, SNS fees, Solana transaction fees, registrar settings, availability, and transaction outcomes are controlled by SNS, the relevant registrar configuration, and the Solana network.</p>
-			<p>Subdomains are on-chain assets with protocol-specific limitations. SNS documentation notes that subdomains can behave differently from root .sol domains, including parent-domain and registrar considerations as well as limited wallet support. Review the current <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS website</a> and <a href="https://docs.sns.id/collection/" target="_blank" rel="noopener noreferrer">SNS documentation</a> before purchasing.</p>
-			<p>This page and related social content are provided for informational purposes only and do not constitute financial, legal, tax, investment, or security advice. Review carefully before purchasing. Use at your own risk.</p>
+			<p>mytag.sol is an independently operated information and link hub. It is not affiliated with, endorsed by, or operated by the Solana Name Service team, Solana, any wallet provider, any token project, or any listed community namespace.</p>
+			<p>This static page does not connect wallets, process payments, take custody of assets, provide refunds, run analytics cookies, or store user data. Registration links open external SNS pages, where wallet connection, checkout, pricing, fees, availability, terms, and transaction confirmation are handled.</p>
+			<p>Name previews, search, filters, and featured picks are interface aids only. Always confirm the exact spelling, availability, final price, SNS fee, Solana transaction fee, registrar settings, wallet support, and transaction details on SNS before purchasing.</p>
+			<p>Subdomains can behave differently from root .sol domains. Review the current <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS website</a>, <a href="https://docs.sns.id/collection/" target="_blank" rel="noopener noreferrer">SNS documentation</a>, and this site's <a href="terms.html">Terms</a>, <a href="legal.html">Legal Notice</a>, and <a href="privacy.html">Privacy</a> notices before using external checkout links.</p>
 		</div>
 
 		<div class="footer-footnotes">
@@ -497,7 +526,7 @@
 		<div class="footer-divider-sm"></div>
 
 		<div class="footer-bottom">
-			<span>&copy; 2026 mytag.sol Community. Built on Solana identity infrastructure. Registrations powered by <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a>.</span>
+			<span>&copy; 2026 mytag.sol Community. Built on Solana identity infrastructure. Registration links open <a href="https://sns.id" target="_blank" rel="noopener noreferrer">SNS</a>.</span>
 			<nav class="footer-legal-links" aria-label="Legal links">
 				<a class="footer-legal-link" href="terms.html">Terms</a>
 				<a class="footer-legal-link" href="legal.html">Legal Notice</a>

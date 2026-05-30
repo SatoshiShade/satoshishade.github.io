@@ -256,7 +256,8 @@
 }
 
 .bc-name span {
-	color: rgba(255, 255, 255, 0.58);
+	color: rgba(217, 177, 255, 0.82);
+	color: color-mix(in srgb, var(--color-lavender) 70%, #ffffff 30%);
 	font-size: 0.86rem;
 	font-weight: 600;
 	white-space: nowrap;

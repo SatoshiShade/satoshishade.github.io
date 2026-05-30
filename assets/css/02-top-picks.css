@@ -77,7 +77,7 @@
 	align-items: center;
 	justify-items: center;
 	width: 100%;
-	min-height: 276px;
+	min-height: 258px;
 	overflow: hidden;
 	touch-action: pan-y pinch-zoom;
 }
@@ -115,16 +115,16 @@
 	top: 50%;
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
-	gap: 0.75rem;
-	width: min(90vw, 430px);
-	min-height: 232px;
+	gap: 0.68rem;
+	width: min(82vw, 430px);
+	min-height: 222px;
 	overflow: hidden;
-	padding: 1.45rem 1.9rem;
+	padding: 1.35rem 1.65rem;
 	border: 1px solid rgba(217, 177, 255, 0.42);
 	border-radius: var(--radius-card);
 	background:
-		linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 34%),
-		linear-gradient(135deg, rgba(31, 14, 82, 0.76), rgba(14, 0, 31, 0.72));
+		linear-gradient(180deg, rgba(255, 255, 255, 0.052), transparent 38%),
+		linear-gradient(135deg, rgba(31, 14, 82, 0.82), rgba(12, 0, 28, 0.78));
 	box-shadow: var(--shadow-card);
 	color: inherit;
 	text-decoration: none;
@@ -147,8 +147,38 @@
 	transition: opacity 0.4s ease;
 }
 
+.domain-card::before {
+	content: "";
+	position: absolute;
+	right: -42px;
+	top: -58px;
+	z-index: 0;
+	width: 132px;
+	height: 132px;
+	border: 1px solid rgba(255, 192, 0, 0.18);
+	border-radius: 24px 0 22px 24px;
+	background:
+		radial-gradient(circle at 35% 35%, transparent 0 8px, rgba(5, 0, 15, 0.72) 8px 14px, transparent 15px),
+		linear-gradient(135deg, rgba(255, 192, 0, 0.18), rgba(255, 192, 0, 0.04));
+	opacity: 0.28;
+	transform: rotate(45deg);
+	pointer-events: none;
+}
+
 .domain-card.active::after {
 	opacity: 0.46;
+}
+
+.domain-card.active::before {
+	opacity: 0.38;
+}
+
+.card-topline,
+.domain-name,
+.domain-card p,
+.card-cta {
+	position: relative;
+	z-index: 1;
 }
 
 .domain-card[data-position="-2"],
@@ -158,13 +188,13 @@
 }
 
 .domain-card[data-position="-1"] {
-	--card-offset: -54%;
-	opacity: 0.7;
+	--card-offset: -62%;
+	opacity: 0.46;
 }
 
 .domain-card[data-position="1"] {
-	--card-offset: 54%;
-	opacity: 0.7;
+	--card-offset: 62%;
+	opacity: 0.46;
 }
 
 .domain-card.active,
@@ -179,8 +209,8 @@
 .domain-card.active {
 	--card-offset: 0;
 	background:
-		linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 34%),
-		linear-gradient(135deg, rgba(31, 14, 82, 1), rgba(14, 0, 31, 0.98));
+		linear-gradient(180deg, rgba(255, 255, 255, 0.065), transparent 38%),
+		linear-gradient(135deg, rgba(34, 14, 84, 0.98), rgba(11, 0, 26, 0.98));
 	border-color: rgba(255, 192, 0, 0.68);
 	z-index: 3;
 }
@@ -249,13 +279,14 @@
 
 .domain-name span,
 .domain-name strong {
-	font-size: clamp(1.34rem, 4vw, 1.72rem);
+	font-size: clamp(1.22rem, 3.5vw, 1.58rem);
 	font-weight: 700;
 	letter-spacing: 0;
 }
 
 .domain-name span {
-	color: rgba(255, 255, 255, 0.52);
+	color: rgba(217, 177, 255, 0.82);
+	color: color-mix(in srgb, var(--color-lavender) 72%, #ffffff 28%);
 	white-space: nowrap;
 }
 
@@ -266,9 +297,9 @@
 
 .domain-card p {
 	max-width: 38ch;
-	color: rgba(255, 255, 255, 0.78);
-	font-size: clamp(1rem, 2vw, 1.08rem);
-	line-height: var(--line-readable);
+	color: rgba(255, 255, 255, 0.76);
+	font-size: clamp(0.92rem, 1.9vw, 1rem);
+	line-height: 1.38;
 }
 
 .card-cta {
@@ -376,23 +407,26 @@
 	}
 
 	.top-picks-carousel {
-		min-height: 294px;
+		min-height: 272px;
 	}
 
 	.top-picks-carousel::before,
 	.top-picks-carousel::after {
-		width: 24px;
+		width: 34px;
 		opacity: 0.62;
 	}
 
 	.domain-card[data-position="-1"],
 	.domain-card[data-position="1"] {
-		opacity: 0;
+		opacity: 0.32;
 		pointer-events: none;
+		transform: translate(-50%, -50%) translateX(var(--card-offset, 0)) scale(0.86);
 	}
 
 	.domain-card {
-		padding: 1.2rem 1.3rem;
+		width: min(78vw, 360px);
+		min-height: 218px;
+		padding: 1.14rem 1.18rem;
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
 	}
 

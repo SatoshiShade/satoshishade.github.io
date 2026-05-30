@@ -12,42 +12,46 @@
 	var inputRow = input ? input.closest(".hero-name-input-row") : null;
 	var nameShell = input ? input.closest(".hero-name-shell") : null;
 	var nameTool = input ? input.closest(".hero-name-tool") : null;
+	var namePreview = document.getElementById("hero-name-preview");
 	var suffixLabel = document.getElementById("hero-name-suffix");
 	var statusLabel = document.getElementById("hero-name-status");
 	var feedbackLabel = document.getElementById("hero-name-feedback");
 	var registerLink = document.getElementById("hero-register-link");
+	var optionRail = document.querySelector(".hero-name-options");
 	var optionButtons = Array.prototype.slice.call(document.querySelectorAll(".hero-name-option"));
 	var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var maxNameLength = 18;
 	var minimumControlWidth = 338;
-	var maximumControlWidth = 460;
-	var controlChromeWidth = 92;
+	var maximumControlWidth = 560;
+	var controlChromeWidth = 76;
 	var suffixPixelWidth = 0;
 	var suffixTimer = 0;
 	var currentSuffix = suffixLabel ? suffixLabel.textContent.trim() : "";
-	var defaultExamples = [
-		{ name: "alex", suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
-		{ name: "gm", suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
-		{ name: "sam", suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
-		{ name: "maya", suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
-		{ name: "creator", suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
-		{ name: "member", suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
-		{ name: "og", suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
-		{ name: "bonk", suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
-		{ name: "holder", suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
-		{ name: "zara", suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
-		{ name: "player", suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
-		{ name: "quest", suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
-		{ name: "luna", suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
-		{ name: "ai", suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
-		{ name: "studio", suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
-		{ name: "vault", suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
-		{ name: "founder", suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
-		{ name: "launch", suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
-		{ name: "vote", suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
-		{ name: "ape", suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
-		{ name: "early", suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
+	var exampleRound = 0;
+	var registrarExamples = [
+		{ names: ["alex", "maya", "sam"], suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
+		{ names: ["gm", "wagmi", "bonk"], suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
+		{ names: ["send", "sam", "hello"], suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
+		{ names: ["maya", "journal", "story"], suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
+		{ names: ["creator", "artist", "model"], suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
+		{ names: ["member", "club", "alpha"], suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
+		{ names: ["og", "early", "holder"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
+		{ names: ["gm", "holder", "wagmi"], suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
+		{ names: ["vault", "early", "holder"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
+		{ names: ["zara", "nova", "max"], suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
+		{ names: ["player", "quest", "gamer"], suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
+		{ names: ["quest", "player", "realm"], suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
+		{ names: ["luna", "artist", "studio"], suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
+		{ names: ["ai", "prompt", "creator"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
+		{ names: ["studio", "creator", "maker"], suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
+		{ names: ["vault", "asset", "ledger"], suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
+		{ names: ["founder", "brand", "studio"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
+		{ names: ["launch", "founder", "build"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
+		{ names: ["vote", "dao", "member"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
+		{ names: ["ape", "degen", "trader"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
+		{ names: ["early", "og", "member"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
 	];
+	var defaultExamples = buildDefaultExamples(exampleRound);
 	var examples = defaultExamples.slice();
 	var exampleIndex = 0;
 	var characterIndex = 0;
@@ -57,10 +61,17 @@
 	var typingTimer = 0;
 	var feedbackTimer = 0;
 	var selectTimer = 0;
+	var collisionFrame = 0;
+	var collisionTimer = 0;
+	var pickerMoveTimer = 0;
+	var pickerMoving = false;
+	var optionTouchStartX = 0;
+	var optionTouchStartY = 0;
+	var optionTouchTracking = false;
 	var customName = "";
 	var suffixSwitchDelayMs = 220;
 
-	if (!input || !suffixLabel || !registerLink) {
+	if (!input || !suffixLabel || !registerLink || !namePreview) {
 		return;
 	}
 
@@ -68,6 +79,23 @@
 	input.removeAttribute("tabindex");
 	input.maxLength = maxNameLength;
 	input.setAttribute("aria-invalid", "false");
+	syncNamePreview();
+
+	function syncNamePreview() {
+		namePreview.textContent = input.value || "";
+	}
+
+	function buildDefaultExamples(round) {
+		return registrarExamples.map(function (example) {
+			var names = example.names;
+
+			return {
+				name: names[round % names.length],
+				suffix: example.suffix,
+				url: example.url
+			};
+		});
+	}
 
 	function sanitizeName(value, finalize) {
 		var clean = value.toLowerCase()
@@ -108,16 +136,34 @@
 	}
 
 	function syncControlWidth() {
+		var availableWidth;
+		var baseFontSize;
+		var fittedFontSize;
 		var nameWidth;
+		var scale;
 		var targetWidth;
 
 		if (!nameTool) {
 			return;
 		}
 
+		nameTool.style.removeProperty("--hero-name-font-size");
 		nameWidth = measureNameWidth(input.value || "alex");
 		targetWidth = Math.ceil(nameWidth + suffixPixelWidth + controlChromeWidth);
-		targetWidth = Math.max(minimumControlWidth, Math.min(maximumControlWidth, targetWidth));
+		availableWidth = Math.min(maximumControlWidth, Math.floor(nameTool.getBoundingClientRect().width));
+
+		if (targetWidth > availableWidth && input) {
+			baseFontSize = parseFloat(window.getComputedStyle(input).fontSize) || 18;
+			scale = Math.max(0.84, (availableWidth - controlChromeWidth) / Math.max(1, nameWidth + suffixPixelWidth));
+			fittedFontSize = Math.max(14, Math.floor(baseFontSize * scale * 100) / 100);
+			nameTool.style.setProperty("--hero-name-font-size", fittedFontSize + "px");
+			suffixLabel.style.setProperty("--suffix-width", Math.ceil(suffixPixelWidth * scale) + "px");
+			nameTool.style.setProperty("--hero-row-width", availableWidth + "px");
+			return;
+		}
+
+		targetWidth = Math.max(minimumControlWidth, Math.min(availableWidth, targetWidth));
+		suffixLabel.style.setProperty("--suffix-width", suffixPixelWidth + "px");
 		nameTool.style.setProperty("--hero-row-width", targetWidth + "px");
 	}
 
@@ -149,6 +195,7 @@
 			"End with a letter or number." :
 			"Use lowercase letters, numbers, and single hyphens.";
 
+		syncNamePreview();
 		input.setAttribute("aria-invalid", valid ? "false" : "true");
 
 		if (inputRow) {
@@ -175,6 +222,10 @@
 	function setSuffixWidth(suffix) {
 		var measure = document.createElement("span");
 		var width;
+
+		if (nameTool) {
+			nameTool.style.removeProperty("--hero-name-font-size");
+		}
 
 		measure.className = "suffix-measure";
 		measure.textContent = suffix;
@@ -261,8 +312,134 @@
 
 			button.classList.toggle("active", isActive);
 			button.dataset.position = String(Math.max(-3, Math.min(3, position)));
+			button.dataset.rawPosition = String(position);
 			button.setAttribute("aria-pressed", isActive ? "true" : "false");
 		});
+
+		queuePickerCollisionCheck();
+	}
+
+	function restorePickerPositions() {
+		optionButtons.forEach(function (button) {
+			var rawPosition = Number(button.dataset.rawPosition || button.dataset.position || 0);
+
+			button.dataset.position = String(Math.max(-3, Math.min(3, rawPosition)));
+			button.removeAttribute("tabindex");
+			button.removeAttribute("aria-hidden");
+		});
+	}
+
+	function hidePickerOption(button) {
+		var rawPosition = Number(button.dataset.rawPosition || button.dataset.position || 0);
+
+		if (Math.abs(rawPosition) <= 1) {
+			return;
+		}
+
+		button.dataset.position = rawPosition < 0 ? "-3" : "3";
+		button.setAttribute("tabindex", "-1");
+		button.setAttribute("aria-hidden", "true");
+	}
+
+	function visiblePickerOptions() {
+		return optionButtons.filter(function (button) {
+			var position = Number(button.dataset.position || 0);
+
+			return Math.abs(position) <= 2;
+		}).map(function (button) {
+			return {
+				button: button,
+				position: Number(button.dataset.position || 0),
+				rect: button.getBoundingClientRect()
+			};
+		}).sort(function (a, b) {
+			return a.rect.left - b.rect.left;
+		});
+	}
+
+	function findPickerCollision() {
+		var visible = visiblePickerOptions();
+		var index;
+		var previous;
+		var current;
+		var minimumGap = 4;
+
+		for (index = 1; index < visible.length; index += 1) {
+			previous = visible[index - 1];
+			current = visible[index];
+
+			if (previous.rect.right + minimumGap > current.rect.left) {
+				return [previous, current];
+			}
+		}
+
+		return null;
+	}
+
+	function pickCollisionHideTarget(collision) {
+		var first = collision[0];
+		var second = collision[1];
+		var firstIsOuter = Math.abs(first.position) > 1;
+		var secondIsOuter = Math.abs(second.position) > 1;
+
+		if (!firstIsOuter && !secondIsOuter) {
+			return null;
+		}
+
+		if (firstIsOuter && !secondIsOuter) {
+			return first.button;
+		}
+
+		if (secondIsOuter && !firstIsOuter) {
+			return second.button;
+		}
+
+		if (Math.abs(first.position) > Math.abs(second.position)) {
+			return first.button;
+		}
+
+		if (Math.abs(second.position) > Math.abs(first.position)) {
+			return second.button;
+		}
+
+		if (first.position !== 0 && second.position === 0) {
+			return first.button;
+		}
+
+		if (second.position !== 0 && first.position === 0) {
+			return second.button;
+		}
+
+		return Math.abs(first.position) >= Math.abs(second.position) ? first.button : second.button;
+	}
+
+	function resolvePickerCollisions() {
+		var collision;
+		var guard = 0;
+		var target;
+
+		restorePickerPositions();
+		collision = findPickerCollision();
+
+		while (collision && guard < 4) {
+			target = pickCollisionHideTarget(collision);
+
+			if (!target) {
+				break;
+			}
+
+			hidePickerOption(target);
+			collision = findPickerCollision();
+			guard += 1;
+		}
+	}
+
+	function queuePickerCollisionCheck() {
+		window.cancelAnimationFrame(collisionFrame);
+		window.clearTimeout(collisionTimer);
+		collisionTimer = window.setTimeout(function () {
+			collisionFrame = window.requestAnimationFrame(resolvePickerCollisions);
+		}, 420);
 	}
 
 	function setExample(example) {
@@ -285,6 +462,21 @@
 				url: example.url
 			};
 		}) : defaultExamples.slice();
+	}
+
+	function refreshDefaultExamples() {
+		var activeSuffix = examples[exampleIndex] ? examples[exampleIndex].suffix : currentSuffix;
+
+		exampleRound += 1;
+		defaultExamples = buildDefaultExamples(exampleRound);
+
+		if (!customName) {
+			examples = defaultExamples.slice();
+			exampleIndex = examples.findIndex(function (example) {
+				return example.suffix === activeSuffix;
+			});
+			exampleIndex = exampleIndex > -1 ? exampleIndex : 0;
+		}
 	}
 
 	function queueTyping(callback, delay) {
@@ -313,6 +505,32 @@
 		if (activeIndex > -1) {
 			exampleIndex = activeIndex;
 		}
+	}
+
+	function activeOptionIndex() {
+		var index = optionButtons.findIndex(function (button) {
+			return button.dataset.suffix === currentSuffix;
+		});
+
+		return index > -1 ? index : 0;
+	}
+
+	function moveRegistrar(direction) {
+		var nextIndex = (activeOptionIndex() + direction + optionButtons.length) % optionButtons.length;
+		var nextButton = optionButtons[nextIndex];
+
+		if (!nextButton || pickerMoving) {
+			return;
+		}
+
+		pickerMoving = true;
+		window.clearTimeout(pickerMoveTimer);
+		pickerMoveTimer = window.setTimeout(function () {
+			pickerMoving = false;
+		}, 560);
+		userTouched = true;
+		window.clearTimeout(typingTimer);
+		setRegistrar(nextButton.dataset.suffix, nextButton.dataset.url);
 	}
 
 	function resumeTyping(useCustomInput) {
@@ -358,6 +576,9 @@
 				setExample(current);
 				queueTyping(function () {
 					exampleIndex = (exampleIndex + 1) % examples.length;
+					if (exampleIndex === 0) {
+						refreshDefaultExamples();
+					}
 					setExample(examples[exampleIndex]);
 					queueTyping(tick, 880);
 				}, suffixSwitchDelayMs);
@@ -386,12 +607,74 @@
 
 	optionButtons.forEach(function (button) {
 		button.addEventListener("click", function () {
+			if (pickerMoving && button.dataset.suffix !== currentSuffix) {
+				return;
+			}
+
+			pickerMoving = true;
+			window.clearTimeout(pickerMoveTimer);
+			pickerMoveTimer = window.setTimeout(function () {
+				pickerMoving = false;
+			}, 560);
 			userTouched = true;
 			window.clearTimeout(typingTimer);
 			setRegistrar(button.dataset.suffix, button.dataset.url);
 			input.focus();
 			queueInputSelection();
 		});
+	});
+
+	if (optionRail) {
+		["prev", "next"].forEach(function (direction) {
+			var hitButton = document.createElement("button");
+			var move = direction === "next" ? 1 : -1;
+
+			hitButton.className = "hero-name-options-hit hero-name-options-hit--" + direction;
+			hitButton.type = "button";
+			hitButton.setAttribute("aria-label", direction === "next" ? "Show next namespace" : "Show previous namespace");
+			hitButton.addEventListener("click", function () {
+				moveRegistrar(move);
+			});
+			optionRail.appendChild(hitButton);
+		});
+
+		optionRail.addEventListener("pointerdown", function (event) {
+			if (event.pointerType !== "touch") {
+				return;
+			}
+
+			optionTouchStartX = event.clientX;
+			optionTouchStartY = event.clientY;
+			optionTouchTracking = true;
+		}, { passive: true });
+
+		optionRail.addEventListener("pointerup", function (event) {
+			var deltaX;
+			var deltaY;
+
+			if (!optionTouchTracking || event.pointerType !== "touch") {
+				return;
+			}
+
+			optionTouchTracking = false;
+			deltaX = event.clientX - optionTouchStartX;
+			deltaY = event.clientY - optionTouchStartY;
+
+			if (Math.abs(deltaX) > 30 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+				moveRegistrar(deltaX < 0 ? 1 : -1);
+			}
+		}, { passive: true });
+
+		optionRail.addEventListener("pointercancel", function () {
+			optionTouchTracking = false;
+		}, { passive: true });
+	}
+
+	input.addEventListener("keydown", function (event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			input.blur();
+		}
 	});
 
 	if (inputRow) {
@@ -402,6 +685,12 @@
 				queueInputSelection();
 			}
 		});
+	}
+
+	window.addEventListener("resize", queuePickerCollisionCheck);
+
+	if (document.fonts && document.fonts.ready) {
+		document.fonts.ready.then(queuePickerCollisionCheck).catch(function () {});
 	}
 
 	input.addEventListener("focus", function () {
