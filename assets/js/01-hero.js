@@ -29,31 +29,31 @@
 	var currentSuffix = suffixLabel ? suffixLabel.textContent.trim() : "";
 	var exampleRound = 0;
 	var lastExampleNames = {};
-	var personalNames = ["alex", "maya", "sam", "luna", "nova", "kai", "zoe", "aria", "max", "mila", "leo", "nina", "rio", "ella", "noah", "ava", "sol", "tess", "jay", "mina"];
-	var web3Names = ["gm", "wagmi", "alpha", "holder", "early", "degen", "diamond", "moon", "ape", "trader", "mint", "memes", "rocket", "floor", "chart", "pump"];
+	var personalNames = ["alex", "maya", "sam", "luna", "nova", "kai", "zoe", "aria", "max", "mila", "leo", "nina", "rio", "ella", "noah", "ava", "tess", "jay", "mina", "zara"];
+	var web3Names = ["gm", "wagmi", "alpha", "holder", "early", "degen", "diamond", "ape", "trader", "mint", "memes", "floor", "chart", "vibes", "legend", "dayone"];
 	var infraNames = ["vault", "ledger", "assets", "treasury", "holdings", "portfolio", "reserve", "capital", "yield", "tokens", "funds", "index"];
 	var registrarExamples = [
-		{ names: personalNames.concat(["name", "tag", "public", "profile"]), suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
+		{ names: personalNames.concat(["handle", "profile"]), suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
 		{ names: web3Names, suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
-		{ names: personalNames.concat(["payme", "tips", "sendme", "receive"]), suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
-		{ names: personalNames.concat(["journal", "notes", "diary", "daily", "profile"]), suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
-		{ names: ["creator", "artist", "model", "talent", "legend", "star", "icon", "stage", "studio", "public", "famous", "profile"], suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
-		{ names: ["member", "alpha", "root", "signal", "club", "founder", "builder", "public", "profile", "chain", "mint", "node"], suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
+		{ names: personalNames.concat(["payme", "sendme", "tips"]), suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
+		{ names: personalNames.concat(["journal", "diary", "notes", "story"]), suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
+		{ names: ["artist", "creator", "model", "talent", "legend", "star", "icon", "stage", "studio", "famous", "profile", "spotlight"], suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
+		{ names: ["member", "alpha", "signal", "builder", "native", "root", "chain", "node", "mint", "profile", "wallet", "solana"], suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
 		{ names: ["early", "holder", "diamond", "alpha", "dayone", "legend", "faithful", "veteran", "mint", "wagmi", "degen", "signal"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
 		{ names: ["gm", "holder", "wagmi", "degen", "moon", "ape", "trader", "diamond", "early", "mint", "signal", "memes"], suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
 		{ names: ["vault", "holder", "cold", "secure", "ledger", "safe", "reserve", "diamond", "longterm", "early", "stash", "keys"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
 		{ names: personalNames.concat(["online", "social", "digital", "vibe"]), suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
-		{ names: ["player", "quest", "gamer", "ace", "rank", "arena", "guild", "main", "solo", "party", "loot", "champ"], suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
-		{ names: ["quest", "player", "realm", "party", "arena", "guild", "loot", "world", "level", "spawn", "match", "portal"], suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
+		{ names: personalNames.concat(["pro", "ace", "main", "solo", "champ", "rank", "pixel", "gg"]), suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
+		{ names: ["quest", "player", "realm", "arena", "guild", "loot", "world", "level", "spawn", "match", "portal", "party"], suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
 		{ names: ["luna", "artist", "studio", "gallery", "mint", "canvas", "works", "folio", "prints", "design", "creator", "sketch"], suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
 		{ names: ["agent", "prompt", "model", "builder", "studio", "labs", "neural", "bot", "maker", "toolkit", "vision", "compute"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
-		{ names: ["studio", "creator", "maker", "channel", "media", "public", "works", "craft", "launch", "folio", "content", "brand"], suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
+		{ names: ["studio", "creator", "maker", "channel", "media", "works", "craft", "launch", "folio", "content", "brand", "profile"], suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
 		{ names: infraNames, suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
 		{ names: ["brand", "studio", "founder", "company", "team", "office", "market", "hq", "sales", "growth", "partner", "client"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
 		{ names: ["launch", "founder", "build", "demo", "seed", "beta", "pitch", "mvp", "team", "growth", "venture", "scale"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
 		{ names: ["vote", "dao", "member", "council", "forum", "proposal", "govern", "delegate", "treasury", "guild", "signal", "quorum"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
-		{ names: ["ape", "degen", "trader", "moon", "memes", "wagmi", "rocket", "diamond", "alpha", "floor", "chart", "pump"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
-		{ names: ["early", "member", "alpha", "founder", "dayone", "legend", "veteran", "inner", "signal", "club", "access", "circle"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
+		{ names: ["monke", "ape", "degen", "trader", "moon", "memes", "wagmi", "diamond", "alpha", "floor", "chart", "pump"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
+		{ names: ["early", "member", "alpha", "founder", "dayone", "legend", "veteran", "inner", "signal", "club", "monke", "circle"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
 	];
 	var defaultExamples = buildDefaultExamples(exampleRound);
 	var examples = defaultExamples.slice();
