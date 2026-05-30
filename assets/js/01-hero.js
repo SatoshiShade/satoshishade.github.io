@@ -29,27 +29,27 @@
 	var currentSuffix = suffixLabel ? suffixLabel.textContent.trim() : "";
 	var exampleRound = 0;
 	var registrarExamples = [
-		{ names: ["alex", "maya", "sam"], suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
-		{ names: ["gm", "wagmi", "bonk"], suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
-		{ names: ["send", "sam", "hello"], suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
-		{ names: ["maya", "journal", "story"], suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
-		{ names: ["creator", "artist", "model"], suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
-		{ names: ["member", "club", "alpha"], suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
-		{ names: ["og", "early", "holder"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
-		{ names: ["gm", "holder", "wagmi"], suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
-		{ names: ["vault", "early", "holder"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
-		{ names: ["zara", "nova", "max"], suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
-		{ names: ["player", "quest", "gamer"], suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
-		{ names: ["quest", "player", "realm"], suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
-		{ names: ["luna", "artist", "studio"], suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
-		{ names: ["ai", "prompt", "creator"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
-		{ names: ["studio", "creator", "maker"], suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
-		{ names: ["vault", "asset", "ledger"], suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
-		{ names: ["founder", "brand", "studio"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
-		{ names: ["launch", "founder", "build"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
-		{ names: ["vote", "dao", "member"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
-		{ names: ["ape", "degen", "trader"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
-		{ names: ["early", "og", "member"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
+		{ names: ["alex", "maya", "sam", "nova", "luna"], suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
+		{ names: ["gm", "wagmi", "bonk", "holder", "early"], suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
+		{ names: ["alex", "maya", "sam", "luna", "payme"], suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
+		{ names: ["maya", "journal", "story", "notes", "daily"], suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
+		{ names: ["creator", "artist", "model", "talent", "legend"], suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
+		{ names: ["member", "club", "alpha", "root", "signal"], suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
+		{ names: ["og", "early", "holder", "diamond", "bonk"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
+		{ names: ["gm", "holder", "wagmi", "bonk", "degen"], suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
+		{ names: ["vault", "early", "holder", "cold", "secure"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
+		{ names: ["zara", "nova", "max", "kai", "zoe"], suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
+		{ names: ["player", "quest", "gamer", "ace", "rank"], suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
+		{ names: ["quest", "player", "realm", "party", "arena"], suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
+		{ names: ["luna", "artist", "studio", "gallery", "mint"], suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
+		{ names: ["ai", "prompt", "agent", "model", "builder"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
+		{ names: ["studio", "creator", "maker", "channel", "media"], suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
+		{ names: ["vault", "ledger", "assets", "treasury", "holdings"], suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
+		{ names: ["brand", "studio", "founder", "company", "team"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
+		{ names: ["launch", "founder", "build", "demo", "seed"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
+		{ names: ["vote", "dao", "member", "council", "forum"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
+		{ names: ["ape", "degen", "trader", "moon", "memes"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
+		{ names: ["early", "og", "member", "alpha", "founder"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
 	];
 	var defaultExamples = buildDefaultExamples(exampleRound);
 	var examples = defaultExamples.slice();
@@ -379,7 +379,7 @@
 		}
 
 		containerWidth = optionRail.getBoundingClientRect().width;
-		gap = Math.max(6, Math.min(9, containerWidth * 0.024));
+		gap = Math.max(4, Math.min(6, containerWidth * 0.016));
 		sidePadding = 18;
 		activeWidth = Math.min(Math.max(measurePickerLabel(activeButton) + 18, 58), Math.max(68, containerWidth * 0.42));
 		availableSideWidth = Math.max(28, (containerWidth - activeWidth) / 2 - gap - sidePadding);
