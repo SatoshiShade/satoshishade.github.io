@@ -427,11 +427,41 @@
 	}
 
 	.domain-card {
-		--tag-clearance: 88px;
+		--tag-clearance: 92px;
 		width: min(78vw, 360px);
-		min-height: 218px;
-		padding: 1.14rem 1.18rem;
+		min-height: 194px;
+		padding: 1.06rem 1.08rem 1.12rem;
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
+	}
+
+	.domain-card::after {
+		top: -12px;
+		width: 96px;
+		height: 126px;
+		opacity: 0.58;
+	}
+
+	.domain-card::before {
+		right: 0.92rem;
+		bottom: 1.2rem;
+		width: 27px;
+		height: 27px;
+	}
+
+	.domain-card p {
+		font-size: 0.88rem;
+		line-height: 1.26;
+	}
+
+	.domain-name span,
+	.domain-name strong {
+		font-size: clamp(1.16rem, 5.6vw, 1.42rem);
+	}
+
+	.card-cta {
+		min-height: 32px;
+		padding: 0.4rem 0.72rem;
+		font-size: 0.78rem;
 	}
 
 	.domain-card.active,

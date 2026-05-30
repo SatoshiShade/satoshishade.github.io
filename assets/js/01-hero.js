@@ -507,6 +507,7 @@
 
 		if (nameShell) {
 			nameShell.classList.toggle("has-custom-name", Boolean(customName));
+			nameShell.classList.toggle("is-confirmed-name", Boolean(customName) && document.activeElement !== input);
 		}
 
 		examples = customName ? defaultExamples.map(function (example) {
@@ -574,6 +575,7 @@
 
 	function scrollTargetIntoView(targetElement) {
 		var rect;
+		var offset;
 		var target;
 
 		if (!targetElement) {
@@ -581,7 +583,8 @@
 		}
 
 		rect = targetElement.getBoundingClientRect();
-		target = Math.max(0, rect.top + window.scrollY - 18);
+		offset = targetElement.id === "registrar-browser" ? 0 : 18;
+		target = Math.max(0, rect.top + window.scrollY - offset);
 		window.scrollTo({
 			top: target,
 			behavior: reducedMotion ? "auto" : "smooth"
@@ -846,6 +849,9 @@
 		window.clearTimeout(typingTimer);
 		userTouched = true;
 		userEditedName = false;
+		if (nameShell) {
+			nameShell.classList.remove("is-confirmed-name");
+		}
 		syncNameState("keep");
 		scrollNameToolIntoView();
 		queueInputSelection();
@@ -885,6 +891,9 @@
 		input.value = cleanName(input.value);
 		syncNameState();
 		resumeTyping(input.value !== "" && (customName !== "" || userEditedName));
+		if (nameShell) {
+			nameShell.classList.toggle("is-confirmed-name", Boolean(customName));
+		}
 		userEditedName = false;
 	});
 

@@ -101,14 +101,15 @@
 	width: min(100%, 540px);
 	overflow: visible;
 	padding: 1.46rem clamp(0.65rem, 2vw, 1rem) 1.56rem;
-	border: 1px solid rgba(217, 177, 255, 0.18);
+	border: 1px solid rgba(217, 177, 255, 0.08);
 	border-radius: 28px;
 	background:
-		linear-gradient(180deg, rgba(255, 255, 255, 0.036), transparent 48%),
-		rgba(17, 0, 37, 0.32);
+		radial-gradient(ellipse at 50% 24%, rgba(255, 192, 0, 0.055), transparent 46%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012) 54%, transparent),
+		rgba(17, 0, 37, 0.54);
 	box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, 0.04),
-		0 14px 42px rgba(0, 0, 0, 0.22);
+		inset 0 1px 0 rgba(255, 255, 255, 0.035),
+		0 16px 44px rgba(0, 0, 0, 0.22);
 	text-align: center;
 	container-type: inline-size;
 	isolation: isolate;
@@ -301,6 +302,15 @@
 }
 
 .hero-name-shell.has-custom-name:not(:focus-within) .hero-input-caret::before {
+	opacity: 0;
+	animation: none;
+}
+
+.hero-name-shell.is-confirmed-name:not(:focus-within) .hero-input-caret {
+	opacity: 0;
+}
+
+.hero-name-shell.is-confirmed-name:not(:focus-within) .hero-input-caret::before {
 	opacity: 0;
 	animation: none;
 }
@@ -646,8 +656,10 @@
 .hero-name-option-fallback.is-prev:hover {
 	color: rgba(255, 255, 255, 0.78);
 	opacity: 0.92;
-	overflow: hidden;
-	z-index: 2;
+	overflow: visible;
+	z-index: 5;
+	-webkit-mask-image: none;
+	mask-image: none;
 	transition: color 0.18s ease, opacity 0.18s ease;
 }
 
@@ -655,8 +667,10 @@
 .hero-name-option-fallback.is-next:hover {
 	color: rgba(255, 255, 255, 0.78);
 	opacity: 0.92;
-	overflow: hidden;
-	z-index: 2;
+	overflow: visible;
+	z-index: 5;
+	-webkit-mask-image: none;
+	mask-image: none;
 	transition: color 0.18s ease, opacity 0.18s ease;
 }
 
@@ -1041,9 +1055,10 @@
 		--picker-near-opacity: 0.44;
 		--picker-near-right: 74%;
 		--picker-near-width: 14%;
-		width: min(100%, calc(var(--hero-row-width) - 2rem));
-		padding-right: 0.98rem;
-		padding-left: 0.98rem;
+		width: min(72vw, calc(var(--hero-row-width) - 4rem));
+		max-width: 268px;
+		padding-right: 1rem;
+		padding-left: 1rem;
 	}
 
 	.hero-name-option[data-position="-2"],
@@ -1069,6 +1084,17 @@
 		margin-top: 0;
 	}
 
+	.hero-name-tool {
+		border-color: rgba(217, 177, 255, 0.06);
+		background:
+			radial-gradient(ellipse at 50% 22%, rgba(255, 192, 0, 0.05), transparent 50%),
+			linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.01) 58%, transparent),
+			rgba(17, 0, 37, 0.62);
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.026),
+			0 14px 38px rgba(0, 0, 0, 0.18);
+	}
+
 	.hero-scroll-cue--next {
 		display: none;
 	}
@@ -1077,19 +1103,21 @@
 	.hero-name-options-fallback {
 		height: 50px;
 		margin-top: 0.24rem;
+		width: min(72vw, calc(var(--hero-row-width) - 4rem));
+		max-width: 276px;
 	}
 
 	.hero-name-options::before,
 	.hero-name-options-fallback::before {
-		left: 0.12rem;
+		left: 0.5rem;
 	}
 
 	.hero-name-options::after {
-		right: 0.12rem;
+		right: 0.5rem;
 	}
 
 	.hero-name-options-fallback::after {
-		right: 0.12rem;
+		right: 0.5rem;
 	}
 
 	.benefits-grid {
