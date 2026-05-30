@@ -101,12 +101,14 @@
 	width: min(100%, 540px);
 	overflow: visible;
 	padding: 1.46rem clamp(0.65rem, 2vw, 1rem) 1.56rem;
-	border: 1px solid rgba(217, 177, 255, 0.09);
+	border: 1px solid rgba(217, 177, 255, 0.18);
 	border-radius: 28px;
 	background:
-		linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 42%),
-		rgba(17, 0, 37, 0.16);
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+		linear-gradient(180deg, rgba(255, 255, 255, 0.036), transparent 48%),
+		rgba(17, 0, 37, 0.32);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.04),
+		0 14px 42px rgba(0, 0, 0, 0.22);
 	text-align: center;
 	container-type: inline-size;
 	isolation: isolate;
@@ -633,13 +635,11 @@
 	visibility: hidden;
 }
 
-.hero-name-option:hover {
+.hero-name-option:not([data-position="0"]):hover {
 	color: rgba(255, 255, 255, 0.78);
 	opacity: 0.92;
 	z-index: 5;
-	-webkit-mask-image: none;
-	mask-image: none;
-	transform: translate(-50%, -50%) scale(0.88);
+	transform: translate(calc(-50% + var(--picker-offset)), -50%) scale(0.88);
 }
 
 .hero-name-option[data-position="-1"]:hover,
@@ -647,7 +647,7 @@
 	color: rgba(255, 255, 255, 0.78);
 	opacity: 0.92;
 	overflow: hidden;
-	z-index: 5;
+	z-index: 2;
 	transition: color 0.18s ease, opacity 0.18s ease;
 }
 
@@ -656,7 +656,7 @@
 	color: rgba(255, 255, 255, 0.78);
 	opacity: 0.92;
 	overflow: hidden;
-	z-index: 5;
+	z-index: 2;
 	transition: color 0.18s ease, opacity 0.18s ease;
 }
 
@@ -1058,10 +1058,10 @@
 @media (max-width: 519px) {
 	.hero-scroll-cue--intro {
 		display: inline-flex;
-		width: min(168px, 46vw);
-		height: 24px;
+		width: min(188px, 52vw);
+		height: 28px;
 		margin: 0 auto -0.14rem;
-		opacity: 0.58;
+		opacity: 0.72;
 	}
 
 	.hero-stage {

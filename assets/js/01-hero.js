@@ -378,9 +378,9 @@
 		}
 
 		containerWidth = optionRail.getBoundingClientRect().width;
-		gap = Math.max(9, Math.min(13, containerWidth * 0.035));
-		sidePadding = 26;
-		activeWidth = Math.min(Math.max(measurePickerLabel(activeButton) + 22, 66), Math.max(72, containerWidth * 0.44));
+		gap = Math.max(6, Math.min(9, containerWidth * 0.024));
+		sidePadding = 18;
+		activeWidth = Math.min(Math.max(measurePickerLabel(activeButton) + 18, 58), Math.max(68, containerWidth * 0.42));
 		availableSideWidth = Math.max(28, (containerWidth - activeWidth) / 2 - gap - sidePadding);
 
 		optionButtons.forEach(function (button) {
@@ -630,6 +630,12 @@
 		userTouched = false;
 		deleting = false;
 		characterIndex = customName ? customName.length : 0;
+
+		if (customName) {
+			setExample(examples[exampleIndex]);
+			userTouched = true;
+			return;
+		}
 
 		if (reducedMotion) {
 			characterIndex = examples[exampleIndex].name.length;
