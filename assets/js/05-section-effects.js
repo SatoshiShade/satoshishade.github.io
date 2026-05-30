@@ -1,7 +1,7 @@
 /*
 	File: assets/js/05-section-effects.js
 	Description: Touch-friendly scroll-linked section reveal states.
-	Last modified: 2026-05-28
+	Last modified: 2026-05-30
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 

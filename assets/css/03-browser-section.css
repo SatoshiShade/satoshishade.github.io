@@ -1,7 +1,7 @@
 /*
 	File: assets/css/03-browser-section.css
 	Description: Searchable registrar browser, filters, result cards, and empty states.
-	Last modified: 2026-05-28
+	Last modified: 2026-05-30
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -277,7 +277,7 @@
 	margin-bottom: 0.28rem;
 	color: rgba(255, 255, 255, 0.78);
 	font-size: 0.78rem;
-	line-height: 1.45;
+	line-height: var(--line-readable);
 }
 
 .bc-cta {
@@ -385,7 +385,7 @@
 .noscript-body {
 	color: var(--color-text-muted);
 	font-size: 0.84rem;
-	line-height: 1.55;
+	line-height: var(--line-readable);
 }
 
 @media (max-width: 399px) {

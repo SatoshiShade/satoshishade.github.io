@@ -1,7 +1,7 @@
 /*
 	File: assets/css/04-faq.css
 	Description: Centered FAQ accordion and no-script fallback styles.
-	Last modified: 2026-05-28
+	Last modified: 2026-05-30
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -127,7 +127,7 @@
 	padding: 0 1.15rem 1.1rem;
 	color: var(--color-text-muted);
 	font-size: clamp(0.88rem, 2vw, 0.97rem);
-	line-height: 1.68;
+	line-height: var(--line-readable);
 	text-align: left;
 }
 

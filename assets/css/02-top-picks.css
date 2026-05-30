@@ -1,7 +1,7 @@
 /*
 	File: assets/css/02-top-picks.css
 	Description: Curated registrar cards shown above the full browser.
-	Last modified: 2026-05-28
+	Last modified: 2026-05-30
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -186,7 +186,7 @@
 }
 
 .domain-card[data-theme="identity"] {
-	--card-accent: #ffc000;
+	--card-accent: #FFC000;
 	--card-accent-soft: rgba(255, 192, 0, 0.055);
 }
 
@@ -268,7 +268,7 @@
 	max-width: 38ch;
 	color: rgba(255, 255, 255, 0.78);
 	font-size: clamp(1rem, 2vw, 1.08rem);
-	line-height: 1.58;
+	line-height: var(--line-readable);
 }
 
 .card-cta {
