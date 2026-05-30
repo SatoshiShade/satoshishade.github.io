@@ -70,6 +70,7 @@
 	var optionTouchTracking = false;
 	var optionTouchMoved = false;
 	var customName = "";
+	var silentInputCleanup = false;
 	var suffixSwitchDelayMs = 220;
 
 	if (!input || !suffixLabel || !registerLink || !namePreview) {
@@ -214,9 +215,9 @@
 		if (!valid) {
 			setFeedback("invalid", invalidMessage);
 		} else if (feedbackMode === "limit") {
-			setFeedback("limit", "Demo limit: 12 characters here for layout. SNS checkout shows the final .sol subdomain length limit.");
+			setFeedback("limit", "Preview limit: 12 characters here. SNS shows the final .sol subdomain rules.");
 		} else if (feedbackMode === "adjusted") {
-			setFeedback("adjusted", "Adjusted for the demo: lowercase letters, numbers, and single hyphens only.");
+			setFeedback("adjusted", "Only lowercase letters, numbers, and single hyphens work in this preview.");
 		} else if (feedbackMode !== "keep") {
 			setFeedback("", "");
 		}
@@ -866,8 +867,13 @@
 		var incoming = event.data || "";
 		var nextLength = input.value.length - selectedLength + incoming.length;
 
+		silentInputCleanup = event.inputType === "insertReplacementText" ||
+			event.inputType === "insertFromPaste" ||
+			event.inputType === "insertFromDrop" ||
+			event.inputType === "insertCompositionText";
+
 		if (incoming && nextLength > maxNameLength) {
-			setFeedback("limit", "Demo limit: 12 characters here for layout. SNS checkout shows the final .sol subdomain length limit.");
+			setFeedback("limit", "Preview limit: 12 characters here. SNS shows the final .sol subdomain rules.");
 		}
 	});
 
@@ -888,7 +894,8 @@
 			input.value = clean;
 		}
 
-		syncNameState(hitDemoLimit ? "limit" : wasAdjusted ? "adjusted" : "");
+		syncNameState(hitDemoLimit ? "limit" : wasAdjusted && !silentInputCleanup ? "adjusted" : "");
+		silentInputCleanup = false;
 	});
 
 	input.addEventListener("blur", function () {

@@ -419,7 +419,7 @@
 	width: min(100%, var(--hero-row-width));
 	max-width: var(--hero-control-width);
 	min-height: 0.82rem;
-	margin: -0.12rem auto -0.18rem;
+	margin: 0.02rem auto -0.08rem;
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 0.68rem;
 	font-weight: 600;
@@ -433,7 +433,7 @@
 
 .hero-name-feedback:empty {
 	min-height: 0;
-	margin: -0.02rem auto -0.2rem;
+	margin: 0 auto -0.16rem;
 }
 
 .hero-name-shell.is-adjusted .hero-name-feedback,
