@@ -87,7 +87,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 0.58rem;
+	gap: 0.34rem;
 	margin-top: clamp(0.55rem, 2vw, 0.95rem);
 }
 
@@ -98,13 +98,15 @@
 	--hero-name-font-size: var(--hero-name-font-size-default);
 	--hero-name-line-height: 1.12;
 	--hero-row-width: 338px;
-	width: min(100%, 620px);
+	width: min(100%, 540px);
 	overflow: visible;
-	padding: 0 clamp(0.4rem, 2vw, 0.8rem);
-	border: 0;
-	border-radius: 0;
-	background: transparent;
-	box-shadow: none;
+	padding: 1.46rem clamp(0.65rem, 2vw, 1rem) 1.56rem;
+	border: 1px solid rgba(217, 177, 255, 0.09);
+	border-radius: 28px;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 42%),
+		rgba(17, 0, 37, 0.16);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
 	text-align: center;
 	container-type: inline-size;
 	isolation: isolate;
@@ -132,6 +134,18 @@
 .hero-tool-actions {
 	position: relative;
 	z-index: 1;
+}
+
+.hero-demo-note {
+	position: relative;
+	z-index: 1;
+	max-width: min(100%, var(--hero-row-width));
+	margin: 0.42rem auto 0;
+	color: rgba(255, 255, 255, 0.44);
+	font-size: 0.68rem;
+	font-weight: 600;
+	line-height: 1.28;
+	text-wrap: balance;
 }
 
 .slogan-wrapper {
@@ -390,20 +404,24 @@
 }
 
 .hero-name-feedback {
+	width: min(100%, var(--hero-row-width));
+	max-width: var(--hero-control-width);
 	min-height: 0.82rem;
-	margin: -0.34rem auto -0.3rem;
+	margin: -0.12rem auto -0.18rem;
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 0.68rem;
 	font-weight: 600;
 	line-height: 1.2;
 	opacity: 0;
+	overflow-wrap: break-word;
+	text-wrap: balance;
 	transform: translateY(-3px);
-	transition: color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+	transition: color 0.22s ease, opacity 0.42s ease, transform 0.42s ease;
 }
 
 .hero-name-feedback:empty {
 	min-height: 0;
-	margin: -0.16rem auto -0.28rem;
+	margin: -0.02rem auto -0.2rem;
 }
 
 .hero-name-shell.is-adjusted .hero-name-feedback,
@@ -421,30 +439,41 @@
 }
 
 .hero-name-options {
-	--picker-active-width: 42%;
+	--picker-active-width: 38%;
+	--picker-active-half: 19%;
 	--picker-far-left: var(--picker-near-left);
 	--picker-far-opacity: 0;
 	--picker-far-right: var(--picker-near-right);
 	--picker-far-width: 0%;
 	--picker-font-size: 1.12rem;
-	--picker-near-left: 24%;
+	--picker-side-gap: 0.72rem;
+	--picker-side-pad: 1.6rem;
+	--picker-near-left: 27%;
 	--picker-near-opacity: 0.5;
-	--picker-near-right: 76%;
-	--picker-near-width: 24%;
+	--picker-near-right: 73%;
+	--picker-near-width: 16%;
 	position: relative;
 	display: block;
-	width: min(100%, calc(var(--hero-row-width) + 0.3rem));
-	width: min(100%, calc(var(--hero-row-width) + clamp(0.2rem, 1.2cqi, 0.7rem)));
-	max-width: min(100%, 430px);
+	width: min(100%, calc(var(--hero-row-width) - 2.4rem));
+	max-width: var(--hero-control-width);
 	height: 48px;
 	margin: 0.26rem auto 0;
 	overflow: hidden;
-	padding: 0;
+	padding: 0 1.18rem;
 	border: 0;
 	background: transparent;
 	cursor: default;
 	touch-action: pan-y;
+	transform: translateX(var(--picker-drag-x, 0px));
+	transition: width 0.34s cubic-bezier(0.2, 0.72, 0.28, 1), transform 0.22s ease;
+}
+
+.hero-name-options.is-dragging {
 	transition: width 0.34s cubic-bezier(0.2, 0.72, 0.28, 1);
+}
+
+.hero-name-options.is-dragging .hero-name-option {
+	transition: color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
 }
 
 .hero-name-options::before,
@@ -466,13 +495,13 @@
 
 .hero-name-options::before,
 .hero-name-options-fallback::before {
-	left: 0.18rem;
+	left: 0.42rem;
 	transform: translateY(-50%) rotate(-135deg);
 }
 
 .hero-name-options::after,
 .hero-name-options-fallback::after {
-	right: 0.18rem;
+	right: 0.42rem;
 	transform: translateY(-50%) rotate(45deg);
 }
 
@@ -495,7 +524,9 @@
 
 .hero-name-option {
 	--picker-slot: 50%;
+	--picker-offset: 0px;
 	--picker-width: var(--picker-active-width);
+	--picker-item-width: var(--picker-width);
 	position: absolute;
 	left: var(--picker-slot);
 	top: 50%;
@@ -503,7 +534,7 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--picker-width);
+	width: var(--picker-item-width);
 	min-width: 0;
 	min-height: 30px;
 	padding: 0.12rem 0.18rem 0.34rem;
@@ -517,7 +548,7 @@
 	opacity: 0.4;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	transform: translate(-50%, -50%) scale(0.88);
+	transform: translate(calc(-50% + var(--picker-offset)), -50%) scale(0.88);
 	transition: color 0.24s ease, left 0.68s cubic-bezier(0.24, 0.72, 0.18, 1), opacity 0.34s ease, transform 0.68s cubic-bezier(0.24, 0.72, 0.18, 1), width 0.68s cubic-bezier(0.24, 0.72, 0.18, 1);
 	white-space: nowrap;
 }
@@ -543,17 +574,17 @@
 	opacity: 0;
 	pointer-events: none;
 	transform: translate(-50%, -50%) scale(0.78);
+	visibility: hidden;
 }
 
 .hero-name-option[data-position="-1"] {
-	--picker-slot: var(--picker-near-left);
-	--picker-width: var(--picker-near-width);
+	left: 50%;
 	z-index: 2;
 	justify-content: flex-end;
 	opacity: var(--picker-near-opacity);
 	text-align: right;
-	-webkit-mask-image: linear-gradient(90deg, transparent, #000000 28%, #000000 100%);
-	mask-image: linear-gradient(90deg, transparent, #000000 28%, #000000 100%);
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000000 34%, #000000 100%);
+	mask-image: linear-gradient(90deg, transparent, #000000 34%, #000000 100%);
 }
 
 .hero-name-option[data-position="0"] {
@@ -562,22 +593,21 @@
 	z-index: 3;
 	color: var(--color-gold);
 	opacity: 1;
-	transform: translate(-50%, -50%) scale(1);
+	transform: translate(calc(-50% + var(--picker-offset)), -50%) scale(1);
 }
 
 .hero-name-option[data-position="0"]:hover {
-	transform: translate(-50%, -50%) scale(1);
+	transform: translate(calc(-50% + var(--picker-offset)), -50%) scale(1);
 }
 
 .hero-name-option[data-position="1"] {
-	--picker-slot: var(--picker-near-right);
-	--picker-width: var(--picker-near-width);
+	left: 50%;
 	z-index: 2;
 	justify-content: flex-start;
 	opacity: var(--picker-near-opacity);
 	text-align: left;
-	-webkit-mask-image: linear-gradient(90deg, #000000 0%, #000000 72%, transparent);
-	mask-image: linear-gradient(90deg, #000000 0%, #000000 72%, transparent);
+	-webkit-mask-image: linear-gradient(90deg, #000000 0%, #000000 66%, transparent);
+	mask-image: linear-gradient(90deg, #000000 0%, #000000 66%, transparent);
 }
 
 .hero-name-option[data-position="2"] {
@@ -586,18 +616,21 @@
 	opacity: 0;
 	pointer-events: none;
 	transform: translate(-50%, -50%) scale(0.78);
+	visibility: hidden;
 }
 
 .hero-name-option[data-position="-3"] {
 	opacity: 0;
 	pointer-events: none;
 	transform: translate(-50%, -50%) scale(0.76);
+	visibility: hidden;
 }
 
 .hero-name-option[data-position="3"] {
 	opacity: 0;
 	pointer-events: none;
 	transform: translate(-50%, -50%) scale(0.76);
+	visibility: hidden;
 }
 
 .hero-name-option:hover {
@@ -611,31 +644,19 @@
 
 .hero-name-option[data-position="-1"]:hover,
 .hero-name-option-fallback.is-prev:hover {
-	left: calc(var(--picker-near-left) + (var(--picker-near-width) / 2));
-	width: max-content;
-	max-width: calc(50% - 1.1rem);
 	color: rgba(255, 255, 255, 0.78);
 	opacity: 0.92;
-	overflow: visible;
+	overflow: hidden;
 	z-index: 5;
-	-webkit-mask-image: none;
-	mask-image: none;
-	transform: translate(-100%, -50%) scale(0.88);
 	transition: color 0.18s ease, opacity 0.18s ease;
 }
 
 .hero-name-option[data-position="1"]:hover,
 .hero-name-option-fallback.is-next:hover {
-	left: calc(var(--picker-near-right) - (var(--picker-near-width) / 2));
-	width: max-content;
-	max-width: calc(50% - 1.1rem);
 	color: rgba(255, 255, 255, 0.78);
 	opacity: 0.92;
-	overflow: visible;
+	overflow: hidden;
 	z-index: 5;
-	-webkit-mask-image: none;
-	mask-image: none;
-	transform: translate(0, -50%) scale(0.88);
 	transition: color 0.18s ease, opacity 0.18s ease;
 }
 
@@ -654,35 +675,40 @@
 }
 
 .hero-name-options-fallback {
-	--picker-active-width: 42%;
+	--picker-active-width: 38%;
+	--picker-active-half: 19%;
 	--picker-far-left: var(--picker-near-left);
 	--picker-far-opacity: 0;
 	--picker-far-right: var(--picker-near-right);
 	--picker-far-width: 0%;
 	--picker-font-size: 1.12rem;
-	--picker-near-left: 24%;
+	--picker-side-gap: 0.72rem;
+	--picker-side-pad: 1.6rem;
+	--picker-near-left: 27%;
 	--picker-near-opacity: 0.5;
-	--picker-near-right: 76%;
-	--picker-near-width: 24%;
+	--picker-near-right: 73%;
+	--picker-near-width: 16%;
 	position: relative;
-	width: min(100%, calc(var(--hero-row-width) + 0.3rem));
-	width: min(100%, calc(var(--hero-row-width) + clamp(0.2rem, 1.2cqi, 0.7rem)));
-	max-width: min(100%, 430px);
+	width: min(100%, calc(var(--hero-row-width) - 2.4rem));
+	max-width: var(--hero-control-width);
 	height: 48px;
 	margin: 0.26rem auto 0;
 	overflow: hidden;
+	padding: 0 1.18rem;
 }
 
 .hero-name-option-fallback {
 	--picker-slot: 50%;
+	--picker-offset: 0px;
 	--picker-width: var(--picker-active-width);
+	--picker-item-width: var(--picker-width);
 	position: absolute;
 	top: 50%;
 	left: var(--picker-slot);
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--picker-width);
+	width: var(--picker-item-width);
 	min-width: 0;
 	min-height: 30px;
 	padding: 0.12rem 0.18rem 0.34rem;
@@ -693,15 +719,15 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	text-decoration: none;
-	transform: translate(-50%, -50%) scale(0.88);
+	transform: translate(calc(-50% + var(--picker-offset)), -50%) scale(0.88);
 	white-space: nowrap;
 }
 
 .hero-name-option-fallback.is-prev {
-	--picker-slot: var(--picker-near-left);
-	--picker-width: var(--picker-near-width);
+	left: 24%;
 	z-index: 2;
 	justify-content: flex-end;
+	width: 24%;
 	opacity: var(--picker-near-opacity);
 	text-align: right;
 	-webkit-mask-image: linear-gradient(90deg, transparent, #000000 28%, #000000 100%);
@@ -714,7 +740,7 @@
 	--picker-width: var(--picker-active-width);
 	color: var(--color-gold);
 	opacity: 1;
-	transform: translate(-50%, -50%) scale(1);
+	transform: translate(calc(-50% + var(--picker-offset)), -50%) scale(1);
 }
 
 .hero-name-option-fallback.is-active::after {
@@ -750,10 +776,10 @@
 }
 
 .hero-name-option-fallback.is-next {
-	--picker-slot: var(--picker-near-right);
-	--picker-width: var(--picker-near-width);
+	left: 76%;
 	z-index: 2;
 	justify-content: flex-start;
+	width: 24%;
 	opacity: var(--picker-near-opacity);
 	text-align: left;
 	-webkit-mask-image: linear-gradient(90deg, #000000 0%, #000000 72%, transparent);
@@ -860,12 +886,20 @@
 .hero-scroll-cue {
 	position: relative;
 	display: inline-flex;
-	width: min(218px, 58vw);
-	height: 38px;
-	margin-top: clamp(1.2rem, 3vw, 1.65rem);
-	opacity: 0.86;
+	width: min(188px, 50vw);
+	height: 28px;
+	margin: 0 auto;
+	opacity: 0.72;
 	transition: opacity 0.18s ease, transform 0.18s ease;
 	animation: scroll-cue-pulse 2.8s ease-in-out infinite;
+}
+
+.hero-scroll-cue--intro {
+	display: none;
+}
+
+.hero-scroll-cue--next {
+	margin-top: clamp(0.36rem, 1.2vw, 0.68rem);
 }
 
 .hero-scroll-cue::before,
@@ -875,7 +909,7 @@
 	top: 50%;
 	width: 50%;
 	height: 1.5px;
-	box-shadow: 0 0 14px rgba(255, 192, 0, 0.24);
+	box-shadow: 0 0 10px rgba(255, 192, 0, 0.18);
 }
 
 .hero-scroll-cue::before {
@@ -996,17 +1030,20 @@
 @media (max-width: 390px) {
 	.hero-name-options,
 	.hero-name-options-fallback {
-		--picker-active-width: 44%;
+		--picker-active-width: 42%;
+		--picker-active-half: 21%;
 		--picker-far-left: var(--picker-near-left);
 		--picker-far-opacity: 0;
 		--picker-far-right: var(--picker-near-right);
 		--picker-far-width: 0%;
 		--picker-font-size: 1.04rem;
-		--picker-near-left: 22%;
+		--picker-near-left: 26%;
 		--picker-near-opacity: 0.44;
-		--picker-near-right: 78%;
-		--picker-near-width: 22%;
-		width: min(100%, calc(var(--hero-row-width) + 0.2rem));
+		--picker-near-right: 74%;
+		--picker-near-width: 14%;
+		width: min(100%, calc(var(--hero-row-width) - 2rem));
+		padding-right: 0.98rem;
+		padding-left: 0.98rem;
 	}
 
 	.hero-name-option[data-position="-2"],
@@ -1019,6 +1056,23 @@
 }
 
 @media (max-width: 519px) {
+	.hero-scroll-cue--intro {
+		display: inline-flex;
+		width: min(168px, 46vw);
+		height: 24px;
+		margin: 0 auto -0.14rem;
+		opacity: 0.58;
+	}
+
+	.hero-stage {
+		gap: 0.22rem;
+		margin-top: 0;
+	}
+
+	.hero-scroll-cue--next {
+		display: none;
+	}
+
 	.hero-name-options,
 	.hero-name-options-fallback {
 		height: 50px;
@@ -1046,7 +1100,7 @@
 		grid-template-columns: 1fr;
 		justify-items: center;
 		gap: 0.56rem;
-		width: min(100%, 88vw);
+		width: min(100%, 76vw);
 		margin-right: auto;
 		margin-left: auto;
 		padding: 1.05rem 0;
@@ -1063,19 +1117,19 @@
 @media (min-width: 520px) {
 	.hero-name-options,
 	.hero-name-options-fallback {
-		--picker-active-width: 40%;
+		--picker-active-width: 38%;
+		--picker-active-half: 19%;
 		--picker-far-left: var(--picker-near-left);
 		--picker-far-opacity: 0;
 		--picker-far-right: var(--picker-near-right);
 		--picker-far-width: 0%;
 		--picker-font-size: 1.12rem;
-		--picker-near-left: 24%;
+		--picker-near-left: 27%;
 		--picker-near-opacity: 0.48;
-		--picker-near-right: 76%;
-		--picker-near-width: 24%;
-		width: min(100%, calc(var(--hero-row-width) + 0.8rem));
-		width: min(100%, calc(var(--hero-row-width) + clamp(0.5rem, 1.6cqi, 1.1rem)));
-		max-width: min(100%, 440px);
+		--picker-near-right: 73%;
+		--picker-near-width: 16%;
+		width: min(100%, calc(var(--hero-row-width) - 2.4rem));
+		max-width: var(--hero-control-width);
 	}
 
 	.benefits-grid {
@@ -1092,16 +1146,17 @@
 @media (min-width: 700px) {
 	.hero-name-options,
 	.hero-name-options-fallback {
-		--picker-active-width: 40%;
+		--picker-active-width: 38%;
+		--picker-active-half: 19%;
 		--picker-far-left: var(--picker-near-left);
 		--picker-far-opacity: 0;
 		--picker-far-right: var(--picker-near-right);
 		--picker-far-width: 0%;
 		--picker-font-size: 1.12rem;
-		--picker-near-left: 24%;
-		--picker-near-right: 76%;
-		--picker-near-width: 24%;
-		max-width: min(100%, 440px);
+		--picker-near-left: 27%;
+		--picker-near-right: 73%;
+		--picker-near-width: 16%;
+		max-width: var(--hero-control-width);
 	}
 
 	.hero-section {
@@ -1141,13 +1196,14 @@
 
 	.hero-name-options,
 	.hero-name-options-fallback {
-		--picker-active-width: 40%;
+		--picker-active-width: 38%;
+		--picker-active-half: 19%;
 		--picker-far-left: var(--picker-near-left);
 		--picker-far-right: var(--picker-near-right);
-		--picker-near-left: 24%;
-		--picker-near-right: 76%;
-		width: min(100%, calc(var(--hero-row-width) + 1rem));
-		max-width: min(100%, 440px);
+		--picker-near-left: 27%;
+		--picker-near-right: 73%;
+		width: min(100%, calc(var(--hero-row-width) - 2.4rem));
+		max-width: var(--hero-control-width);
 	}
 
 	.explainer-img {

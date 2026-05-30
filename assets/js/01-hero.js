@@ -20,7 +20,7 @@
 	var optionRail = document.querySelector(".hero-name-options");
 	var optionButtons = Array.prototype.slice.call(document.querySelectorAll(".hero-name-option"));
 	var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-	var maxNameLength = 18;
+	var maxNameLength = 12;
 	var minimumControlWidth = 338;
 	var maximumControlWidth = 560;
 	var controlChromeWidth = 76;
@@ -68,6 +68,7 @@
 	var optionTouchStartX = 0;
 	var optionTouchStartY = 0;
 	var optionTouchTracking = false;
+	var optionTouchMoved = false;
 	var customName = "";
 	var suffixSwitchDelayMs = 220;
 
@@ -168,10 +169,12 @@
 	}
 
 	function setFeedback(type, message) {
+		var autoHideTypes = ["adjusted", "limit"];
+
 		window.clearTimeout(feedbackTimer);
 
 		if (nameShell) {
-			nameShell.classList.toggle("is-adjusted", type === "adjusted");
+			nameShell.classList.toggle("is-adjusted", type === "adjusted" || type === "limit");
 			nameShell.classList.toggle("is-invalid", type === "invalid");
 		}
 
@@ -180,20 +183,20 @@
 			feedbackLabel.setAttribute("aria-hidden", type ? "false" : "true");
 		}
 
-		if (type === "adjusted") {
+		if (autoHideTypes.indexOf(type) > -1) {
 			feedbackTimer = window.setTimeout(function () {
 				if (input.getAttribute("aria-invalid") !== "true") {
 					setFeedback("", "");
 				}
-			}, 1700);
+			}, 3400);
 		}
 	}
 
 	function syncNameState(feedbackMode) {
 		var valid = input.value === "" || isValidName(input.value);
 		var invalidMessage = input.value.slice(-1) === "-" ?
-			"End with a letter or number." :
-			"Use lowercase letters, numbers, and single hyphens.";
+			"End with a letter or number. SNS checkout shows final registrar rules." :
+			"Use lowercase letters, numbers, and single hyphens. This demo is capped at 12 characters.";
 
 		syncNamePreview();
 		input.setAttribute("aria-invalid", valid ? "false" : "true");
@@ -204,14 +207,16 @@
 
 		if (statusLabel) {
 			statusLabel.textContent = valid ?
-				"Use lowercase letters, numbers, and single hyphens. 1 to 18 characters." :
-				"Name must use lowercase letters, numbers, and single hyphens. It cannot start or end with a hyphen.";
+				"Demo preview accepts up to 12 lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sol subdomain length limit and registrar rules." :
+				"Name must use lowercase letters, numbers, and single hyphens. This demo is capped at 12 characters. It cannot start or end with a hyphen.";
 		}
 
 		if (!valid) {
 			setFeedback("invalid", invalidMessage);
+		} else if (feedbackMode === "limit") {
+			setFeedback("limit", "Demo limit: 12 characters here for layout. SNS checkout shows the final .sol subdomain length limit.");
 		} else if (feedbackMode === "adjusted") {
-			setFeedback("adjusted", "Adjusted to lowercase letters, numbers, and hyphens.");
+			setFeedback("adjusted", "Adjusted for the demo: lowercase letters, numbers, and single hyphens only.");
 		} else if (feedbackMode !== "keep") {
 			setFeedback("", "");
 		}
@@ -329,6 +334,73 @@
 		});
 	}
 
+	function measurePickerLabel(button) {
+		var clone;
+		var width;
+
+		if (!optionRail || !button) {
+			return 0;
+		}
+
+		clone = button.cloneNode(true);
+		clone.removeAttribute("style");
+		clone.style.position = "absolute";
+		clone.style.left = "-9999px";
+		clone.style.width = "auto";
+		clone.style.maxWidth = "none";
+		clone.style.visibility = "hidden";
+		clone.style.transform = "none";
+		optionRail.appendChild(clone);
+		width = clone.getBoundingClientRect().width;
+		clone.remove();
+
+		return Math.ceil(width);
+	}
+
+	function layoutPickerOptions() {
+		var activeButton;
+		var activeWidth;
+		var availableSideWidth;
+		var containerWidth;
+		var gap;
+		var sidePadding;
+
+		if (!optionRail || !optionButtons.length) {
+			return;
+		}
+
+		activeButton = optionButtons.find(function (button) {
+			return Number(button.dataset.position || 0) === 0;
+		});
+
+		if (!activeButton) {
+			return;
+		}
+
+		containerWidth = optionRail.getBoundingClientRect().width;
+		gap = Math.max(9, Math.min(13, containerWidth * 0.035));
+		sidePadding = 26;
+		activeWidth = Math.min(Math.max(measurePickerLabel(activeButton) + 22, 66), Math.max(72, containerWidth * 0.44));
+		availableSideWidth = Math.max(28, (containerWidth - activeWidth) / 2 - gap - sidePadding);
+
+		optionButtons.forEach(function (button) {
+			var offset = 0;
+			var position = Number(button.dataset.position || 0);
+			var width = activeWidth;
+
+			if (position === -1) {
+				width = availableSideWidth;
+				offset = -((activeWidth / 2) + gap + (width / 2));
+			} else if (position === 1) {
+				width = availableSideWidth;
+				offset = (activeWidth / 2) + gap + (width / 2);
+			}
+
+			button.style.setProperty("--picker-item-width", width + "px");
+			button.style.setProperty("--picker-offset", offset + "px");
+		});
+	}
+
 	function hidePickerOption(button) {
 		var rawPosition = Number(button.dataset.rawPosition || button.dataset.position || 0);
 
@@ -414,32 +486,14 @@
 	}
 
 	function resolvePickerCollisions() {
-		var collision;
-		var guard = 0;
-		var target;
-
 		restorePickerPositions();
-		collision = findPickerCollision();
-
-		while (collision && guard < 4) {
-			target = pickCollisionHideTarget(collision);
-
-			if (!target) {
-				break;
-			}
-
-			hidePickerOption(target);
-			collision = findPickerCollision();
-			guard += 1;
-		}
+		layoutPickerOptions();
 	}
 
 	function queuePickerCollisionCheck() {
 		window.cancelAnimationFrame(collisionFrame);
 		window.clearTimeout(collisionTimer);
-		collisionTimer = window.setTimeout(function () {
-			collisionFrame = window.requestAnimationFrame(resolvePickerCollisions);
-		}, 420);
+		collisionFrame = window.requestAnimationFrame(resolvePickerCollisions);
 	}
 
 	function setExample(example) {
@@ -495,6 +549,43 @@
 				}
 			}
 		}, 0);
+	}
+
+	function scrollNameToolIntoView() {
+		var rect;
+		var target;
+
+		if (!nameTool || window.innerWidth > 720) {
+			return;
+		}
+
+		function alignTool() {
+			rect = nameTool.getBoundingClientRect();
+			target = Math.max(0, rect.top + window.scrollY - 18);
+			window.scrollTo({
+				top: target,
+				behavior: reducedMotion ? "auto" : "smooth"
+			});
+		}
+
+		window.setTimeout(alignTool, 90);
+		window.setTimeout(alignTool, 360);
+	}
+
+	function scrollTargetIntoView(targetElement) {
+		var rect;
+		var target;
+
+		if (!targetElement) {
+			return;
+		}
+
+		rect = targetElement.getBoundingClientRect();
+		target = Math.max(0, rect.top + window.scrollY - 18);
+		window.scrollTo({
+			top: target,
+			behavior: reducedMotion ? "auto" : "smooth"
+		});
 	}
 
 	function syncExampleToCurrentSuffix() {
@@ -646,6 +737,29 @@
 			optionTouchStartX = event.clientX;
 			optionTouchStartY = event.clientY;
 			optionTouchTracking = true;
+			optionTouchMoved = false;
+			optionRail.classList.add("is-dragging");
+		}, { passive: true });
+
+		optionRail.addEventListener("pointermove", function (event) {
+			var deltaX;
+			var deltaY;
+			var dragX;
+
+			if (!optionTouchTracking || event.pointerType !== "touch") {
+				return;
+			}
+
+			deltaX = event.clientX - optionTouchStartX;
+			deltaY = event.clientY - optionTouchStartY;
+
+			if (Math.abs(deltaY) > Math.abs(deltaX) * 1.25) {
+				return;
+			}
+
+			optionTouchMoved = Math.abs(deltaX) > 8;
+			dragX = Math.max(-34, Math.min(34, deltaX * 0.28));
+			optionRail.style.setProperty("--picker-drag-x", dragX + "px");
 		}, { passive: true });
 
 		optionRail.addEventListener("pointerup", function (event) {
@@ -657,18 +771,47 @@
 			}
 
 			optionTouchTracking = false;
+			optionRail.classList.remove("is-dragging");
+			optionRail.style.setProperty("--picker-drag-x", "0px");
 			deltaX = event.clientX - optionTouchStartX;
 			deltaY = event.clientY - optionTouchStartY;
 
-			if (Math.abs(deltaX) > 30 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+			if (optionTouchMoved && Math.abs(deltaX) > 30 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
 				moveRegistrar(deltaX < 0 ? 1 : -1);
 			}
 		}, { passive: true });
 
 		optionRail.addEventListener("pointercancel", function () {
 			optionTouchTracking = false;
+			optionTouchMoved = false;
+			optionRail.classList.remove("is-dragging");
+			optionRail.style.setProperty("--picker-drag-x", "0px");
 		}, { passive: true });
 	}
+
+	Array.prototype.slice.call(document.querySelectorAll('a[href^="#"]')).forEach(function (link) {
+		link.addEventListener("click", function (event) {
+			var hash = link.getAttribute("href");
+			var target;
+
+			if (!hash || hash === "#") {
+				return;
+			}
+
+			try {
+				target = document.querySelector(hash);
+			} catch {
+				return;
+			}
+
+			if (!target) {
+				return;
+			}
+
+			event.preventDefault();
+			scrollTargetIntoView(target);
+		});
+	});
 
 	input.addEventListener("keydown", function (event) {
 		if (event.key === "Enter") {
@@ -698,11 +841,27 @@
 		userTouched = true;
 		userEditedName = false;
 		syncNameState("keep");
+		scrollNameToolIntoView();
 		queueInputSelection();
+	});
+
+	input.addEventListener("beforeinput", function (event) {
+		var selectedLength = Math.max(0, input.selectionEnd - input.selectionStart);
+		var incoming = event.data || "";
+		var nextLength = input.value.length - selectedLength + incoming.length;
+
+		if (incoming && nextLength > maxNameLength) {
+			setFeedback("limit", "Demo limit: 12 characters here for layout. SNS checkout shows the final .sol subdomain length limit.");
+		}
 	});
 
 	input.addEventListener("input", function () {
 		var clean = sanitizeName(input.value, false);
+		var cleanBeforeLimit = input.value.toLowerCase()
+			.replace(/[^a-z0-9-]/gu, "")
+			.replace(/-+/gu, "-")
+			.replace(/^-+/u, "");
+		var hitDemoLimit = cleanBeforeLimit.length > maxNameLength || input.value.length >= maxNameLength;
 		var wasAdjusted = input.value !== clean;
 
 		userTouched = true;
@@ -713,7 +872,7 @@
 			input.value = clean;
 		}
 
-		syncNameState(wasAdjusted ? "adjusted" : "");
+		syncNameState(hitDemoLimit ? "limit" : wasAdjusted ? "adjusted" : "");
 	});
 
 	input.addEventListener("blur", function () {

@@ -97,6 +97,11 @@
 				transform: none !important;
 			}
 
+			.domain-card::before,
+			.domain-card::after {
+				display: none !important;
+			}
+
 			.domain-card.active {
 				border-color: rgba(217, 177, 255, 0.42) !important;
 				box-shadow: var(--shadow-card) !important;
@@ -164,9 +169,10 @@
 			<div class="hero-explainer">
 				<img class="explainer-img" src="assets/img/explainer.png" alt="A wallet address changing into a readable mytag.sol name tag." loading="eager" decoding="async" />
 			</div>
+			<a class="hero-scroll-cue hero-scroll-cue--intro" href="#hero-name-tool" aria-label="Scroll to name preview"></a>
 
 			<div class="hero-stage" aria-label="Solana name tag preview">
-				<div class="hero-name-tool">
+				<div id="hero-name-tool" class="hero-name-tool">
 					<div class="slogan-wrapper">
 						<img class="handwritten-slogan" src="assets/img/slogan.png" alt="Own Your Name!" loading="eager" />
 					</div>
@@ -175,13 +181,13 @@
 						<div class="hero-name-input-row">
 							<span class="hero-name-input-wrap">
 								<span id="hero-name-preview" class="hero-name-preview" aria-hidden="true">yourname</span>
-								<input id="hero-name-input" class="hero-name-input" type="text" value="yourname" maxlength="18" pattern="(?!.*--)[a-z0-9](?:[a-z0-9-]{0,16}[a-z0-9])?" autocomplete="off" autocapitalize="none" inputmode="text" spellcheck="false" title="Use lowercase letters, numbers, and single hyphens. 1 to 18 characters." aria-label="Name before the dot" aria-describedby="hero-name-status" readonly tabindex="-1" />
+								<input id="hero-name-input" class="hero-name-input" type="text" value="yourname" maxlength="12" pattern="(?!.*--)[a-z0-9](?:[a-z0-9-]{0,10}[a-z0-9])?" autocomplete="off" autocapitalize="none" inputmode="text" spellcheck="false" title="Demo preview: use up to 12 lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sol subdomain length limit and registrar rules." aria-label="Name before the dot" aria-describedby="hero-name-status" readonly tabindex="-1" />
 							</span>
 							<span class="hero-input-caret" aria-hidden="true"></span>
 							<span class="hero-name-dot" aria-hidden="true">.</span>
 							<span id="hero-name-suffix" class="hero-name-suffix"><span class="suffix-card is-current">mytag.sol</span></span>
 						</div>
-						<p id="hero-name-status" class="sr-only" aria-live="polite">Use lowercase letters, numbers, and single hyphens. 1 to 18 characters.</p>
+						<p id="hero-name-status" class="sr-only" aria-live="polite">Demo preview: use up to 12 lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sol subdomain length limit and registrar rules.</p>
 						<p id="hero-name-feedback" class="hero-name-feedback" aria-hidden="true"></p>
 						<div class="hero-name-options" role="group" aria-label="Choose preview namespace">
 							<button class="hero-name-option active" type="button" data-suffix="mytag.sol" data-url="https://v1.sns.id/sub-registrar/mytag" data-position="0" aria-pressed="true">mytag</button>
@@ -219,9 +225,10 @@
 							<a id="hero-register-link" class="hero-tool-primary" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer">Register on SNS</a>
 							<a class="hero-tool-secondary" href="#registrar-browser">Browse all</a>
 						</div>
+						<p class="hero-demo-note">Preview only. Availability, final length rules, pricing, and fees are shown on SNS.</p>
 					</div>
 				</div>
-				<a class="hero-scroll-cue" href="#why-subdomains" aria-label="Scroll to benefits"></a>
+				<a class="hero-scroll-cue hero-scroll-cue--next" href="#why-subdomains" aria-label="Scroll to benefits"></a>
 			</div>
 
 			<div id="why-subdomains" class="benefits-panel" aria-label="Benefits of subdomains">
@@ -282,35 +289,35 @@
 				<a class="domain-card active" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer" data-theme="meme" aria-label="Register a gbonk.sol subdomain">
 					<div class="card-topline"><span class="card-badge">Meme</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>gbonk.sol</strong></div>
-					<p>A bright BONK-flavored name tag for wallets that want their community energy on-chain.</p>
+					<p>BONK OG?<br />Wear it on-chain with pride.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer" data-theme="identity" aria-label="Register a mytag.sol subdomain">
 					<div class="card-topline"><span class="card-badge">Identity</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>mytag.sol</strong></div>
-					<p>The universal name tag. Clean, simple, for everyone.</p>
+					<p>The universal name tag:<br />clean, simple, and easy to share.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer" data-theme="identity" aria-label="Register a walletlink.sol subdomain">
 					<div class="card-topline"><span class="card-badge">Utility</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>walletlink.sol</strong></div>
-					<p>A practical payment tag for receiving crypto without sharing a long wallet address.</p>
+					<p>A practical payment tag for receiving crypto.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer" data-theme="community" aria-label="Register an ogclub.sol subdomain">
 					<div class="card-topline"><span class="card-badge">Community</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>ogclub.sol</strong></div>
-					<p>OG status, on-chain. For those who were early.</p>
+					<p>One OG club, on-chain.<br />A name for early believers.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 
 				<a class="domain-card" href="https://v1.sns.id/sub-registrar/mystory" target="_blank" rel="noopener noreferrer" data-theme="identity" aria-label="Register a mystory.sol subdomain">
 					<div class="card-topline"><span class="card-badge">Identity</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>mystory.sol</strong></div>
-					<p>Your story, your name. The most personal identity on-chain.</p>
+					<p>A personal name tag for profiles,<br />creators, and public wallets.</p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 			</div>
@@ -372,12 +379,12 @@
 				<a class="bc" href="https://v1.sns.id/sub-registrar/mystory" target="_blank" rel="noopener noreferrer" data-cat="identity" data-name="mystory"><span class="bc-badge">Identity</span><div class="bc-name"><span>yourname.</span><strong>mystory.sol</strong></div><p>Your story, your name. The most personal identity on-chain.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer" data-cat="identity" data-name="walletlink"><span class="bc-badge">Identity</span><div class="bc-name"><span>yourname.</span><strong>walletlink.sol</strong></div><p>Your wallet, as a shareable address. Like an email, but for receiving crypto.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/fames" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="fames"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>fames.sol</strong></div><p>Reserved for the ones who made it. Claim your name before someone else does.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="ogclub"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>ogclub.sol</strong></div><p>OG status, on-chain. For those who were early.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="ogclub"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>ogclub.sol</strong></div><p>The OG club, on-chain. A more exclusive name for early believers.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/ogwallet" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="ogwallet"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>ogwallet.sol</strong></div><p>Wallet for OGs. The ones who held through it all.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/gen-z" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="gen-z"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>gen-z.sol</strong></div><p>For the generation that grew up online. Claim your spot.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/snsclub" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="snsclub"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>snsclub.sol</strong></div><p>The home domain for SNS users. Show your roots on-chain.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/bonkog" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="bonkog"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>bonkog.sol</strong></div><p>OG BONK holder? Wear it on-chain with pride.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="gbonk"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>gbonk.sol</strong></div><p>A bright BONK-flavored name tag for community-native wallets.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="gbonk"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>gbonk.sol</strong></div><p>BONK OG? Wear it on-chain with pride.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/bonktag" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="bonktag"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>bonktag.sol</strong></div><p>Your BONK identity. Simple, loud, unmistakable.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/memecoinape" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="memecoinape"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>memecoinape.sol</strong></div><p>Proud meme coin degen? Put it on-chain. No apologies.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/gametag" target="_blank" rel="noopener noreferrer" data-cat="gaming" data-name="gametag"><span class="bc-badge">Gaming</span><div class="bc-name"><span>yourname.</span><strong>gametag.sol</strong></div><p>Your gamer tag, now permanent and on-chain.</p><span class="bc-cta">Register on SNS</span></a>
