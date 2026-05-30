@@ -899,7 +899,7 @@
 }
 
 .hero-scroll-cue--next {
-	margin-top: clamp(0.36rem, 1.2vw, 0.68rem);
+	display: none;
 }
 
 .hero-scroll-cue::before,
