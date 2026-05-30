@@ -28,28 +28,32 @@
 	var suffixTimer = 0;
 	var currentSuffix = suffixLabel ? suffixLabel.textContent.trim() : "";
 	var exampleRound = 0;
+	var lastExampleNames = {};
+	var personalNames = ["alex", "maya", "sam", "luna", "nova", "kai", "zoe", "aria", "max", "mila", "leo", "nina", "rio", "ella", "noah", "ava", "sol", "tess", "jay", "mina"];
+	var web3Names = ["gm", "wagmi", "alpha", "holder", "early", "degen", "diamond", "moon", "ape", "trader", "mint", "memes", "rocket", "floor", "chart", "pump"];
+	var infraNames = ["vault", "ledger", "assets", "treasury", "holdings", "portfolio", "reserve", "capital", "yield", "tokens", "funds", "index"];
 	var registrarExamples = [
-		{ names: ["alex", "maya", "sam", "nova", "luna"], suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
-		{ names: ["gm", "wagmi", "bonk", "holder", "early"], suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
-		{ names: ["alex", "maya", "sam", "luna", "payme"], suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
-		{ names: ["maya", "journal", "story", "notes", "daily"], suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
-		{ names: ["creator", "artist", "model", "talent", "legend"], suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
-		{ names: ["member", "club", "alpha", "root", "signal"], suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
-		{ names: ["og", "early", "holder", "diamond", "bonk"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
-		{ names: ["gm", "holder", "wagmi", "bonk", "degen"], suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
-		{ names: ["vault", "early", "holder", "cold", "secure"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
-		{ names: ["zara", "nova", "max", "kai", "zoe"], suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
-		{ names: ["player", "quest", "gamer", "ace", "rank"], suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
-		{ names: ["quest", "player", "realm", "party", "arena"], suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
-		{ names: ["luna", "artist", "studio", "gallery", "mint"], suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
-		{ names: ["ai", "prompt", "agent", "model", "builder"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
-		{ names: ["studio", "creator", "maker", "channel", "media"], suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
-		{ names: ["vault", "ledger", "assets", "treasury", "holdings"], suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
-		{ names: ["brand", "studio", "founder", "company", "team"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
-		{ names: ["launch", "founder", "build", "demo", "seed"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
-		{ names: ["vote", "dao", "member", "council", "forum"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
-		{ names: ["ape", "degen", "trader", "moon", "memes"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
-		{ names: ["early", "og", "member", "alpha", "founder"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
+		{ names: personalNames.concat(["name", "tag", "public", "profile"]), suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
+		{ names: web3Names, suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
+		{ names: personalNames.concat(["payme", "tips", "sendme", "receive"]), suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
+		{ names: personalNames.concat(["journal", "notes", "diary", "daily", "profile"]), suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
+		{ names: ["creator", "artist", "model", "talent", "legend", "star", "icon", "stage", "studio", "public", "famous", "profile"], suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
+		{ names: ["member", "alpha", "root", "signal", "club", "founder", "builder", "public", "profile", "chain", "mint", "node"], suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
+		{ names: ["early", "holder", "diamond", "alpha", "dayone", "legend", "faithful", "veteran", "mint", "wagmi", "degen", "signal"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
+		{ names: ["gm", "holder", "wagmi", "degen", "moon", "ape", "trader", "diamond", "early", "mint", "signal", "memes"], suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
+		{ names: ["vault", "holder", "cold", "secure", "ledger", "safe", "reserve", "diamond", "longterm", "early", "stash", "keys"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
+		{ names: personalNames.concat(["online", "social", "digital", "vibe"]), suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
+		{ names: ["player", "quest", "gamer", "ace", "rank", "arena", "guild", "main", "solo", "party", "loot", "champ"], suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
+		{ names: ["quest", "player", "realm", "party", "arena", "guild", "loot", "world", "level", "spawn", "match", "portal"], suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
+		{ names: ["luna", "artist", "studio", "gallery", "mint", "canvas", "works", "folio", "prints", "design", "creator", "sketch"], suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
+		{ names: ["agent", "prompt", "model", "builder", "studio", "labs", "neural", "bot", "maker", "toolkit", "vision", "compute"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
+		{ names: ["studio", "creator", "maker", "channel", "media", "public", "works", "craft", "launch", "folio", "content", "brand"], suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
+		{ names: infraNames, suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
+		{ names: ["brand", "studio", "founder", "company", "team", "office", "market", "hq", "sales", "growth", "partner", "client"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
+		{ names: ["launch", "founder", "build", "demo", "seed", "beta", "pitch", "mvp", "team", "growth", "venture", "scale"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
+		{ names: ["vote", "dao", "member", "council", "forum", "proposal", "govern", "delegate", "treasury", "guild", "signal", "quorum"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
+		{ names: ["ape", "degen", "trader", "moon", "memes", "wagmi", "rocket", "diamond", "alpha", "floor", "chart", "pump"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
+		{ names: ["early", "member", "alpha", "founder", "dayone", "legend", "veteran", "inner", "signal", "club", "access", "circle"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
 	];
 	var defaultExamples = buildDefaultExamples(exampleRound);
 	var examples = defaultExamples.slice();
@@ -88,15 +92,38 @@
 	}
 
 	function buildDefaultExamples(round) {
-		return registrarExamples.map(function (example) {
-			var names = example.names;
+		return registrarExamples.map(function (example, index) {
+			var chosenName = chooseExampleName(example, round, index);
 
 			return {
-				name: names[round % names.length],
+				name: chosenName,
 				suffix: example.suffix,
 				url: example.url
 			};
 		});
+	}
+
+	function chooseExampleName(example, round, index) {
+		var names = example.names;
+		var previous = lastExampleNames[example.suffix];
+		var randomIndex;
+		var selected;
+
+		if (!names.length) {
+			return "alex";
+		}
+
+		randomIndex = Math.floor(Math.random() * names.length);
+		randomIndex = (randomIndex + round + index) % names.length;
+		selected = names[randomIndex];
+
+		if (names.length > 1 && selected === previous) {
+			selected = names[(randomIndex + 1 + round) % names.length];
+		}
+
+		lastExampleNames[example.suffix] = selected;
+
+		return selected;
 	}
 
 	function sanitizeName(value, finalize) {
