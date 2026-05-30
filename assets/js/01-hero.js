@@ -719,8 +719,12 @@
 			userTouched = true;
 			window.clearTimeout(typingTimer);
 			setRegistrar(button.dataset.suffix, button.dataset.url);
-			input.focus();
-			queueInputSelection();
+			if (!customName) {
+				input.focus();
+				queueInputSelection();
+			} else if (nameShell) {
+				nameShell.classList.add("is-confirmed-name");
+			}
 		});
 	});
 
