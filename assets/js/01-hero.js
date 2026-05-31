@@ -78,6 +78,7 @@
 	var optionTouchMoved = false;
 	var customName = "";
 	var silentInputCleanup = false;
+	var suppressNextBlurResume = false;
 	var suffixSwitchDelayMs = 220;
 	var resumeSlowStart = false;
 
@@ -132,6 +133,15 @@
 
 		nameShell.classList.toggle("has-custom-name", Boolean(customName));
 		nameShell.classList.toggle("is-confirmed-name", Boolean(customName) && document.activeElement !== input);
+		syncLiveNameState();
+	}
+
+	function lockConfirmedNameState() {
+		if (!nameShell || !customName) {
+			return;
+		}
+
+		nameShell.classList.add("has-custom-name", "is-confirmed-name");
 		syncLiveNameState();
 	}
 
@@ -699,6 +709,7 @@
 		userTouched = true;
 		window.clearTimeout(typingTimer);
 		setRegistrar(nextButton.dataset.suffix, nextButton.dataset.url);
+		lockConfirmedNameState();
 		schedulePreviewResume();
 	}
 
@@ -832,10 +843,7 @@
 			userTouched = true;
 			window.clearTimeout(typingTimer);
 			setRegistrar(button.dataset.suffix, button.dataset.url);
-			if (customName && nameShell) {
-				nameShell.classList.add("is-confirmed-name");
-				syncLiveNameState();
-			}
+			lockConfirmedNameState();
 			schedulePreviewResume();
 		});
 	});
@@ -1028,7 +1036,10 @@
 		clearButton.addEventListener("click", function (event) {
 			event.preventDefault();
 			if (document.activeElement === input) {
+				suppressNextBlurResume = true;
 				input.blur();
+			} else {
+				suppressNextBlurResume = false;
 			}
 			window.clearTimeout(typingTimer);
 			input.value = "";
@@ -1046,11 +1057,19 @@
 			characterIndex = 0;
 			setFeedback("", "");
 			syncNameState("keep");
+			clearButton.blur();
 			queueTyping(tick, 420);
 		});
 	}
 
 	input.addEventListener("blur", function () {
+		if (suppressNextBlurResume) {
+			suppressNextBlurResume = false;
+			userEditedName = false;
+			syncLiveNameState();
+			return;
+		}
+
 		input.value = cleanName(input.value);
 		syncNameState();
 		resumeTyping(input.value !== "" && (customName !== "" || userEditedName));
