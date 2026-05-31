@@ -359,6 +359,10 @@
 	height: 1.16em;
 }
 
+.hero-name-shell.has-custom-name:not(:focus-within) .hero-input-caret {
+	opacity: 0;
+}
+
 .hero-name-shell.has-custom-name:not(:focus-within) .hero-input-caret::before {
 	opacity: 0;
 	animation: none;

@@ -125,6 +125,16 @@
 		nameShell.classList.toggle("has-live-name", Boolean(input.value) && (document.activeElement === input || userEditedName));
 	}
 
+	function syncConfirmedNameState() {
+		if (!nameShell) {
+			return;
+		}
+
+		nameShell.classList.toggle("has-custom-name", Boolean(customName));
+		nameShell.classList.toggle("is-confirmed-name", Boolean(customName) && document.activeElement !== input);
+		syncLiveNameState();
+	}
+
 	function buildDefaultExamples(round) {
 		return registrarExamples.map(function (example, index) {
 			var chosenName = chooseExampleName(example, round, index);
@@ -568,10 +578,7 @@
 	function setExampleSource(name) {
 		customName = cleanName(name);
 
-		if (nameShell) {
-			nameShell.classList.toggle("has-custom-name", Boolean(customName));
-			nameShell.classList.toggle("is-confirmed-name", Boolean(customName) && document.activeElement !== input);
-		}
+		syncConfirmedNameState();
 
 		examples = customName ? defaultExamples.map(function (example) {
 			return {
@@ -755,6 +762,7 @@
 		current = examples[exampleIndex];
 
 		if (customName) {
+			syncConfirmedNameState();
 			characterIndex = customName.length;
 			setExample(current);
 			exampleIndex = (exampleIndex + 1) % examples.length;
