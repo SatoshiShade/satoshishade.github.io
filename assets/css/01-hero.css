@@ -504,13 +504,13 @@
 .hero-name-options::before,
 .hero-name-options-fallback::before {
 	left: 0.42rem;
-	transform: translateY(-50%) rotate(-135deg);
+	transform: translateY(calc(-50% - 0.1rem)) rotate(-135deg);
 }
 
 .hero-name-options::after,
 .hero-name-options-fallback::after {
 	right: 0.42rem;
-	transform: translateY(-50%) rotate(45deg);
+	transform: translateY(calc(-50% - 0.1rem)) rotate(45deg);
 }
 
 .hero-name-options:hover::before,
@@ -1105,7 +1105,7 @@
 	}
 
 	.hero-name-input-row {
-		width: min(100%, calc(var(--hero-row-width) - 0.8rem));
+		width: min(100%, calc(var(--hero-row-width) - 1.45rem));
 		min-height: 58px;
 		padding-right: 0.78rem;
 		padding-left: 0.78rem;
