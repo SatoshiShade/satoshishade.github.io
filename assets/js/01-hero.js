@@ -122,7 +122,7 @@
 			return;
 		}
 
-		nameShell.classList.toggle("has-live-name", Boolean(input.value) && (document.activeElement === input || Boolean(customName) || userEditedName));
+		nameShell.classList.toggle("has-live-name", Boolean(input.value) && (document.activeElement === input || userEditedName));
 	}
 
 	function buildDefaultExamples(round) {
@@ -820,6 +820,7 @@
 				queueInputSelection();
 			} else if (nameShell) {
 				nameShell.classList.add("is-confirmed-name");
+				syncLiveNameState();
 				schedulePreviewResume();
 			}
 		});
@@ -970,6 +971,7 @@
 		syncNameState("keep");
 		scrollNameToolIntoView();
 		queueInputSelection();
+		syncLiveNameState();
 	});
 
 	input.addEventListener("beforeinput", function (event) {
@@ -1039,6 +1041,7 @@
 			nameShell.classList.toggle("is-confirmed-name", Boolean(customName));
 		}
 		userEditedName = false;
+		syncLiveNameState();
 	});
 
 	if (reducedMotion) {
