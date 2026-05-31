@@ -820,6 +820,10 @@
 				return;
 			}
 
+			if (document.activeElement === input) {
+				input.blur();
+			}
+
 			pickerMoving = true;
 			window.clearTimeout(pickerMoveTimer);
 			pickerMoveTimer = window.setTimeout(function () {
@@ -828,14 +832,11 @@
 			userTouched = true;
 			window.clearTimeout(typingTimer);
 			setRegistrar(button.dataset.suffix, button.dataset.url);
-			if (!customName) {
-				input.focus();
-				queueInputSelection();
-			} else if (nameShell) {
+			if (customName && nameShell) {
 				nameShell.classList.add("is-confirmed-name");
 				syncLiveNameState();
-				schedulePreviewResume();
 			}
+			schedulePreviewResume();
 		});
 	});
 
@@ -1026,6 +1027,9 @@
 	if (clearButton) {
 		clearButton.addEventListener("click", function (event) {
 			event.preventDefault();
+			if (document.activeElement === input) {
+				input.blur();
+			}
 			window.clearTimeout(typingTimer);
 			input.value = "";
 			customName = "";
