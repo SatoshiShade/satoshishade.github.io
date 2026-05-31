@@ -927,6 +927,9 @@
 		if (event.key === "Enter") {
 			event.preventDefault();
 			input.blur();
+		} else if (event.key === "Escape") {
+			event.preventDefault();
+			input.blur();
 		}
 	});
 
