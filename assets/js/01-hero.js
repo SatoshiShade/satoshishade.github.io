@@ -677,6 +677,29 @@
 		userTouched = true;
 		window.clearTimeout(typingTimer);
 		setRegistrar(nextButton.dataset.suffix, nextButton.dataset.url);
+		scheduleCustomNameRotation();
+	}
+
+	function scheduleCustomNameRotation() {
+		if (!customName || document.activeElement === input || reducedMotion) {
+			return;
+		}
+
+		syncExampleToCurrentSuffix();
+		characterIndex = customName.length;
+
+		if (nameShell) {
+			nameShell.classList.add("is-confirmed-name");
+		}
+
+		queueTyping(function () {
+			if (!customName || document.activeElement === input) {
+				return;
+			}
+
+			userTouched = false;
+			tick();
+		}, 1700);
 	}
 
 	function resumeTyping(useCustomInput) {
@@ -776,6 +799,7 @@
 				queueInputSelection();
 			} else if (nameShell) {
 				nameShell.classList.add("is-confirmed-name");
+				scheduleCustomNameRotation();
 			}
 		});
 	});
