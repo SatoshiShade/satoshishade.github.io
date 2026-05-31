@@ -174,7 +174,6 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	gap: 0.34rem;
 	width: min(100%, var(--hero-row-width));
 	max-width: var(--hero-control-width);
 	min-height: 62px;
@@ -198,39 +197,31 @@
 
 .hero-name-clear {
 	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	flex: 0 0 26px;
 	width: 26px;
 	height: 26px;
+	margin-right: 0.34rem;
 	margin-left: -0.18rem;
-	border: 0;
+	border: 1px solid rgba(217, 177, 255, 0.18);
 	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.055);
-	color: rgba(255, 255, 255, 0.5);
+	background: rgba(17, 0, 37, 0.72);
+	color: rgba(217, 177, 255, 0.66);
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1;
 	opacity: 0;
 	pointer-events: none;
 	transform: scale(0.92);
-	transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+	transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
 }
 
-.hero-name-clear::before,
-.hero-name-clear::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 10px;
-	height: 1.5px;
-	border-radius: 2px;
-	background: currentColor;
-	transform-origin: 50% 50%;
-}
-
-.hero-name-clear::before {
-	transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.hero-name-clear::after {
-	transform: translate(-50%, -50%) rotate(-45deg);
+.hero-name-clear span {
+	display: block;
+	margin-top: -0.02em;
+	pointer-events: none;
 }
 
 .hero-name-shell.has-live-name .hero-name-clear {
@@ -241,7 +232,8 @@
 
 .hero-name-clear:hover,
 .hero-name-clear:focus-visible {
-	background: rgba(255, 192, 0, 0.12);
+	border-color: rgba(255, 192, 0, 0.4);
+	background: rgba(255, 192, 0, 0.1);
 	color: var(--color-gold);
 }
 

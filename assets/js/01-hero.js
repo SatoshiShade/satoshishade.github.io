@@ -932,7 +932,7 @@
 
 	if (inputRow) {
 		inputRow.addEventListener("pointerdown", function (event) {
-			if (clearButton && event.target === clearButton) {
+			if (clearButton && clearButton.contains(event.target)) {
 				return;
 			}
 
