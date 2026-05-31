@@ -687,6 +687,10 @@
 			return;
 		}
 
+		if (document.activeElement === input) {
+			input.blur();
+		}
+
 		pickerMoving = true;
 		window.clearTimeout(pickerMoveTimer);
 		pickerMoveTimer = window.setTimeout(function () {
@@ -698,7 +702,7 @@
 		schedulePreviewResume();
 	}
 
-	function schedulePreviewResume() {
+	function schedulePreviewResume(delay) {
 		if (document.activeElement === input || reducedMotion) {
 			return;
 		}
@@ -726,7 +730,7 @@
 			deleting = true;
 			characterIndex = examples[exampleIndex] ? examples[exampleIndex].name.length : 0;
 			tick();
-		}, 1700);
+		}, delay || 1700);
 	}
 
 	function resumeTyping(useCustomInput) {
@@ -739,6 +743,7 @@
 		if (customName) {
 			setExample(examples[exampleIndex]);
 			userTouched = true;
+			schedulePreviewResume(3600);
 			return;
 		}
 
