@@ -20,7 +20,8 @@
 	var optionRail = document.querySelector(".hero-name-options");
 	var optionButtons = Array.prototype.slice.call(document.querySelectorAll(".hero-name-option"));
 	var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-	var maxNameLength = 12;
+	var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 519px)") : null;
+	var maxNameLength = mobileQuery && mobileQuery.matches ? 10 : 12;
 	var minimumControlWidth = 338;
 	var maximumControlWidth = 560;
 	var controlChromeWidth = 76;
@@ -86,6 +87,28 @@
 	input.maxLength = maxNameLength;
 	input.setAttribute("aria-invalid", "false");
 	syncNamePreview();
+
+	function demoLimitMessage() {
+		return "Preview limit: " + maxNameLength + " characters here. SNS shows the final .sol subdomain rules.";
+	}
+
+	function syncDemoLimit() {
+		var nextMaxNameLength = mobileQuery && mobileQuery.matches ? 10 : 12;
+
+		if (nextMaxNameLength === maxNameLength) {
+			return;
+		}
+
+		maxNameLength = nextMaxNameLength;
+		input.maxLength = maxNameLength;
+
+		if (input.value.length > maxNameLength) {
+			input.value = sanitizeName(input.value, false);
+			syncNameState("limit");
+		} else {
+			syncNameState("keep");
+		}
+	}
 
 	function syncNamePreview() {
 		namePreview.textContent = input.value || "";
@@ -224,7 +247,7 @@
 		var valid = input.value === "" || isValidName(input.value);
 		var invalidMessage = input.value.slice(-1) === "-" ?
 			"End with a letter or number. SNS checkout shows final registrar rules." :
-			"Use lowercase letters, numbers, and single hyphens. This demo is capped at 12 characters.";
+			"Use lowercase letters, numbers, and single hyphens. This preview is capped at " + maxNameLength + " characters.";
 
 		syncNamePreview();
 		input.setAttribute("aria-invalid", valid ? "false" : "true");
@@ -236,13 +259,13 @@
 		if (statusLabel) {
 			statusLabel.textContent = valid ?
 				"Demo preview accepts up to 12 lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sol subdomain length limit and registrar rules." :
-				"Name must use lowercase letters, numbers, and single hyphens. This demo is capped at 12 characters. It cannot start or end with a hyphen.";
+				"Name must use lowercase letters, numbers, and single hyphens. This preview is capped at " + maxNameLength + " characters. It cannot start or end with a hyphen.";
 		}
 
 		if (!valid) {
 			setFeedback("invalid", invalidMessage);
 		} else if (feedbackMode === "limit") {
-			setFeedback("limit", "Preview limit: 12 characters here. SNS shows the final .sol subdomain rules.");
+			setFeedback("limit", demoLimitMessage());
 		} else if (feedbackMode === "adjusted") {
 			setFeedback("adjusted", "Only lowercase letters, numbers, and single hyphens work in this preview.");
 		} else if (feedbackMode !== "keep") {
@@ -872,6 +895,13 @@
 	}
 
 	window.addEventListener("resize", queuePickerCollisionCheck);
+	window.addEventListener("resize", syncDemoLimit);
+
+	if (mobileQuery && mobileQuery.addEventListener) {
+		mobileQuery.addEventListener("change", syncDemoLimit);
+	} else if (mobileQuery && mobileQuery.addListener) {
+		mobileQuery.addListener(syncDemoLimit);
+	}
 
 	if (document.fonts && document.fonts.ready) {
 		document.fonts.ready.then(queuePickerCollisionCheck).catch(function () {});
@@ -900,7 +930,7 @@
 			event.inputType === "insertCompositionText";
 
 		if (incoming && nextLength > maxNameLength) {
-			setFeedback("limit", "Preview limit: 12 characters here. SNS shows the final .sol subdomain rules.");
+			setFeedback("limit", demoLimitMessage());
 		}
 	});
 

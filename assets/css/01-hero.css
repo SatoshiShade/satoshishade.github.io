@@ -254,7 +254,7 @@
 	height: calc(var(--hero-name-font-size) * var(--hero-name-line-height));
 	-webkit-appearance: none;
 	appearance: none;
-	caret-color: var(--color-gold);
+	caret-color: transparent;
 	color: transparent;
 	text-shadow: none;
 }
@@ -295,11 +295,6 @@
 
 .hero-name-input-row:focus-within .hero-input-caret {
 	height: 1.16em;
-}
-
-.hero-name-input-row:focus-within .hero-input-caret::before {
-	opacity: 0;
-	animation: none;
 }
 
 .hero-name-shell.has-custom-name:not(:focus-within) .hero-input-caret::before {
@@ -1107,6 +1102,13 @@
 		margin-top: 0.24rem;
 		width: min(72vw, calc(var(--hero-row-width) - 4rem));
 		max-width: 276px;
+	}
+
+	.hero-name-input-row {
+		width: min(100%, calc(var(--hero-row-width) - 0.8rem));
+		min-height: 58px;
+		padding-right: 0.78rem;
+		padding-left: 0.78rem;
 	}
 
 	.hero-name-options::before,
