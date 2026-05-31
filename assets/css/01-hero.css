@@ -1,7 +1,7 @@
 /*
 	File: assets/css/01-hero.css
 	Description: Hero, explainer graphic, interactive name preview, and benefit strip.
-	Last modified: 2026-05-30
+	Last modified: 2026-05-31
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -144,7 +144,7 @@
 	position: relative;
 	z-index: 1;
 	max-width: min(100%, var(--hero-row-width));
-	margin: 0.42rem auto 0;
+	margin: 0.52rem auto 0;
 	color: rgba(255, 255, 255, 0.44);
 	font-size: 0.68rem;
 	font-weight: 600;
