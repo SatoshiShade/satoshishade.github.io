@@ -16,6 +16,7 @@
 	var suffixLabel = document.getElementById("hero-name-suffix");
 	var statusLabel = document.getElementById("hero-name-status");
 	var feedbackLabel = document.getElementById("hero-name-feedback");
+	var clearButton = document.getElementById("hero-name-clear");
 	var registerLink = document.getElementById("hero-register-link");
 	var optionRail = document.querySelector(".hero-name-options");
 	var optionButtons = Array.prototype.slice.call(document.querySelectorAll(".hero-name-option"));
@@ -78,6 +79,7 @@
 	var customName = "";
 	var silentInputCleanup = false;
 	var suffixSwitchDelayMs = 220;
+	var resumeSlowStart = false;
 
 	if (!input || !suffixLabel || !registerLink || !namePreview) {
 		return;
@@ -113,6 +115,14 @@
 
 	function syncNamePreview() {
 		namePreview.textContent = input.value || "";
+	}
+
+	function syncLiveNameState() {
+		if (!nameShell) {
+			return;
+		}
+
+		nameShell.classList.toggle("has-live-name", Boolean(input.value) && (document.activeElement === input || Boolean(customName) || userEditedName));
 	}
 
 	function buildDefaultExamples(round) {
@@ -251,6 +261,7 @@
 			"Use lowercase letters, numbers, and single hyphens. This preview is capped at " + maxNameLength + " characters.";
 
 		syncNamePreview();
+		syncLiveNameState();
 		input.setAttribute("aria-invalid", valid ? "false" : "true");
 
 		if (inputRow) {
@@ -677,27 +688,36 @@
 		userTouched = true;
 		window.clearTimeout(typingTimer);
 		setRegistrar(nextButton.dataset.suffix, nextButton.dataset.url);
-		scheduleCustomNameRotation();
+		schedulePreviewResume();
 	}
 
-	function scheduleCustomNameRotation() {
-		if (!customName || document.activeElement === input || reducedMotion) {
+	function schedulePreviewResume() {
+		if (document.activeElement === input || reducedMotion) {
 			return;
 		}
 
 		syncExampleToCurrentSuffix();
-		characterIndex = customName.length;
 
-		if (nameShell) {
+		if (customName && nameShell) {
 			nameShell.classList.add("is-confirmed-name");
 		}
 
 		queueTyping(function () {
-			if (!customName || document.activeElement === input) {
+			if (document.activeElement === input) {
 				return;
 			}
 
 			userTouched = false;
+			resumeSlowStart = true;
+
+			if (customName) {
+				characterIndex = customName.length;
+				tick();
+				return;
+			}
+
+			deleting = true;
+			characterIndex = examples[exampleIndex] ? examples[exampleIndex].name.length : 0;
 			tick();
 		}, 1700);
 	}
@@ -774,7 +794,8 @@
 				return;
 			}
 
-			speed = characterIndex < 4 ? 260 : 116;
+			speed = resumeSlowStart ? 520 : characterIndex < 4 ? 260 : 116;
+			resumeSlowStart = false;
 		}
 
 		queueTyping(tick, speed + Math.random() * 30 - 8);
@@ -799,7 +820,7 @@
 				queueInputSelection();
 			} else if (nameShell) {
 				nameShell.classList.add("is-confirmed-name");
-				scheduleCustomNameRotation();
+				schedulePreviewResume();
 			}
 		});
 	});
@@ -911,6 +932,10 @@
 
 	if (inputRow) {
 		inputRow.addEventListener("pointerdown", function (event) {
+			if (clearButton && event.target === clearButton) {
+				return;
+			}
+
 			if (document.activeElement !== input) {
 				event.preventDefault();
 				input.focus();
@@ -979,6 +1004,29 @@
 		syncNameState(hitDemoLimit ? "limit" : wasAdjusted && !silentInputCleanup ? "adjusted" : "");
 		silentInputCleanup = false;
 	});
+
+	if (clearButton) {
+		clearButton.addEventListener("click", function (event) {
+			event.preventDefault();
+			window.clearTimeout(typingTimer);
+			input.value = "";
+			customName = "";
+			userEditedName = false;
+			userTouched = false;
+			deleting = false;
+
+			if (nameShell) {
+				nameShell.classList.remove("has-custom-name", "has-live-name", "is-confirmed-name", "is-invalid", "is-adjusted");
+			}
+
+			setExampleSource("");
+			syncExampleToCurrentSuffix();
+			characterIndex = 0;
+			setFeedback("", "");
+			syncNameState("keep");
+			queueTyping(tick, 420);
+		});
+	}
 
 	input.addEventListener("blur", function () {
 		input.value = cleanName(input.value);
