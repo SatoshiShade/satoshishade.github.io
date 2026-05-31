@@ -30,10 +30,10 @@
 	var currentSuffix = suffixLabel ? suffixLabel.textContent.trim() : "";
 	var exampleRound = 0;
 	var lastExampleNames = {};
-	var personalNames = ["alex", "maya", "sam", "luna", "nova", "kai", "zoe", "aria", "max", "mila", "leo", "nina", "rio", "ella", "noah", "ava", "tess", "jay", "mina", "zara"];
+	var personalNames = ["alex", "maya", "sam", "luna", "nova", "kai", "zoe", "aria", "max", "mila", "leo", "nina", "thomas", "ella", "noah", "ava", "tess", "jay", "mina", "zara"];
 	var genZNames = ["nova", "kai", "zoe", "aria", "mila", "rio", "zara", "neo", "jax", "kira", "niko", "skye", "luca", "mika", "raya", "mira"];
-	var web3Names = ["gm", "wagmi", "alpha", "holder", "early", "degen", "diamond", "ape", "trader", "mint", "memes", "vibes", "legend", "dayone", "monke", "based"];
-	var infraNames = ["vault", "ledger", "assets", "treasury", "holdings", "portfolio", "reserve", "capital", "yield", "tokens", "funds", "index"];
+	var web3Names = ["gm", "wagmi", "og", "hodler", "monke", "degen", "diamondhands", "ape", "vibe", "legend", "first", "based"];
+	var infraNames = ["myvault", "ledger", "myassets", "mybag", "folio"];
 	var registrarExamples = [
 		{ names: personalNames.concat(["handle", "profile"]), suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
 		{ names: web3Names, suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
