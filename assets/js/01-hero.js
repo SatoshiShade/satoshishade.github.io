@@ -635,6 +635,34 @@
 		typingTimer = window.setTimeout(callback, delay);
 	}
 
+	function clearNamePreview() {
+		if (document.activeElement === input) {
+			suppressNextBlurResume = true;
+			input.blur();
+		} else {
+			suppressNextBlurResume = false;
+		}
+
+		window.clearTimeout(typingTimer);
+		input.value = "";
+		customName = "";
+		userEditedName = false;
+		userTouched = false;
+		deleting = false;
+
+		if (nameShell) {
+			nameShell.classList.remove("has-custom-name", "has-live-name", "is-confirmed-name", "is-invalid", "is-adjusted");
+		}
+
+		setExampleSource("");
+		syncExampleToCurrentSuffix();
+		characterIndex = 0;
+		setFeedback("", "");
+		syncNameState("keep");
+		clearButton.blur();
+		queueTyping(tick, 420);
+	}
+
 	function queueInputSelection() {
 		window.clearTimeout(selectTimer);
 		selectTimer = window.setTimeout(function () {
@@ -1054,32 +1082,14 @@
 	});
 
 	if (clearButton) {
+		clearButton.addEventListener("pointerdown", function (event) {
+			event.preventDefault();
+			clearNamePreview();
+		});
+
 		clearButton.addEventListener("click", function (event) {
 			event.preventDefault();
-			if (document.activeElement === input) {
-				suppressNextBlurResume = true;
-				input.blur();
-			} else {
-				suppressNextBlurResume = false;
-			}
-			window.clearTimeout(typingTimer);
-			input.value = "";
-			customName = "";
-			userEditedName = false;
-			userTouched = false;
-			deleting = false;
-
-			if (nameShell) {
-				nameShell.classList.remove("has-custom-name", "has-live-name", "is-confirmed-name", "is-invalid", "is-adjusted");
-			}
-
-			setExampleSource("");
-			syncExampleToCurrentSuffix();
-			characterIndex = 0;
-			setFeedback("", "");
-			syncNameState("keep");
-			clearButton.blur();
-			queueTyping(tick, 420);
+			clearNamePreview();
 		});
 	}
 
