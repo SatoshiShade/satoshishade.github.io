@@ -1,7 +1,7 @@
 /*
 	File: assets/js/01-hero.js
 	Description: Interactive hero name preview for external SNS registrar links.
-	Last modified: 2026-05-31
+	Last modified: 2026-06-01
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -22,7 +22,7 @@
 	var optionButtons = Array.prototype.slice.call(document.querySelectorAll(".hero-name-option"));
 	var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 519px)") : null;
-	var maxNameLength = mobileQuery && mobileQuery.matches ? 10 : 12;
+	var maxNameLength = mobileQuery && mobileQuery.matches ? 12 : 16;
 	var minimumControlWidth = 338;
 	var maximumControlWidth = 560;
 	var controlChromeWidth = 76;
@@ -33,7 +33,7 @@
 	var lastExampleNames = {};
 	var personalNames = ["alex", "maya", "sam", "luna", "nova", "kai", "zoe", "aria", "max", "mila", "leo", "nina", "thomas", "ella", "noah", "ava", "tess", "jay", "mina", "zara"];
 	var genZNames = ["nova", "kai", "zoe", "aria", "mila", "rio", "zara", "neo", "jax", "kira", "niko", "skye", "luca", "mika", "raya", "mira"];
-	var web3Names = ["gm", "wagmi", "og", "hodler", "monke", "degen", "diamondhands", "ape", "vibe", "legend", "first", "based"];
+	var web3Names = ["gm", "wagmi", "og", "hodler", "monke", "degen", "diamond", "ape", "vibe", "legend", "first", "based"];
 	var infraNames = ["myvault", "ledger", "myassets", "mybag", "folio"];
 	var registrarExamples = [
 		{ names: personalNames.concat(["handle", "profile"]), suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
@@ -42,9 +42,9 @@
 		{ names: personalNames.concat(["myjournal", "diary", "notes"]), suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
 		{ names: personalNames.concat(["artist", "lilbubble", "legend"]), suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
 		{ names: personalNames.concat(["alpha", "builder", "wallet", "solana", "wagmi"]), suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
-		{ names: ["first", "hodler", "diamondhands", "alpha", "legend", "wagmi", "degen"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
+		{ names: ["first", "hodler", "diamond", "alpha", "legend", "wagmi", "degen"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
 		{ names: web3Names.concat(["moon"]), suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
-		{ names: ["vault", "holder", "cold", "myledger", "reserve"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
+		{ names: ["vault", "hodler", "cold", "myledger", "reserve"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
 		{ names: genZNames.concat(["vibe"]), suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
 		{ names: personalNames.concat(["pro", "first", "gg"]), suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
 		{ names: personalNames.concat(["pro"]), suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
@@ -55,7 +55,7 @@
 		{ names: ["mybrand", "mystudio", "founder", "monkebiz", "hq"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
 		{ names: ["launch", "founder", "demo", "beta"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
 		{ names: ["vote", "newproject", "council", "forum", "proposal"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
-		{ names: ["monke", "ape", "degen", "og", "wenmoon", "wagmi", "diamondhands", "alpha", "pump", "vibes", "based"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
+		{ names: ["monke", "ape", "degen", "og", "wenmoon", "wagmi", "diamond", "alpha", "pump", "vibes", "based"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
 		{ names: ["first", "alpha", "vip", "legend", "monke", "based"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
 	];
 	var defaultExamples = buildDefaultExamples(exampleRound);
@@ -93,11 +93,15 @@
 	syncNamePreview();
 
 	function demoLimitMessage() {
-		return "Preview limit: " + maxNameLength + " characters here. SNS shows the final .sol subdomain rules.";
+		return "Demo preview limit: " + maxNameLength + " characters here. SNS shows final .sol subdomain rules.";
+	}
+
+	function previewRulesMessage() {
+		return "Demo preview: use up to " + maxNameLength + " lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sol subdomain length limit and registrar rules.";
 	}
 
 	function syncDemoLimit() {
-		var nextMaxNameLength = mobileQuery && mobileQuery.matches ? 10 : 12;
+		var nextMaxNameLength = mobileQuery && mobileQuery.matches ? 12 : 16;
 
 		if (nextMaxNameLength === maxNameLength) {
 			return;
@@ -105,6 +109,15 @@
 
 		maxNameLength = nextMaxNameLength;
 		input.maxLength = maxNameLength;
+
+		if (!customName) {
+			refreshDefaultExamples();
+			syncExampleToCurrentSuffix();
+			characterIndex = Math.min(characterIndex, examples[exampleIndex] ? examples[exampleIndex].name.length : maxNameLength);
+			setExample(examples[exampleIndex]);
+			syncNameState("keep");
+			return;
+		}
 
 		if (input.value.length > maxNameLength) {
 			input.value = sanitizeName(input.value, false);
@@ -158,7 +171,9 @@
 	}
 
 	function chooseExampleName(example, round, index) {
-		var names = example.names;
+		var names = example.names.filter(function (name) {
+			return name.length <= maxNameLength && cleanName(name) === name;
+		});
 		var previous = lastExampleNames[example.suffix];
 		var randomIndex;
 		var selected;
@@ -283,6 +298,7 @@
 		syncNamePreview();
 		syncLiveNameState();
 		input.setAttribute("aria-invalid", valid ? "false" : "true");
+		input.setAttribute("title", previewRulesMessage());
 
 		if (inputRow) {
 			inputRow.classList.toggle("is-invalid", !valid);
@@ -290,7 +306,7 @@
 
 		if (statusLabel) {
 			statusLabel.textContent = valid ?
-				"Demo preview accepts up to 12 lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sol subdomain length limit and registrar rules." :
+				previewRulesMessage() :
 				"Name must use lowercase letters, numbers, and single hyphens. This preview is capped at " + maxNameLength + " characters. It cannot start or end with a hyphen.";
 		}
 
@@ -1007,7 +1023,9 @@
 			event.inputType === "insertCompositionText";
 
 		if (incoming && nextLength > maxNameLength) {
-			setFeedback("limit", demoLimitMessage());
+			if (!silentInputCleanup) {
+				setFeedback("limit", demoLimitMessage());
+			}
 		}
 	});
 
@@ -1028,7 +1046,7 @@
 			input.value = clean;
 		}
 
-		syncNameState(hitDemoLimit ? "limit" : wasAdjusted && !silentInputCleanup ? "adjusted" : "");
+		syncNameState(hitDemoLimit && !silentInputCleanup ? "limit" : wasAdjusted && !silentInputCleanup ? "adjusted" : "");
 		silentInputCleanup = false;
 	});
 
