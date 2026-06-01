@@ -1020,7 +1020,8 @@
 		silentInputCleanup = event.inputType === "insertReplacementText" ||
 			event.inputType === "insertFromPaste" ||
 			event.inputType === "insertFromDrop" ||
-			event.inputType === "insertCompositionText";
+			event.inputType === "insertCompositionText" ||
+			(event.inputType === "insertText" && incoming.length > 1);
 
 		if (incoming && nextLength > maxNameLength) {
 			if (!silentInputCleanup) {
@@ -1030,13 +1031,15 @@
 	});
 
 	input.addEventListener("input", function () {
-		var clean = sanitizeName(input.value, false);
-		var cleanBeforeLimit = input.value.toLowerCase()
+		var rawValue = input.value;
+		var clean = sanitizeName(rawValue, false);
+		var cleanBeforeLimit = rawValue.toLowerCase()
 			.replace(/[^a-z0-9-]/gu, "")
 			.replace(/-+/gu, "-")
 			.replace(/^-+/u, "");
 		var hitDemoLimit = cleanBeforeLimit.length > maxNameLength || input.value.length >= maxNameLength;
-		var wasAdjusted = input.value !== clean;
+		var wasAdjusted = rawValue !== clean;
+		var wasCaseOnlyAdjustment = rawValue.toLowerCase() === clean;
 
 		userTouched = true;
 		userEditedName = true;
@@ -1046,7 +1049,7 @@
 			input.value = clean;
 		}
 
-		syncNameState(hitDemoLimit && !silentInputCleanup ? "limit" : wasAdjusted && !silentInputCleanup ? "adjusted" : "");
+		syncNameState(hitDemoLimit && !silentInputCleanup ? "limit" : wasAdjusted && !silentInputCleanup && !wasCaseOnlyAdjustment ? "adjusted" : "");
 		silentInputCleanup = false;
 	});
 
