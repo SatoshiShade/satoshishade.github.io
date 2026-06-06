@@ -75,7 +75,9 @@ main {
 	display: flex;
 	align-items: center;
 	gap: 0.72rem;
-	width: min(calc(100% - 1.5rem), 760px);
+	width: fit-content;
+	max-width: min(calc(100% - 1.5rem), 720px);
+	min-width: min(100%, 440px);
 	min-height: 52px;
 	padding: 0.72rem 1rem;
 	border: 1px solid rgba(255, 192, 0, 0.28);
@@ -115,7 +117,7 @@ main {
 }
 
 .notice-body {
-	flex: 1 1 auto;
+	flex: 0 1 auto;
 	min-width: 0;
 	color: var(--color-text-muted);
 	font-size: 0.78rem;
@@ -125,6 +127,19 @@ main {
 .notice-body span,
 .sentence-line {
 	display: block;
+}
+
+.content-fit {
+	width: fit-content;
+	max-width: 100%;
+}
+
+.text-measure {
+	max-width: 64ch;
+}
+
+.text-measure--compact {
+	max-width: 42ch;
 }
 
 img {
@@ -415,7 +430,9 @@ sup {
 	.compat-notice {
 		align-items: flex-start;
 		gap: 0.58rem;
-		width: min(calc(100% - 1rem), 520px);
+		width: fit-content;
+		max-width: min(calc(100% - 1rem), 520px);
+		min-width: min(calc(100% - 1rem), 310px);
 		padding: 0.68rem 0.78rem;
 	}
 

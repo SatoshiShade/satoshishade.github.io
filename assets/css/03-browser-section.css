@@ -356,6 +356,10 @@
 }
 
 .browser-count {
+	width: fit-content;
+	max-width: 100%;
+	margin-right: auto;
+	margin-left: auto;
 	color: var(--color-text-faint);
 	font-size: 0.82rem;
 	line-height: 1.4;
