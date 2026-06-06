@@ -443,36 +443,37 @@
 
 	.domain-card[data-position="-1"],
 	.domain-card[data-position="1"] {
-		opacity: 0.32;
+		opacity: 0.38;
 		pointer-events: none;
 		transform: translate(-50%, -50%) translateX(var(--card-offset, 0)) scale(0.86);
 	}
 
 	.domain-card {
-		--tag-clearance: 70px;
-		width: min(84vw, 368px);
+		--tag-clearance: 48px;
+		width: min(78vw, 330px);
 		min-height: 194px;
 		padding: 1.06rem 1.08rem 1.12rem;
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
 	}
 
 	.domain-card::after {
-		top: -12px;
-		width: 96px;
-		height: 126px;
+		right: -18px;
+		top: -15px;
+		width: 88px;
+		height: 116px;
 		opacity: 0.58;
 	}
 
 	.domain-card::before {
-		right: 0.92rem;
+		right: 0.78rem;
 		bottom: 1.2rem;
-		width: 27px;
-		height: 27px;
+		width: 25px;
+		height: 25px;
 	}
 
 	.domain-card p {
 		max-width: calc(100% - var(--tag-clearance));
-		font-size: 0.88rem;
+		font-size: 0.9rem;
 		line-height: 1.3;
 	}
 
