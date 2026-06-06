@@ -140,10 +140,10 @@
 	content: "";
 	position: absolute;
 	right: 0;
-	top: -4px;
+	top: -8px;
 	z-index: 0;
-	width: 86px;
-	height: 113px;
+	width: 92px;
+	height: 121px;
 	border-radius: 0;
 	background: url("../img/tag.png") center / contain no-repeat;
 	opacity: 0.68;
@@ -452,9 +452,9 @@
 
 	.domain-card::after {
 		right: 0;
-		top: -7px;
-		width: 86px;
-		height: 113px;
+		top: -10px;
+		width: 92px;
+		height: 121px;
 		opacity: 0.58;
 	}
 
