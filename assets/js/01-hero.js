@@ -37,7 +37,6 @@
 	var infraNames = ["myvault", "ledger", "myassets", "mybag", "folio"];
 	var registrarExamples = [
 		{ names: personalNames.concat(["handle", "profile"]), suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
-		{ names: web3Names, suffix: "gbonk.sol", url: "https://v1.sns.id/sub-registrar/gbonk" },
 		{ names: personalNames.concat(["payme", "sendme", "tips"]), suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
 		{ names: personalNames.concat(["myjournal", "diary", "notes"]), suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
 		{ names: personalNames.concat(["artist", "lilbubble", "legend"]), suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },

@@ -27,7 +27,6 @@
 	var searchDelayMs = 180;
 	var scrollBackDelayMs = 40;
 	var featuredRanks = {
-		gbonk: 10,
 		mytag: 9,
 		ogclub: 8,
 		bonkog: 7,

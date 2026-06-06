@@ -238,6 +238,45 @@
 	transform: translateY(-2px);
 }
 
+.bc-paused {
+	cursor: default;
+	opacity: 0.78;
+}
+
+.bc-paused:hover {
+	border-color: rgba(217, 177, 255, 0.42);
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.36);
+	transform: none;
+}
+
+.bc-paused:hover::after {
+	opacity: 0;
+}
+
+.bc-paused .bc-badge,
+.bc-paused .bc-cta {
+	border-color: rgba(255, 255, 255, 0.16);
+	background: rgba(255, 255, 255, 0.055);
+	color: rgba(255, 255, 255, 0.58);
+}
+
+.bc-paused .bc-cta {
+	pointer-events: none;
+	transition: none;
+}
+
+.bc-paused .bc-name strong {
+	color: rgba(255, 192, 0, 0.7);
+}
+
+.bc-paused:hover .bc-cta {
+	border-color: rgba(255, 255, 255, 0.16);
+	background: rgba(255, 255, 255, 0.055);
+	box-shadow: none;
+	color: rgba(255, 255, 255, 0.58);
+	transform: none;
+}
+
 .bc-hidden {
 	display: none;
 }
