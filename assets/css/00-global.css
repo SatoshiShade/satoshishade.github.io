@@ -23,7 +23,6 @@
 	--radius-pill: 999px;
 	--content-width: 1060px;
 	--content-width-wide: 1200px;
-	--compat-anchor-offset: 5.25rem;
 	--section-divider-bg: linear-gradient(90deg, transparent, rgba(217, 177, 255, 0.24), rgba(255, 192, 0, 0.2), rgba(217, 177, 255, 0.24), transparent);
 	--font-primary: "Hind", "Noto Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	--line-compact: 1.34;
@@ -60,25 +59,13 @@ main {
 	width: 100%;
 }
 
-.compat-spacer {
-	display: none;
-}
-
-html.no-js .compat-spacer {
-	display: block;
-	height: 4.6rem;
-}
-
-.js .compat-notice,
-.js .compat-spacer {
+.js .compat-notice {
 	display: none;
 }
 
 .compat-notice {
-	position: fixed;
-	top: 0.7rem;
-	left: 50%;
-	z-index: 50;
+	position: relative;
+	z-index: 1;
 	display: grid;
 	grid-template-columns: auto auto minmax(18ch, 1fr);
 	align-items: center;
@@ -87,13 +74,13 @@ html.no-js .compat-spacer {
 	max-width: min(calc(100% - 1.5rem), 720px);
 	min-width: min(100%, 440px);
 	min-height: 52px;
+	margin: 0.72rem auto 0;
 	padding: 0.72rem 1rem;
 	border: 1px solid rgba(255, 192, 0, 0.28);
 	border-radius: 12px;
 	background: rgba(12, 0, 28, 0.88);
 	box-shadow: 0 14px 38px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 	text-align: left;
-	transform: translateX(-50%);
 	backdrop-filter: blur(16px);
 }
 
@@ -356,12 +343,6 @@ sup {
 	scroll-margin-top: 0;
 }
 
-html.no-js #hero-name-tool,
-html.no-js #registrar-browser,
-html.no-js .benefits-panel {
-	scroll-margin-top: var(--compat-anchor-offset);
-}
-
 .js .reveal-section:not(.hero-section) .section-header,
 .js .reveal-section:not(.hero-section) .top-picks-carousel,
 .js .reveal-section:not(.hero-section) .top-picks-controls,
@@ -437,14 +418,6 @@ html.no-js .benefits-panel {
 		scroll-padding-top: 0;
 	}
 
-	html.no-js {
-		--compat-anchor-offset: 7rem;
-	}
-
-	html.no-js .compat-spacer {
-		height: 6.35rem;
-	}
-
 	.compat-notice {
 		grid-template-columns: auto 1fr;
 		align-items: center;
@@ -453,6 +426,7 @@ html.no-js .benefits-panel {
 		width: fit-content;
 		max-width: min(calc(100% - 1rem), 520px);
 		min-width: min(calc(100% - 1rem), 310px);
+		margin-top: 0.5rem;
 		padding: 0.68rem 0.78rem;
 	}
 

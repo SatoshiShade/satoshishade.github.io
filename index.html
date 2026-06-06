@@ -108,14 +108,20 @@
 			}
 
 			.domain-card {
+				--tag-clearance: 0 !important;
 				position: relative !important;
 				left: auto !important;
 				top: auto !important;
-				width: 100% !important;
-				max-width: 430px !important;
-				min-height: 230px !important;
+				grid-template-columns: 1fr !important;
+				grid-template-rows: auto auto auto auto !important;
+				justify-items: center !important;
+				width: min(100%, 342px) !important;
+				max-width: 342px !important;
+				min-height: 0 !important;
 				height: 100% !important;
 				margin: 0 auto !important;
+				padding: 1rem 1rem 1.06rem !important;
+				text-align: center !important;
 				opacity: 1 !important;
 				transform: none !important;
 			}
@@ -131,6 +137,34 @@
 				background:
 					linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 34%),
 					linear-gradient(135deg, rgba(31, 14, 82, 0.76), rgba(14, 0, 31, 0.72)) !important;
+			}
+
+			.card-topline,
+			.domain-name,
+			.domain-card p {
+				max-width: 100% !important;
+			}
+
+			.card-topline {
+				justify-content: center !important;
+			}
+
+			.domain-name {
+				align-items: center !important;
+			}
+
+			.domain-card p {
+				grid-column: auto !important;
+				grid-row: auto !important;
+				align-self: auto !important;
+				margin-right: auto !important;
+				margin-left: auto !important;
+			}
+
+			.card-cta {
+				grid-column: auto !important;
+				grid-row: auto !important;
+				justify-self: center !important;
 			}
 
 			.domain-card:first-child {
@@ -163,7 +197,7 @@
 
 			@media (min-width: 760px) {
 				.top-picks-carousel {
-					grid-template-columns: repeat(2, minmax(0, 430px)) !important;
+					grid-template-columns: repeat(2, minmax(0, 342px)) !important;
 					justify-content: center !important;
 					align-items: stretch !important;
 				}
@@ -174,9 +208,8 @@
 <body>
 	<div class="compat-notice" role="status">
 		<p class="notice-title">Limited Experience</p>
-		<p class="notice-body"><span>JavaScript is off, so previews, filters, and carousels are simplified.</span><span>Registration links remain available.</span></p>
+		<p class="notice-body"><span>JavaScript is off.</span><span>Previews and filters are simplified. Links still work.</span></p>
 	</div>
-	<div class="compat-spacer" aria-hidden="true"></div>
 
 	<main>
 		<!-- Hero: Introduces the name tag idea before the registrar list. -->
