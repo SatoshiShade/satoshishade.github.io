@@ -972,7 +972,7 @@
 }
 
 .hero-scroll-cue--intro {
-	display: none;
+	display: inline-flex;
 }
 
 .hero-scroll-cue--next {
@@ -1145,7 +1145,6 @@
 
 @media (max-width: 519px) {
 	.hero-scroll-cue--intro {
-		display: inline-flex;
 		width: min(188px, 52vw);
 		height: 28px;
 		margin: 0 auto -0.14rem;
