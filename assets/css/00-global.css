@@ -55,34 +55,47 @@ body {
 	color-scheme: dark;
 }
 
+html.no-js body {
+	padding-top: 4.6rem;
+}
+
 main {
 	width: 100%;
 }
 
+.js .compat-notice {
+	display: none;
+}
+
 .compat-notice {
-	position: relative;
+	position: fixed;
+	top: 0.7rem;
+	left: 50%;
+	z-index: 50;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	width: min(calc(100% - 2rem), 620px);
-	margin: 1.35rem auto 0;
-	padding: 1.15rem 1.25rem 1.2rem;
-	border: 1px solid rgba(255, 255, 255, 0.14);
-	border-radius: 16px;
-	background: rgba(255, 255, 255, 0.055);
-	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.24);
-	text-align: center;
+	gap: 0.72rem;
+	width: min(calc(100% - 1.5rem), 760px);
+	min-height: 52px;
+	padding: 0.72rem 1rem;
+	border: 1px solid rgba(255, 192, 0, 0.28);
+	border-radius: 12px;
+	background: rgba(12, 0, 28, 0.88);
+	box-shadow: 0 14px 38px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+	text-align: left;
+	transform: translateX(-50%);
+	backdrop-filter: blur(16px);
 }
 
 .compat-notice::before {
 	content: "!";
+	flex: 0 0 auto;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 1.55rem;
-	height: 1.38rem;
-	margin-bottom: 0.48rem;
-	padding-top: 0.18rem;
+	width: 1.38rem;
+	height: 1.24rem;
+	padding-top: 0.14rem;
 	background: rgba(255, 192, 0, 0.92);
 	clip-path: polygon(50% 0, 100% 100%, 0 100%);
 	color: #120018;
@@ -92,16 +105,21 @@ main {
 }
 
 .notice-title {
-	margin-bottom: 0.25rem;
+	flex: 0 0 auto;
 	color: var(--color-gold);
-	font-size: 0.95rem;
+	font-size: 0.78rem;
 	font-weight: 700;
+	letter-spacing: 0.08em;
+	line-height: 1.15;
+	text-transform: uppercase;
 }
 
 .notice-body {
+	flex: 1 1 auto;
+	min-width: 0;
 	color: var(--color-text-muted);
-	font-size: 0.84rem;
-	line-height: var(--line-readable);
+	font-size: 0.78rem;
+	line-height: 1.45;
 }
 
 img {
@@ -376,8 +394,27 @@ sup {
 }
 
 @media (max-width: 759px) {
+	html.no-js body {
+		padding-top: 5.5rem;
+	}
+
 	html.js {
 		scroll-padding-top: 0;
+	}
+
+	.compat-notice {
+		align-items: flex-start;
+		gap: 0.58rem;
+		width: min(calc(100% - 1rem), 520px);
+		padding: 0.68rem 0.78rem;
+	}
+
+	.notice-title {
+		font-size: 0.7rem;
+	}
+
+	.notice-body {
+		font-size: 0.74rem;
 	}
 
 	.reveal-section {
@@ -415,12 +452,6 @@ sup {
 		filter: none;
 		transform: none;
 		will-change: auto;
-	}
-}
-
-@supports ((display: grid) and (selector(:focus-visible))) {
-	.js .compat-notice {
-		display: none;
 	}
 }
 

@@ -386,52 +386,6 @@
 	color: var(--color-gold);
 }
 
-.noscript-notice {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: min(100%, 520px);
-	margin: 0 auto;
-	padding: 1.15rem 1.25rem 1.2rem;
-	border: 1px solid rgba(255, 255, 255, 0.14);
-	border-radius: 16px;
-	background: rgba(255, 255, 255, 0.055);
-	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.24);
-	text-align: center;
-}
-
-.noscript-notice::before {
-	content: "!";
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 1.55rem;
-	height: 1.38rem;
-	margin-bottom: 0.48rem;
-	padding-top: 0.18rem;
-	background: rgba(255, 192, 0, 0.92);
-	clip-path: polygon(50% 0, 100% 100%, 0 100%);
-	color: #120018;
-	font-size: 0.72rem;
-	font-weight: 800;
-	line-height: 1;
-}
-
-.noscript-title {
-	margin-bottom: 0.28rem;
-	color: var(--color-gold);
-	font-size: 0.95rem;
-	font-weight: 700;
-	line-height: 1.25;
-}
-
-.noscript-body {
-	color: var(--color-text-muted);
-	font-size: 0.84rem;
-	line-height: var(--line-readable);
-}
-
 @media (min-width: 560px) {
 	.browser-section {
 		padding-right: 2rem;

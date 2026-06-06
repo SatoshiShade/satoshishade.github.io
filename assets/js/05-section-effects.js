@@ -1,7 +1,7 @@
 /*
 	File: assets/js/05-section-effects.js
 	Description: Touch-friendly scroll-linked section reveal states.
-	Last modified: 2026-05-30
+	Last modified: 2026-06-06
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -9,8 +9,14 @@
 	"use strict";
 
 	var sections = Array.prototype.slice.call(document.querySelectorAll(".reveal-section"));
+	var firstHeroTarget = document.querySelector(".hero-scroll-cue--intro");
+	var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 	var observer;
 	var ticking = false;
+	var snapEligible = Boolean(firstHeroTarget && !reducedMotion && !window.location.hash);
+	var snapActive = false;
+	var snapStartedAt = 0;
+	var snapAbortTimer;
 
 	if (sections.length === 0) {
 		return;
@@ -67,6 +73,111 @@
 		window.requestAnimationFrame(updateVisibleSections);
 	}
 
+	function cancelHeroSnap() {
+		if (!snapActive) {
+			return;
+		}
+
+		snapActive = false;
+		document.documentElement.classList.remove("is-hero-snapping");
+
+		if (snapAbortTimer) {
+			window.clearTimeout(snapAbortTimer);
+			snapAbortTimer = null;
+		}
+	}
+
+	function finishHeroSnap() {
+		snapActive = false;
+		snapEligible = false;
+		document.documentElement.classList.remove("is-hero-snapping");
+	}
+
+	function getFirstHeroTargetTop() {
+		var hash = firstHeroTarget ? firstHeroTarget.getAttribute("href") : "";
+		var target = hash && hash.charAt(0) === "#" ? document.querySelector(hash) : null;
+
+		if (!target) {
+			return null;
+		}
+
+		return target.getBoundingClientRect().top + window.pageYOffset;
+	}
+
+	function maybeSnapPastHero(deltaY) {
+		var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+		var targetTop;
+
+		if (!snapEligible || snapActive || deltaY <= 0 || scrollY > 92) {
+			return;
+		}
+
+		targetTop = getFirstHeroTargetTop();
+
+		if (targetTop === null || targetTop < 160) {
+			snapEligible = false;
+			return;
+		}
+
+		snapActive = true;
+		snapStartedAt = Date.now();
+		document.documentElement.classList.add("is-hero-snapping");
+
+		window.scrollTo({
+			top: Math.max(0, targetTop - 18),
+			behavior: "smooth"
+		});
+
+		snapAbortTimer = window.setTimeout(finishHeroSnap, 920);
+	}
+
+	function handleWheel(event) {
+		if (snapActive) {
+			handleManualScrollIntent();
+			return;
+		}
+
+		maybeSnapPastHero(event.deltaY || 0);
+	}
+
+	function handleTouchStart(event) {
+		if (!event.touches || event.touches.length !== 1) {
+			return;
+		}
+
+		handleTouchStart.y = event.touches[0].clientY;
+	}
+
+	function handleTouchMove(event) {
+		var startY = handleTouchStart.y;
+		var currentY;
+
+		if (typeof startY !== "number" || !event.touches || event.touches.length !== 1) {
+			return;
+		}
+
+		if (snapActive) {
+			handleManualScrollIntent();
+			handleTouchStart.y = null;
+			return;
+		}
+
+		currentY = event.touches[0].clientY;
+
+		if (startY - currentY > 14) {
+			maybeSnapPastHero(startY - currentY);
+			handleTouchStart.y = null;
+		}
+	}
+
+	function handleManualScrollIntent() {
+		if (!snapActive || Date.now() - snapStartedAt < 180) {
+			return;
+		}
+
+		cancelHeroSnap();
+	}
+
 	if ("IntersectionObserver" in window) {
 		observer = new IntersectionObserver(function (entries) {
 			entries.forEach(function (entry) {
@@ -85,6 +196,13 @@
 
 	window.addEventListener("scroll", requestUpdate, { passive: true });
 	window.addEventListener("resize", requestUpdate);
+
+	if (snapEligible) {
+		window.addEventListener("wheel", handleWheel, { passive: true });
+		window.addEventListener("touchstart", handleTouchStart, { passive: true });
+		window.addEventListener("touchmove", handleTouchMove, { passive: true });
+		window.addEventListener("keydown", handleManualScrollIntent);
+	}
 
 	updateVisibleSections();
 }());

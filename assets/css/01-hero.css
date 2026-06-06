@@ -1007,6 +1007,16 @@
 	transform: translateY(1px);
 }
 
+.hero-scroll-cue:focus-visible,
+.is-hero-snapping .hero-scroll-cue--intro {
+	opacity: 1;
+	transform: translateY(1px);
+}
+
+.is-hero-snapping .hero-scroll-cue--intro {
+	pointer-events: none;
+}
+
 .benefits-panel {
 	width: calc(100% + 2.4rem);
 	margin: -0.55rem -1.2rem 0;
