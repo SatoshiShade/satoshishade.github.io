@@ -47,7 +47,6 @@
 		{ names: ["vault", "hodler", "cold", "myledger", "reserve"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
 		{ names: genZNames.concat(["vibe"]), suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
 		{ names: personalNames.concat(["pro", "first", "gg"]), suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
-		{ names: personalNames.concat(["pro"]), suffix: "playverse.sol", url: "https://v1.sns.id/sub-registrar/playverse" },
 		{ names: personalNames.concat(["artist", "mystudio", "mygallery", "creator"]), suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
 		{ names: ["agent", "myart", "builder", "bot"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
 		{ names: personalNames.concat(["myart", "studio", "mycontent"]), suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
