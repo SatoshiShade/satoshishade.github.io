@@ -1,7 +1,7 @@
 /*
 	File: assets/css/02-top-picks.css
 	Description: Curated registrar cards shown above the full browser.
-	Last modified: 2026-05-30
+	Last modified: 2026-06-06
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -17,11 +17,11 @@
 }
 
 .domains-section .section-header {
-	max-width: 430px;
+	max-width: 620px;
 }
 
 .domains-section .section-subline {
-	max-width: 40ch;
+	max-width: 68ch;
 }
 
 .top-picks-controls {
@@ -78,7 +78,8 @@
 	align-items: center;
 	justify-items: center;
 	width: 100%;
-	min-height: 258px;
+	max-width: 980px;
+	min-height: 238px;
 	overflow: hidden;
 	touch-action: pan-y pinch-zoom;
 }
@@ -111,17 +112,17 @@
 .domain-card {
 	--card-accent: var(--color-gold);
 	--card-accent-soft: rgba(255, 192, 0, 0.08);
-	--tag-clearance: 86px;
+	--tag-clearance: 58px;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
-	gap: 0.62rem;
-	width: min(82vw, 430px);
-	min-height: 222px;
+	gap: 0.54rem;
+	width: min(76vw, 384px);
+	min-height: 204px;
 	overflow: hidden;
-	padding: 1.28rem 1.62rem 1.36rem;
+	padding: 1.16rem 1.36rem 1.22rem;
 	border: 1px solid rgba(217, 177, 255, 0.42);
 	border-radius: var(--radius-card);
 	background:
@@ -138,11 +139,11 @@
 .domain-card::after {
 	content: "";
 	position: absolute;
-	right: 0;
-	top: -10px;
+	right: -8px;
+	top: -14px;
 	z-index: 0;
-	width: 112px;
-	height: 144px;
+	width: 102px;
+	height: 132px;
 	border-radius: 0;
 	background: url("../img/tag.png") center / contain no-repeat;
 	opacity: 0.56;
@@ -154,8 +155,8 @@
 .domain-card::before {
 	content: "";
 	position: absolute;
-	right: 1.03rem;
-	bottom: 1.55rem;
+	right: 0.98rem;
+	bottom: 1.28rem;
 	z-index: 1;
 	width: 31px;
 	height: 31px;
@@ -190,12 +191,12 @@
 }
 
 .domain-card[data-position="-1"] {
-	--card-offset: -62%;
+	--card-offset: -58%;
 	opacity: 0.46;
 }
 
 .domain-card[data-position="1"] {
-	--card-offset: 62%;
+	--card-offset: 58%;
 	opacity: 0.46;
 }
 
@@ -276,7 +277,7 @@
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.04rem;
-	max-width: min(25ch, calc(100% - var(--tag-clearance)));
+	max-width: min(27ch, calc(100% - var(--tag-clearance)));
 	line-height: 1.05;
 }
 
@@ -295,16 +296,16 @@
 
 .domain-name strong {
 	color: var(--color-gold);
-	word-break: break-word;
-	overflow-wrap: anywhere;
+	word-break: normal;
+	overflow-wrap: normal;
 }
 
 .domain-card p {
-	max-width: min(31ch, calc(100% - var(--tag-clearance)));
+	max-width: min(34ch, calc(100% - var(--tag-clearance)));
 	color: rgba(255, 255, 255, 0.76);
-	font-size: clamp(0.94rem, 2vw, 1.03rem);
+	font-size: clamp(0.9rem, 1.4vw, 0.98rem);
 	line-height: 1.38;
-	text-wrap: balance;
+	text-wrap: pretty;
 	overflow-wrap: break-word;
 }
 
@@ -492,7 +493,7 @@
 	}
 
 	.top-picks-carousel {
-		min-height: 276px;
+		min-height: 246px;
 	}
 }
 
