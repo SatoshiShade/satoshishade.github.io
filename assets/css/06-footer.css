@@ -182,7 +182,6 @@
 @media (min-width: 700px) {
 	.footer-disclaimer p,
 	.footer-footnotes p {
-		hyphens: auto;
 		text-align: justify;
 		text-align-last: left;
 	}

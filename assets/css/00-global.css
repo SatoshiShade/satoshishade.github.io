@@ -122,6 +122,11 @@ main {
 	line-height: 1.45;
 }
 
+.notice-body span,
+.sentence-line {
+	display: block;
+}
+
 img {
 	display: block;
 	max-width: 100%;
@@ -219,11 +224,17 @@ strong {
 p,
 li,
 .intro-body,
+.hero-demo-note,
 .bc p,
 .faq-a p,
+.footer-contact,
 .footer-disclaimer p,
-.footer-footnotes p {
+.footer-footnotes p,
+.legal-card p,
+.legal-card li {
 	text-wrap: pretty;
+	hyphens: manual;
+	overflow-wrap: break-word;
 }
 
 sup {
@@ -387,7 +398,6 @@ sup {
 @media (min-width: 700px) {
 	.legal-card p,
 	.legal-card li {
-		hyphens: auto;
 		text-align: justify;
 		text-align-last: left;
 	}
