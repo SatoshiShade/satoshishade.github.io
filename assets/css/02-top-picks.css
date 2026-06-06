@@ -111,7 +111,7 @@
 .domain-card {
 	--card-accent: var(--color-gold);
 	--card-accent-soft: rgba(255, 192, 0, 0.08);
-	--tag-clearance: 104px;
+	--tag-clearance: 86px;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -276,7 +276,7 @@
 	flex-direction: column;
 	align-items: flex-start;
 	gap: 0.04rem;
-	max-width: min(24ch, calc(100% - var(--tag-clearance)));
+	max-width: min(25ch, calc(100% - var(--tag-clearance)));
 	line-height: 1.05;
 }
 
@@ -296,14 +296,16 @@
 .domain-name strong {
 	color: var(--color-gold);
 	word-break: break-word;
+	overflow-wrap: anywhere;
 }
 
 .domain-card p {
-	max-width: min(28ch, calc(100% - var(--tag-clearance)));
+	max-width: min(31ch, calc(100% - var(--tag-clearance)));
 	color: rgba(255, 255, 255, 0.76);
 	font-size: clamp(0.94rem, 2vw, 1.03rem);
 	line-height: 1.38;
-	text-wrap: pretty;
+	text-wrap: balance;
+	overflow-wrap: break-word;
 }
 
 .card-cta {
@@ -439,8 +441,8 @@
 	}
 
 	.domain-card {
-		--tag-clearance: 92px;
-		width: min(78vw, 360px);
+		--tag-clearance: 70px;
+		width: min(84vw, 368px);
 		min-height: 194px;
 		padding: 1.06rem 1.08rem 1.12rem;
 		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
@@ -461,9 +463,9 @@
 	}
 
 	.domain-card p {
-		max-width: min(29ch, calc(100% - var(--tag-clearance)));
+		max-width: min(33ch, calc(100% - var(--tag-clearance)));
 		font-size: 0.88rem;
-		line-height: 1.26;
+		line-height: 1.3;
 	}
 
 	.domain-name span,

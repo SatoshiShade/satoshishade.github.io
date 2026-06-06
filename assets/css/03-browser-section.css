@@ -271,15 +271,18 @@
 	letter-spacing: 0;
 	line-height: 1.2;
 	word-break: break-word;
+	overflow-wrap: anywhere;
 }
 
 .bc p {
-	max-width: 100%;
+	max-width: 34ch;
 	margin-top: -0.16rem;
 	margin-bottom: 0.18rem;
 	color: rgba(255, 255, 255, 0.78);
 	font-size: 0.76rem;
 	line-height: var(--line-readable);
+	text-wrap: pretty;
+	overflow-wrap: break-word;
 }
 
 .bc-cta {
