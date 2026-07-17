@@ -62,10 +62,6 @@
 	color: var(--color-gold);
 }
 
-.faq-q > span:first-child {
-	transform: translateY(3px);
-}
-
 .faq-chevron {
 	position: relative;
 	flex-shrink: 0;

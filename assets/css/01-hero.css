@@ -612,7 +612,7 @@
 	width: var(--picker-item-width);
 	min-width: 0;
 	min-height: 30px;
-	padding: calc(0.23rem + 1px) 0.18rem calc(0.23rem - 1px);
+	padding: 0.23rem 0.18rem;
 	border: 0;
 	border-radius: 0;
 	background: transparent;
@@ -788,7 +788,7 @@
 	width: var(--picker-item-width);
 	min-width: 0;
 	min-height: 30px;
-	padding: calc(0.23rem + 1px) 0.18rem calc(0.23rem - 1px);
+	padding: 0.23rem 0.18rem;
 	color: rgba(255, 255, 255, 0.42);
 	font-size: var(--picker-font-size);
 	font-weight: 600;
@@ -906,7 +906,7 @@
 }
 
 .hero-tool-primary {
-	padding: calc(0.5rem + 1px) 0.82rem calc(0.5rem - 1px);
+	padding: 0.5rem 0.82rem;
 	border: 1px solid rgba(255, 192, 0, 0.58);
 	border-radius: var(--radius-pill);
 	background: rgba(255, 192, 0, 0.11);
@@ -917,7 +917,7 @@
 
 .hero-tool-secondary {
 	min-height: 28px;
-	padding: calc(0.2rem + 1px) 0 calc(0.2rem - 1px);
+	padding: 0.2rem 0;
 	border: 0;
 	border-radius: 0;
 	background: transparent;

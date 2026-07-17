@@ -316,7 +316,7 @@
 	align-items: center;
 	justify-self: start;
 	min-height: 30px;
-	padding: calc(0.34rem + 1px) 0.68rem calc(0.34rem - 1px);
+	padding: 0.34rem 0.68rem;
 	border: 1px solid rgba(255, 192, 0, 0.32);
 	border-radius: var(--radius-pill);
 	background: rgba(255, 192, 0, 0.1);
@@ -482,7 +482,7 @@
 
 	.card-cta {
 		min-height: 32px;
-		padding: calc(0.4rem + 1px) 0.72rem calc(0.4rem - 1px);
+		padding: 0.4rem 0.72rem;
 		font-size: 0.78rem;
 	}
 

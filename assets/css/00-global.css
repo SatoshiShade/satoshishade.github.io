@@ -274,7 +274,7 @@ sup {
 	align-items: center;
 	min-height: 36px;
 	margin-bottom: 1rem;
-	padding: calc(0.42rem + 1px) 0.78rem calc(0.42rem - 1px);
+	padding: 0.42rem 0.78rem;
 	border: 1px solid rgba(255, 192, 0, 0.34);
 	border-radius: var(--radius-pill);
 	background: rgba(255, 255, 255, 0.05);
