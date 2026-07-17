@@ -1008,14 +1008,9 @@
 	transform: translateY(1px);
 }
 
-.hero-scroll-cue:focus-visible,
-.is-hero-snapping .hero-scroll-cue--intro {
+.hero-scroll-cue:focus-visible {
 	opacity: 1;
 	transform: translateY(1px);
-}
-
-.is-hero-snapping .hero-scroll-cue--intro {
-	pointer-events: none;
 }
 
 .benefits-panel {
