@@ -163,6 +163,23 @@ button {
 	cursor: pointer;
 }
 
+/* Trim font-dependent half-leading so control labels center by glyph metrics. */
+.legal-back,
+.hero-name-option,
+.hero-name-option-fallback,
+.hero-tool-primary,
+.hero-tool-secondary,
+.card-cta,
+.bsw-clear,
+.filter-pill,
+.bc-cta,
+.browser-more-btn,
+.faq-q > span:first-child,
+.social-btn,
+.footer-action {
+	text-box: trim-both cap alphabetic;
+}
+
 strong {
 	font-weight: 700;
 	color: rgba(255, 255, 255, 0.94);
