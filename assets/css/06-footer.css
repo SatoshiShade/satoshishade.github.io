@@ -15,7 +15,7 @@
 	padding: 2.5rem 1.2rem 2rem;
 	border-top: 1px solid var(--color-border);
 	background: rgba(5, 0, 15, 0.92);
-	color-scheme: dark;
+	color-scheme: only dark;
 }
 
 .footer-inner {

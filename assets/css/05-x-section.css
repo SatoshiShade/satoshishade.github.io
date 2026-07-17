@@ -13,7 +13,7 @@
 	max-width: var(--content-width);
 	margin: 0 auto;
 	padding: 2.7rem 1.2rem 3.7rem;
-	color-scheme: dark;
+	color-scheme: only dark;
 }
 
 .social-inner {
