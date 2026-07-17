@@ -1,7 +1,7 @@
 /*
 	File: assets/css/05-x-section.css
 	Description: Social follow call-to-action section.
-	Last modified: 2026-05-30
+	Last modified: 2026-07-17
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -59,7 +59,7 @@
 	width: auto;
 	max-width: min(100%, 320px);
 	min-height: 44px;
-	padding: 0.76rem 1.55rem;
+	padding: calc(0.76rem + 1px) 1.55rem calc(0.76rem - 1px);
 	border: 2px solid var(--color-gold-bright);
 	border-radius: var(--radius-pill);
 	background: var(--color-gold-bright);
@@ -111,7 +111,7 @@
 
 	.social-btn {
 		max-width: 100%;
-		padding: 0.72rem 1.1rem;
+		padding: calc(0.72rem + 1px) 1.1rem calc(0.72rem - 1px);
 	}
 }
 

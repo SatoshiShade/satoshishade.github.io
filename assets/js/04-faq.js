@@ -1,7 +1,7 @@
 /*
 	File: assets/js/04-faq.js
 	Description: Accessible single-open FAQ accordion behavior.
-	Last modified: 2026-05-30
+	Last modified: 2026-07-17
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -16,6 +16,10 @@
 
 		question.setAttribute("aria-expanded", "false");
 
+		if (item) {
+			item.classList.remove("is-open");
+		}
+
 		if (answer) {
 			answer.hidden = true;
 		}
@@ -26,6 +30,10 @@
 		var answer = item ? item.querySelector(".faq-a") : null;
 
 		question.setAttribute("aria-expanded", "true");
+
+		if (item) {
+			item.classList.add("is-open");
+		}
 
 		if (answer) {
 			answer.hidden = false;

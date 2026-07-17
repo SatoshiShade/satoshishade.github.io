@@ -1,7 +1,7 @@
 /*
 	File: assets/css/00-global.css
 	Description: Shared tokens, reset, typography, layout helpers, and accessibility defaults.
-	Last modified: 2026-05-30
+	Last modified: 2026-07-17
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -274,7 +274,7 @@ sup {
 	align-items: center;
 	min-height: 36px;
 	margin-bottom: 1rem;
-	padding: 0.42rem 0.78rem;
+	padding: calc(0.42rem + 1px) 0.78rem calc(0.42rem - 1px);
 	border: 1px solid rgba(255, 192, 0, 0.34);
 	border-radius: var(--radius-pill);
 	background: rgba(255, 255, 255, 0.05);

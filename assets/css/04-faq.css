@@ -1,7 +1,7 @@
 /*
 	File: assets/css/04-faq.css
 	Description: Centered FAQ accordion and no-script fallback styles.
-	Last modified: 2026-05-30
+	Last modified: 2026-07-17
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -34,7 +34,7 @@
 	transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
-.faq-item:has(.faq-q[aria-expanded="true"]) {
+.faq-item.is-open {
 	border-color: var(--color-border-strong);
 	box-shadow: var(--shadow-card);
 }
@@ -60,6 +60,10 @@
 .faq-q:hover,
 .faq-q[aria-expanded="true"] {
 	color: var(--color-gold);
+}
+
+.faq-q > span:first-child {
+	transform: translateY(3px);
 }
 
 .faq-chevron {

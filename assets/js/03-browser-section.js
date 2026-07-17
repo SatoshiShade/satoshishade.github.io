@@ -1,7 +1,7 @@
 /*
 	File: assets/js/03-browser-section.js
 	Description: Registrar search, category filters, and show-more controls.
-	Last modified: 2026-05-30
+	Last modified: 2026-07-17
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -24,6 +24,7 @@
 	var initialLimit = 8;
 	var showAll = false;
 	var searchTimer;
+	var resizeTimer;
 	var searchDelayMs = 180;
 	var scrollBackDelayMs = 40;
 	var featuredRanks = {
@@ -143,6 +144,38 @@
 		if (lessButton) {
 			lessButton.style.display = !limited && needsButtons ? "inline-flex" : "none";
 		}
+	}
+
+	function calculateInitialLimit() {
+		var visibleCard = cards.find(function (card) {
+			return !card.classList.contains("bc-hidden");
+		}) || cards[0];
+		var gridStyle;
+		var cardWidth;
+		var columnGap;
+		var columns;
+
+		if (!visibleCard || grid.clientWidth === 0) {
+			return initialLimit;
+		}
+
+		gridStyle = window.getComputedStyle(grid);
+		cardWidth = visibleCard.getBoundingClientRect().width || 255;
+		columnGap = parseFloat(gridStyle.columnGap) || 0;
+		columns = Math.max(1, Math.floor((grid.clientWidth + columnGap) / (cardWidth + columnGap)));
+
+		return Math.max(4, Math.min(8, columns * 2));
+	}
+
+	function syncInitialLimit() {
+		var nextLimit = calculateInitialLimit();
+
+		if (nextLimit === initialLimit) {
+			return false;
+		}
+
+		initialLimit = nextLimit;
+		return true;
 	}
 
 	function updateCount(matchedCount, visibleCount) {
@@ -266,5 +299,15 @@
 		});
 	}
 
+	syncInitialLimit();
 	update();
+
+	window.addEventListener("resize", function () {
+		window.clearTimeout(resizeTimer);
+		resizeTimer = window.setTimeout(function () {
+			if (syncInitialLimit()) {
+				update();
+			}
+		}, 120);
+	});
 }());

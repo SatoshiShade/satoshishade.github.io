@@ -1,7 +1,7 @@
 /*
 	File: assets/js/01-hero.js
 	Description: Interactive hero name preview for external SNS registrar links.
-	Last modified: 2026-06-01
+	Last modified: 2026-07-17
 	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
 */
 
@@ -674,27 +674,6 @@
 		}, 0);
 	}
 
-	function scrollNameToolIntoView() {
-		var rect;
-		var target;
-
-		if (!nameTool || window.innerWidth > 720) {
-			return;
-		}
-
-		function alignTool() {
-			rect = nameTool.getBoundingClientRect();
-			target = Math.max(0, rect.top + window.scrollY - 18);
-			window.scrollTo({
-				top: target,
-				behavior: reducedMotion ? "auto" : "smooth"
-			});
-		}
-
-		window.setTimeout(alignTool, 90);
-		window.setTimeout(alignTool, 360);
-	}
-
 	function scrollTargetIntoView(targetElement) {
 		var rect;
 		var offset;
@@ -1033,7 +1012,6 @@
 			nameShell.classList.remove("is-confirmed-name");
 		}
 		syncNameState("keep");
-		scrollNameToolIntoView();
 		queueInputSelection();
 		syncLiveNameState();
 	});
