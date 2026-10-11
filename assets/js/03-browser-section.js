@@ -81,16 +81,27 @@
 		return value.toLowerCase().trim().replace(/\.(sns|sol)$/u, "");
 	}
 
+	function getCategories(card) {
+		return String(card.dataset.cat || "").toLowerCase().trim().split(/\s+/u).filter(Boolean);
+	}
+
+	function cardHasCategory(card, filter) {
+		return getCategories(card).indexOf(filter) > -1;
+	}
+
 	function matchesCard(card) {
 		var query = normalize(searchValue);
-		var categoryMatches = activeFilter === "all" || card.dataset.cat === activeFilter;
-		var nameMatches = !query || card.dataset.name.indexOf(query) > -1 || card.dataset.cat.indexOf(query) > -1;
+		var categories = getCategories(card);
+		var categoryMatches = activeFilter === "all" || cardHasCategory(card, activeFilter);
+		var nameMatches = !query || card.dataset.name.indexOf(query) > -1 || categories.join(" ").indexOf(query) > -1;
 
 		return categoryMatches && nameMatches;
 	}
 
 	function cardMatchesSearch(card, query) {
-		return !query || card.dataset.name.indexOf(query) > -1 || card.dataset.cat.indexOf(query) > -1;
+		var categories = getCategories(card);
+
+		return !query || card.dataset.name.indexOf(query) > -1 || categories.join(" ").indexOf(query) > -1;
 	}
 
 	function setActiveFilter(nextFilter) {
@@ -124,9 +135,9 @@
 			return;
 		}
 
-		firstCategory = allMatches[0].dataset.cat;
-		singleCategory = allMatches.every(function (card) {
-			return card.dataset.cat === firstCategory;
+		firstCategory = getCategories(allMatches[0])[0];
+		singleCategory = Boolean(firstCategory) && allMatches.every(function (card) {
+			return cardHasCategory(card, firstCategory);
 		});
 
 		setActiveFilter(singleCategory ? firstCategory : "all");
