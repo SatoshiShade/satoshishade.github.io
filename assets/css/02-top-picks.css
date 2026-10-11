@@ -1,8 +1,8 @@
 /*
 	File: assets/css/02-top-picks.css
 	Description: Curated registrar cards shown above the full browser.
-	Last modified: 2026-07-17
-	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
+	Last modified: 2026-09-18
+	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
 .domains-section {
@@ -210,6 +210,11 @@
 	--card-accent-soft: rgba(255, 192, 0, 0.055);
 }
 
+.domain-card[data-theme="ai"] {
+	--card-accent: #7ec8ff;
+	--card-accent-soft: rgba(126, 200, 255, 0.09);
+}
+
 .domain-card[data-theme="community"] {
 	--card-accent: #d9b1ff;
 	--card-accent-soft: rgba(217, 177, 255, 0.08);
@@ -220,12 +225,22 @@
 	--card-accent-soft: rgba(255, 159, 45, 0.09);
 }
 
+.domain-card.active[data-theme="ai"] {
+	border-color: rgba(126, 200, 255, 0.58);
+}
+
 .domain-card.active[data-theme="community"] {
 	border-color: rgba(217, 177, 255, 0.58);
 }
 
 .domain-card.active[data-theme="meme"] {
 	border-color: rgba(255, 159, 45, 0.62);
+}
+
+.domain-card.active[data-theme="ai"] .card-badge {
+	border-color: rgba(126, 200, 255, 0.34);
+	background: rgba(126, 200, 255, 0.1);
+	color: rgba(158, 214, 255, 0.94);
 }
 
 .domain-card.active[data-theme="meme"] .card-badge {

@@ -1,8 +1,8 @@
 /*
 	File: assets/js/04-faq.js
 	Description: Accessible single-open FAQ accordion behavior.
-	Last modified: 2026-07-17
-	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
+	Last modified: 2026-09-18
+	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
 (function () {

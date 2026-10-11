@@ -1,8 +1,8 @@
 /*
 	File: assets/js/03-browser-section.js
 	Description: Registrar search, category filters, and show-more controls.
-	Last modified: 2026-07-17
-	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
+	Last modified: 2026-09-18
+	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
 (function () {
@@ -28,7 +28,8 @@
 	var searchDelayMs = 180;
 	var scrollBackDelayMs = 40;
 	var featuredRanks = {
-		mytag: 9,
+		mytag: 10,
+		aitag: 9,
 		ogclub: 8,
 		bonkog: 7,
 		mystory: 6,
@@ -73,7 +74,7 @@
 	lessButton = document.getElementById("browser-less-btn");
 
 	function normalize(value) {
-		return value.toLowerCase().trim().replace(/\.sol$/u, "");
+		return value.toLowerCase().trim().replace(/\.(sns|sol)$/u, "");
 	}
 
 	function matchesCard(card) {

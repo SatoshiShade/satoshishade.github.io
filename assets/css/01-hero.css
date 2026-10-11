@@ -1,8 +1,8 @@
 /*
 	File: assets/css/01-hero.css
 	Description: Hero, explainer graphic, interactive name preview, and benefit strip.
-	Last modified: 2026-07-17
-	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
+	Last modified: 2026-09-18
+	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
 .hero-section {
@@ -64,7 +64,7 @@
 	max-width: 48ch;
 }
 
-.intro-sol {
+.intro-sns {
 	color: var(--color-gold);
 	font-weight: 700;
 }

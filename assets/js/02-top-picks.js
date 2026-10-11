@@ -1,8 +1,8 @@
 /*
 	File: assets/js/02-top-picks.js
 	Description: Auto-focus carousel behavior for featured subdomain registrar cards.
-	Last modified: 2026-05-30
-	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
+	Last modified: 2026-09-18
+	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
 (function () {

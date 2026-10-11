@@ -1,8 +1,8 @@
 /*
 	File: assets/js/01-hero.js
 	Description: Interactive hero name preview for external SNS registrar links.
-	Last modified: 2026-07-17
-	Copyright: (c) 2026 mytag.sol Community. All rights reserved.
+	Last modified: 2026-09-18
+	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
 (function () {
@@ -36,25 +36,26 @@
 	var web3Names = ["gm", "wagmi", "og", "hodler", "monke", "degen", "diamond", "ape", "vibe", "legend", "first", "based"];
 	var infraNames = ["myvault", "ledger", "myassets", "mybag", "folio"];
 	var registrarExamples = [
-		{ names: personalNames.concat(["handle", "profile"]), suffix: "mytag.sol", url: "https://v1.sns.id/sub-registrar/mytag" },
-		{ names: personalNames.concat(["payme", "sendme", "tips"]), suffix: "walletlink.sol", url: "https://v1.sns.id/sub-registrar/walletlink" },
-		{ names: personalNames.concat(["myjournal", "diary", "notes"]), suffix: "mystory.sol", url: "https://v1.sns.id/sub-registrar/mystory" },
-		{ names: personalNames.concat(["artist", "lilbubble", "legend"]), suffix: "fames.sol", url: "https://v1.sns.id/sub-registrar/fames" },
-		{ names: personalNames.concat(["alpha", "builder", "wallet", "solana", "wagmi"]), suffix: "snsclub.sol", url: "https://v1.sns.id/sub-registrar/snsclub" },
-		{ names: ["first", "hodler", "diamond", "alpha", "legend", "wagmi", "degen"], suffix: "bonkog.sol", url: "https://v1.sns.id/sub-registrar/bonkog" },
-		{ names: web3Names.concat(["moon"]), suffix: "bonktag.sol", url: "https://v1.sns.id/sub-registrar/bonktag" },
-		{ names: ["vault", "hodler", "cold", "myledger", "reserve"], suffix: "ogwallet.sol", url: "https://v1.sns.id/sub-registrar/ogwallet" },
-		{ names: genZNames.concat(["vibe"]), suffix: "gen-z.sol", url: "https://v1.sns.id/sub-registrar/gen-z" },
-		{ names: personalNames.concat(["pro", "first", "gg"]), suffix: "gametag.sol", url: "https://v1.sns.id/sub-registrar/gametag" },
-		{ names: personalNames.concat(["artist", "mystudio", "mygallery", "creator"]), suffix: "artistlink.sol", url: "https://v1.sns.id/sub-registrar/artistlink" },
-		{ names: ["agent", "myart", "builder", "bot"], suffix: "aicreator.sol", url: "https://v1.sns.id/sub-registrar/aicreator" },
-		{ names: personalNames.concat(["myart", "studio", "mycontent"]), suffix: "creatorhub.sol", url: "https://v1.sns.id/sub-registrar/creatorhub" },
-		{ names: infraNames, suffix: "assetlink.sol", url: "https://v1.sns.id/sub-registrar/assetlink" },
-		{ names: ["mybrand", "mystudio", "founder", "monkebiz", "hq"], suffix: "businesslink.sol", url: "https://v1.sns.id/sub-registrar/businesslink" },
-		{ names: ["launch", "founder", "demo", "beta"], suffix: "startuphub.sol", url: "https://v1.sns.id/sub-registrar/startuphub" },
-		{ names: ["vote", "newproject", "council", "forum", "proposal"], suffix: "daolink.sol", url: "https://v1.sns.id/sub-registrar/daolink" },
-		{ names: ["monke", "ape", "degen", "og", "wenmoon", "wagmi", "diamond", "alpha", "pump", "vibes", "based"], suffix: "memecoinape.sol", url: "https://v1.sns.id/sub-registrar/memecoinape" },
-		{ names: ["first", "alpha", "vip", "legend", "monke", "based"], suffix: "ogclub.sol", url: "https://v1.sns.id/sub-registrar/ogclub" }
+		{ names: personalNames.concat(["handle", "profile"]), suffix: "mytag.sns", url: "https://v1.sns.id/sub-registrar/mytag" },
+		{ names: ["agent", "assistant", "bot", "copilot", "oracle", "scout"], suffix: "aitag.sns", url: "https://v1.sns.id/sub-registrar/aitag" },
+		{ names: personalNames.concat(["payme", "sendme", "tips"]), suffix: "walletlink.sns", url: "https://v1.sns.id/sub-registrar/walletlink" },
+		{ names: personalNames.concat(["myjournal", "diary", "notes"]), suffix: "mystory.sns", url: "https://v1.sns.id/sub-registrar/mystory" },
+		{ names: personalNames.concat(["artist", "lilbubble", "legend"]), suffix: "fames.sns", url: "https://v1.sns.id/sub-registrar/fames" },
+		{ names: personalNames.concat(["alpha", "builder", "wallet", "solana", "wagmi"]), suffix: "snsclub.sns", url: "https://v1.sns.id/sub-registrar/snsclub" },
+		{ names: ["first", "hodler", "diamond", "alpha", "legend", "wagmi", "degen"], suffix: "bonkog.sns", url: "https://v1.sns.id/sub-registrar/bonkog" },
+		{ names: web3Names.concat(["moon"]), suffix: "bonktag.sns", url: "https://v1.sns.id/sub-registrar/bonktag" },
+		{ names: ["vault", "hodler", "cold", "myledger", "reserve"], suffix: "ogwallet.sns", url: "https://v1.sns.id/sub-registrar/ogwallet" },
+		{ names: genZNames.concat(["vibe"]), suffix: "gen-z.sns", url: "https://v1.sns.id/sub-registrar/gen-z" },
+		{ names: personalNames.concat(["pro", "first", "gg"]), suffix: "gametag.sns", url: "https://v1.sns.id/sub-registrar/gametag" },
+		{ names: personalNames.concat(["artist", "mystudio", "mygallery", "creator"]), suffix: "artistlink.sns", url: "https://v1.sns.id/sub-registrar/artistlink" },
+		{ names: ["agent", "myart", "builder", "bot"], suffix: "aicreator.sns", url: "https://v1.sns.id/sub-registrar/aicreator" },
+		{ names: personalNames.concat(["myart", "studio", "mycontent"]), suffix: "creatorhub.sns", url: "https://v1.sns.id/sub-registrar/creatorhub" },
+		{ names: infraNames, suffix: "assetlink.sns", url: "https://v1.sns.id/sub-registrar/assetlink" },
+		{ names: ["mybrand", "mystudio", "founder", "monkebiz", "hq"], suffix: "businesslink.sns", url: "https://v1.sns.id/sub-registrar/businesslink" },
+		{ names: ["launch", "founder", "demo", "beta"], suffix: "startuphub.sns", url: "https://v1.sns.id/sub-registrar/startuphub" },
+		{ names: ["vote", "newproject", "council", "forum", "proposal"], suffix: "daolink.sns", url: "https://v1.sns.id/sub-registrar/daolink" },
+		{ names: ["monke", "ape", "degen", "og", "wenmoon", "wagmi", "diamond", "alpha", "pump", "vibes", "based"], suffix: "memecoinape.sns", url: "https://v1.sns.id/sub-registrar/memecoinape" },
+		{ names: ["first", "alpha", "vip", "legend", "monke", "based"], suffix: "ogclub.sns", url: "https://v1.sns.id/sub-registrar/ogclub" }
 	];
 	var defaultExamples = buildDefaultExamples(exampleRound);
 	var examples = defaultExamples.slice();
@@ -91,11 +92,11 @@
 	syncNamePreview();
 
 	function demoLimitMessage() {
-		return "Demo preview limit: " + maxNameLength + " characters here. SNS shows final .sol subdomain rules.";
+		return "Demo preview limit: " + maxNameLength + " characters here. SNS shows final .sns subdomain rules.";
 	}
 
 	function previewRulesMessage() {
-		return "Demo preview: use up to " + maxNameLength + " lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sol subdomain length limit and registrar rules.";
+		return "Demo preview: use up to " + maxNameLength + " lowercase letters, numbers, and single hyphens. SNS checkout shows the final .sns subdomain length limit and registrar rules.";
 	}
 
 	function syncDemoLimit() {
