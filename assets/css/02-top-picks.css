@@ -439,7 +439,7 @@
 	}
 
 	.domain-card {
-		--tag-clearance: 80px;
+		--tag-clearance: 58px;
 		gap: 0.54rem;
 		width: min(78vw, 330px);
 		min-height: 194px;
@@ -449,11 +449,11 @@
 
 	.domain-card::after {
 		right: 0;
-		top: -6px;
-		width: 124px;
-		height: 124px;
+		top: -4px;
+		width: 78px;
+		height: 78px;
 		opacity: 0.84;
-		transform: scale(1.48);
+		transform: scale(1.12);
 		transform-origin: top right;
 	}
 
@@ -463,7 +463,7 @@
 
 	.domain-card p {
 		max-width: calc(100% - var(--tag-clearance));
-		font-size: 1.02rem;
+		font-size: 0.94rem;
 		line-height: 1.36;
 	}
 
@@ -473,7 +473,7 @@
 
 	.domain-name span,
 	.domain-name strong {
-		font-size: clamp(1.16rem, 5.6vw, 1.42rem);
+		font-size: clamp(1.1rem, 5.2vw, 1.34rem);
 	}
 
 	.card-cta {
@@ -496,6 +496,24 @@
 
 	.top-picks-carousel {
 		min-height: 246px;
+	}
+
+	.domain-card {
+		--tag-clearance: 74px;
+	}
+
+	.domain-card::after {
+		right: 0;
+		top: -6px;
+		width: 118px;
+		height: 118px;
+		opacity: 0.86;
+		transform: scale(1.42);
+		transform-origin: top right;
+	}
+
+	.domain-card p {
+		font-size: 0.94rem;
 	}
 }
 
