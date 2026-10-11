@@ -1,7 +1,7 @@
 /*
 	File: assets/js/01-hero.js
 	Description: Interactive hero name preview for external SNS registrar links.
-	Last modified: 2026-09-18
+	Last modified: 2026-10-11
 	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
