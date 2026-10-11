@@ -25,9 +25,11 @@
 }
 
 .image-logo {
+	display: block;
 	width: 70%;
 	max-width: 210px;
 	max-height: 110px;
+	height: auto;
 	object-fit: contain;
 }
 
@@ -76,10 +78,14 @@
 }
 
 .explainer-img {
-	width: min(82%, 470px);
+	display: block;
+	width: min(92%, 560px);
+	max-width: 100%;
+	height: auto;
 	border-radius: var(--radius-card);
 	filter: drop-shadow(0 7px 24px rgba(0, 0, 0, 0.5));
 	pointer-events: none;
+	object-fit: contain;
 }
 
 .hero-stage {
@@ -159,10 +165,13 @@
 }
 
 .handwritten-slogan {
+	display: block;
 	width: min(52%, 226px);
+	height: auto;
 	margin: 0.2rem auto 0;
 	filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.4));
 	pointer-events: none;
+	object-fit: contain;
 }
 
 .hero-name-shell {
@@ -1077,12 +1086,9 @@
 	height: 32px;
 	border-radius: 7px;
 	object-fit: contain;
-	opacity: 0.9;
+	object-position: center;
+	opacity: 0.95;
 	filter: drop-shadow(0 0 10px rgba(255, 192, 0, 0.08));
-}
-
-.bp-icon-rotate {
-	transform: rotate(-45deg) translate(1px, 1px);
 }
 
 .bp-text {
@@ -1279,6 +1285,8 @@
 		flex-shrink: 0;
 		width: 180px;
 		max-width: 180px;
+		max-height: 132px;
+		height: auto;
 		padding-right: 1.8rem;
 	}
 
@@ -1312,7 +1320,8 @@
 	}
 
 	.explainer-img {
-		width: min(76%, 500px);
+		width: min(86%, 620px);
+		height: auto;
 	}
 }
 

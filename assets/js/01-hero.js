@@ -35,27 +35,32 @@
 	var genZNames = ["nova", "kai", "zoe", "aria", "mila", "rio", "zara", "neo", "jax", "kira", "niko", "skye", "luca", "mika", "raya", "mira"];
 	var web3Names = ["gm", "wagmi", "og", "hodler", "monke", "degen", "diamond", "ape", "vibe", "legend", "first", "based"];
 	var infraNames = ["myvault", "ledger", "myassets", "mybag", "folio"];
+	var siNames = ["agent", "assistant", "bot", "copilot", "oracle", "scout", "pilot"];
 	var registrarExamples = [
 		{ names: personalNames.concat(["handle", "profile"]), suffix: "mytag.sns", url: "https://v1.sns.id/sub-registrar/mytag" },
-		{ names: ["agent", "assistant", "bot", "copilot", "oracle", "scout"], suffix: "aitag.sns", url: "https://v1.sns.id/sub-registrar/aitag" },
+		{ names: web3Names.concat(["bonk", "moon"]), suffix: "gbonk.sns", url: "https://v1.sns.id/sub-registrar/gbonk" },
+		{ names: siNames.concat(["runner", "worker"]), suffix: "siagent.sns", url: "https://v1.sns.id/sub-registrar/siagent" },
+		{ names: siNames, suffix: "aitag.sns", url: "https://v1.sns.id/sub-registrar/aitag" },
+		{ names: siNames, suffix: "sitag.sns", url: "https://v1.sns.id/sub-registrar/sitag" },
 		{ names: personalNames.concat(["payme", "sendme", "tips"]), suffix: "walletlink.sns", url: "https://v1.sns.id/sub-registrar/walletlink" },
 		{ names: personalNames.concat(["myjournal", "diary", "notes"]), suffix: "mystory.sns", url: "https://v1.sns.id/sub-registrar/mystory" },
-		{ names: personalNames.concat(["artist", "lilbubble", "legend"]), suffix: "fames.sns", url: "https://v1.sns.id/sub-registrar/fames" },
 		{ names: personalNames.concat(["alpha", "builder", "wallet", "solana", "wagmi"]), suffix: "snsclub.sns", url: "https://v1.sns.id/sub-registrar/snsclub" },
-		{ names: ["first", "hodler", "diamond", "alpha", "legend", "wagmi", "degen"], suffix: "bonkog.sns", url: "https://v1.sns.id/sub-registrar/bonkog" },
-		{ names: web3Names.concat(["moon"]), suffix: "bonktag.sns", url: "https://v1.sns.id/sub-registrar/bonktag" },
-		{ names: ["vault", "hodler", "cold", "myledger", "reserve"], suffix: "ogwallet.sns", url: "https://v1.sns.id/sub-registrar/ogwallet" },
 		{ names: genZNames.concat(["vibe"]), suffix: "gen-z.sns", url: "https://v1.sns.id/sub-registrar/gen-z" },
+		{ names: ["first", "alpha", "vip", "legend", "monke", "based"], suffix: "ogclub.sns", url: "https://v1.sns.id/sub-registrar/ogclub" },
+		{ names: ["vault", "hodler", "cold", "myledger", "reserve"], suffix: "ogwallet.sns", url: "https://v1.sns.id/sub-registrar/ogwallet" },
+		{ names: personalNames.concat(["artist", "lilbubble", "legend"]), suffix: "fames.sns", url: "https://v1.sns.id/sub-registrar/fames" },
 		{ names: personalNames.concat(["pro", "first", "gg"]), suffix: "gametag.sns", url: "https://v1.sns.id/sub-registrar/gametag" },
+		{ names: ["player", "quest", "lobby", "arena", "gg"], suffix: "playverse.sns", url: "https://v1.sns.id/sub-registrar/playverse" },
+		{ names: web3Names.concat(["moon"]), suffix: "bonktag.sns", url: "https://v1.sns.id/sub-registrar/bonktag" },
+		{ names: ["first", "hodler", "diamond", "alpha", "legend", "wagmi", "degen"], suffix: "bonkog.sns", url: "https://v1.sns.id/sub-registrar/bonkog" },
+		{ names: ["monke", "ape", "degen", "og", "wenmoon", "wagmi", "diamond", "alpha", "pump", "vibes", "based"], suffix: "memecoinape.sns", url: "https://v1.sns.id/sub-registrar/memecoinape" },
 		{ names: personalNames.concat(["artist", "mystudio", "mygallery", "creator"]), suffix: "artistlink.sns", url: "https://v1.sns.id/sub-registrar/artistlink" },
-		{ names: ["agent", "myart", "builder", "bot"], suffix: "aicreator.sns", url: "https://v1.sns.id/sub-registrar/aicreator" },
 		{ names: personalNames.concat(["myart", "studio", "mycontent"]), suffix: "creatorhub.sns", url: "https://v1.sns.id/sub-registrar/creatorhub" },
+		{ names: ["agent", "myart", "builder", "bot"], suffix: "aicreator.sns", url: "https://v1.sns.id/sub-registrar/aicreator" },
 		{ names: infraNames, suffix: "assetlink.sns", url: "https://v1.sns.id/sub-registrar/assetlink" },
 		{ names: ["mybrand", "mystudio", "founder", "monkebiz", "hq"], suffix: "businesslink.sns", url: "https://v1.sns.id/sub-registrar/businesslink" },
 		{ names: ["launch", "founder", "demo", "beta"], suffix: "startuphub.sns", url: "https://v1.sns.id/sub-registrar/startuphub" },
-		{ names: ["vote", "newproject", "council", "forum", "proposal"], suffix: "daolink.sns", url: "https://v1.sns.id/sub-registrar/daolink" },
-		{ names: ["monke", "ape", "degen", "og", "wenmoon", "wagmi", "diamond", "alpha", "pump", "vibes", "based"], suffix: "memecoinape.sns", url: "https://v1.sns.id/sub-registrar/memecoinape" },
-		{ names: ["first", "alpha", "vip", "legend", "monke", "based"], suffix: "ogclub.sns", url: "https://v1.sns.id/sub-registrar/ogclub" }
+		{ names: ["vote", "newproject", "council", "forum", "proposal"], suffix: "daolink.sns", url: "https://v1.sns.id/sub-registrar/daolink" }
 	];
 	var defaultExamples = buildDefaultExamples(exampleRound);
 	var examples = defaultExamples.slice();

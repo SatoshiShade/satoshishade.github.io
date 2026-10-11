@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Claim a readable Solana name tag through independent subdomain registrars such as mytag.sns, aitag.sns, and walletlink.sns." />
+	<meta name="description" content="Claim a readable Solana name tag through independent subdomain registrars such as mytag.sns, gbonk.sns, siagent.sns, and aitag.sns." />
 	<meta name="theme-color" content="#05000f" />
 	<meta name="color-scheme" content="dark" />
 	<link rel="icon" type="image/png" href="assets/img/logo.png" />
@@ -20,9 +20,9 @@
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:url" content="https://mytags.sol.site/" />
 	<meta property="og:title" content="mytag.sns | Solana Subdomain Registrars" />
-	<meta property="og:description" content="Claim a readable Solana name tag through independent subdomain registrars such as mytag.sns, aitag.sns, and walletlink.sns." />
-	<meta property="og:image" content="https://mytags.sol.site/assets/img/social-preview-v2.png" />
-	<meta property="og:image:secure_url" content="https://mytags.sol.site/assets/img/social-preview-v2.png" />
+	<meta property="og:description" content="Claim a readable Solana name tag through independent subdomain registrars such as mytag.sns, gbonk.sns, siagent.sns, and aitag.sns." />
+	<meta property="og:image" content="https://mytags.sol.site/assets/img/social-preview.png" />
+	<meta property="og:image:secure_url" content="https://mytags.sol.site/assets/img/social-preview.png" />
 	<meta property="og:image:type" content="image/png" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
@@ -34,8 +34,8 @@
 	<meta name="twitter:url" content="https://mytags.sol.site/" />
 	<meta name="twitter:site" content="@mytagsns" />
 	<meta name="twitter:title" content="mytag.sns | Solana Subdomain Registrars" />
-	<meta name="twitter:description" content="Claim a readable Solana name tag through independent subdomain registrars such as mytag.sns, aitag.sns, and walletlink.sns." />
-	<meta name="twitter:image" content="https://mytags.sol.site/assets/img/social-preview-v2.png" />
+	<meta name="twitter:description" content="Claim a readable Solana name tag through independent subdomain registrars such as mytag.sns, gbonk.sns, siagent.sns, and aitag.sns." />
+	<meta name="twitter:image" content="https://mytags.sol.site/assets/img/social-preview.png" />
 	<meta name="twitter:image:alt" content="A wallet address changing into a readable mytag.sns name tag." />
 
 	<title>mytag.sns</title>
@@ -218,7 +218,7 @@
 		<!-- Hero: Introduces the name tag idea before the registrar list. -->
 		<section class="hero-section reveal-section is-visible" aria-labelledby="hero-title">
 			<div class="hero-header">
-				<img class="image-logo" src="assets/img/logo-with-slogan.png" alt="mytag.sns" loading="eager" />
+				<img class="image-logo" src="assets/img/logo-with-slogan.png" alt="mytag.sns" width="210" height="154" loading="eager" decoding="async" />
 				<div class="hero-intro">
 					<p class="intro-kicker">Solana name tags</p>
 					<h1 id="hero-title" class="intro-headline">Your Name. Instead Of Your Wallet Address.</h1>
@@ -227,14 +227,14 @@
 			</div>
 
 			<div class="hero-explainer">
-				<img class="explainer-img" src="assets/img/explainer.png" alt="A wallet address changing into a readable mytag.sns name tag." loading="eager" decoding="async" />
+				<img class="explainer-img" src="assets/img/explainer.png" alt="A wallet address changing into a readable mytag.sns name tag." width="560" height="178" loading="eager" decoding="async" />
 			</div>
 			<a class="hero-scroll-cue hero-scroll-cue--intro" href="#hero-name-tool" aria-label="Scroll to name preview"></a>
 
 			<div class="hero-stage" aria-label="Solana name tag preview">
 				<div id="hero-name-tool" class="hero-name-tool">
 					<div class="slogan-wrapper">
-						<img class="handwritten-slogan" src="assets/img/slogan.png" alt="Own Your Name!" loading="eager" />
+						<img class="handwritten-slogan" src="assets/img/slogan.png" alt="Own Your Name!" width="226" height="37" loading="eager" decoding="async" />
 					</div>
 
 					<div class="hero-name-shell">
@@ -252,32 +252,36 @@
 						<p id="hero-name-feedback" class="hero-name-feedback" aria-hidden="true"></p>
 						<div class="hero-name-options" role="group" aria-label="Choose preview namespace">
 							<button class="hero-name-option active" type="button" data-suffix="mytag.sns" data-url="https://v1.sns.id/sub-registrar/mytag" data-position="0" aria-pressed="true">mytag</button>
-							<button class="hero-name-option" type="button" data-suffix="aitag.sns" data-url="https://v1.sns.id/sub-registrar/aitag" data-position="2" aria-pressed="false">aitag</button>
+							<button class="hero-name-option" type="button" data-suffix="gbonk.sns" data-url="https://v1.sns.id/sub-registrar/gbonk" data-position="2" aria-pressed="false">gbonk</button>
+							<button class="hero-name-option" type="button" data-suffix="siagent.sns" data-url="https://v1.sns.id/sub-registrar/siagent" data-position="3" aria-pressed="false">siagent</button>
+							<button class="hero-name-option" type="button" data-suffix="aitag.sns" data-url="https://v1.sns.id/sub-registrar/aitag" data-position="3" aria-pressed="false">aitag</button>
+							<button class="hero-name-option" type="button" data-suffix="sitag.sns" data-url="https://v1.sns.id/sub-registrar/sitag" data-position="3" aria-pressed="false">sitag</button>
 							<button class="hero-name-option" type="button" data-suffix="walletlink.sns" data-url="https://v1.sns.id/sub-registrar/walletlink" data-position="3" aria-pressed="false">walletlink</button>
 							<button class="hero-name-option" type="button" data-suffix="mystory.sns" data-url="https://v1.sns.id/sub-registrar/mystory" data-position="3" aria-pressed="false">mystory</button>
-							<button class="hero-name-option" type="button" data-suffix="fames.sns" data-url="https://v1.sns.id/sub-registrar/fames" data-position="3" aria-pressed="false">fames</button>
 							<button class="hero-name-option" type="button" data-suffix="snsclub.sns" data-url="https://v1.sns.id/sub-registrar/snsclub" data-position="3" aria-pressed="false">snsclub</button>
-							<button class="hero-name-option" type="button" data-suffix="bonkog.sns" data-url="https://v1.sns.id/sub-registrar/bonkog" data-position="3" aria-pressed="false">bonkog</button>
-							<button class="hero-name-option" type="button" data-suffix="bonktag.sns" data-url="https://v1.sns.id/sub-registrar/bonktag" data-position="3" aria-pressed="false">bonktag</button>
-							<button class="hero-name-option" type="button" data-suffix="ogwallet.sns" data-url="https://v1.sns.id/sub-registrar/ogwallet" data-position="3" aria-pressed="false">ogwallet</button>
 							<button class="hero-name-option" type="button" data-suffix="gen-z.sns" data-url="https://v1.sns.id/sub-registrar/gen-z" data-position="3" aria-pressed="false">gen-z</button>
+							<button class="hero-name-option" type="button" data-suffix="ogclub.sns" data-url="https://v1.sns.id/sub-registrar/ogclub" data-position="3" aria-pressed="false">ogclub</button>
+							<button class="hero-name-option" type="button" data-suffix="ogwallet.sns" data-url="https://v1.sns.id/sub-registrar/ogwallet" data-position="3" aria-pressed="false">ogwallet</button>
+							<button class="hero-name-option" type="button" data-suffix="fames.sns" data-url="https://v1.sns.id/sub-registrar/fames" data-position="3" aria-pressed="false">fames</button>
 							<button class="hero-name-option" type="button" data-suffix="gametag.sns" data-url="https://v1.sns.id/sub-registrar/gametag" data-position="3" aria-pressed="false">gametag</button>
+							<button class="hero-name-option" type="button" data-suffix="playverse.sns" data-url="https://v1.sns.id/sub-registrar/playverse" data-position="3" aria-pressed="false">playverse</button>
+							<button class="hero-name-option" type="button" data-suffix="bonktag.sns" data-url="https://v1.sns.id/sub-registrar/bonktag" data-position="3" aria-pressed="false">bonktag</button>
+							<button class="hero-name-option" type="button" data-suffix="bonkog.sns" data-url="https://v1.sns.id/sub-registrar/bonkog" data-position="3" aria-pressed="false">bonkog</button>
+							<button class="hero-name-option" type="button" data-suffix="memecoinape.sns" data-url="https://v1.sns.id/sub-registrar/memecoinape" data-position="3" aria-pressed="false">memecoinape</button>
 							<button class="hero-name-option" type="button" data-suffix="artistlink.sns" data-url="https://v1.sns.id/sub-registrar/artistlink" data-position="3" aria-pressed="false">artistlink</button>
-							<button class="hero-name-option" type="button" data-suffix="aicreator.sns" data-url="https://v1.sns.id/sub-registrar/aicreator" data-position="3" aria-pressed="false">aicreator</button>
 							<button class="hero-name-option" type="button" data-suffix="creatorhub.sns" data-url="https://v1.sns.id/sub-registrar/creatorhub" data-position="3" aria-pressed="false">creatorhub</button>
+							<button class="hero-name-option" type="button" data-suffix="aicreator.sns" data-url="https://v1.sns.id/sub-registrar/aicreator" data-position="3" aria-pressed="false">aicreator</button>
 							<button class="hero-name-option" type="button" data-suffix="assetlink.sns" data-url="https://v1.sns.id/sub-registrar/assetlink" data-position="3" aria-pressed="false">assetlink</button>
 							<button class="hero-name-option" type="button" data-suffix="businesslink.sns" data-url="https://v1.sns.id/sub-registrar/businesslink" data-position="3" aria-pressed="false">businesslink</button>
 							<button class="hero-name-option" type="button" data-suffix="startuphub.sns" data-url="https://v1.sns.id/sub-registrar/startuphub" data-position="3" aria-pressed="false">startuphub</button>
-							<button class="hero-name-option" type="button" data-suffix="daolink.sns" data-url="https://v1.sns.id/sub-registrar/daolink" data-position="3" aria-pressed="false">daolink</button>
-							<button class="hero-name-option" type="button" data-suffix="memecoinape.sns" data-url="https://v1.sns.id/sub-registrar/memecoinape" data-position="-2" aria-pressed="false">memecoinape</button>
-							<button class="hero-name-option" type="button" data-suffix="ogclub.sns" data-url="https://v1.sns.id/sub-registrar/ogclub" data-position="-1" aria-pressed="false">ogclub</button>
+							<button class="hero-name-option" type="button" data-suffix="daolink.sns" data-url="https://v1.sns.id/sub-registrar/daolink" data-position="-1" aria-pressed="false">daolink</button>
 						</div>
 							<noscript>
 							<div class="hero-name-options-fallback" aria-label="Registrar links">
 								<a class="hero-name-option-fallback is-active" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer">mytag</a>
-								<a class="hero-name-option-fallback is-next" href="https://v1.sns.id/sub-registrar/aitag" target="_blank" rel="noopener noreferrer">aitag</a>
-								<a class="hero-name-option-fallback is-far-left" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer">walletlink</a>
-								<a class="hero-name-option-fallback is-far" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer">ogclub</a>
+								<a class="hero-name-option-fallback is-next" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer">gbonk</a>
+								<a class="hero-name-option-fallback is-far-left" href="https://v1.sns.id/sub-registrar/siagent" target="_blank" rel="noopener noreferrer">siagent</a>
+								<a class="hero-name-option-fallback is-far" href="https://v1.sns.id/sub-registrar/aitag" target="_blank" rel="noopener noreferrer">aitag</a>
 							</div>
 							</noscript>
 						<div class="hero-tool-actions">
@@ -296,28 +300,28 @@
 				</div>
 				<div class="benefits-grid">
 					<div class="benefit-pill">
-						<img class="bp-icon-img bp-icon-rotate" src="assets/img/benefits/tag.png" alt="" aria-hidden="true" />
+						<img class="bp-icon-img" src="assets/img/benefits/tag.png" alt="" aria-hidden="true" width="32" height="32" />
 						<div class="bp-text">
 							<strong>Your Name, Available</strong>
 							<span>Find a personal name even when root .sns options are taken.</span>
 						</div>
 					</div>
 					<div class="benefit-pill">
-						<img class="bp-icon-img" src="assets/img/benefits/cup.svg" alt="" aria-hidden="true" />
+						<img class="bp-icon-img" src="assets/img/benefits/cup.png" alt="" aria-hidden="true" width="32" height="32" />
 						<div class="bp-text">
 							<strong>Less Than a Coffee</strong>
-							<span>Starting at just 3 USDC.<sup>1</sup></span>
+							<span>Priced for everyday onboarding. Confirm on SNS.<sup>1</sup></span>
 						</div>
 					</div>
 					<div class="benefit-pill">
-						<img class="bp-icon-img" src="assets/img/benefits/lock.svg" alt="" aria-hidden="true" />
+						<img class="bp-icon-img" src="assets/img/benefits/lock.png" alt="" aria-hidden="true" width="32" height="32" />
 						<div class="bp-text">
 							<strong>Yours After Checkout</strong>
 							<span>Assigned to your wallet after checkout completes.<sup>2</sup></span>
 						</div>
 					</div>
 					<div class="benefit-pill">
-						<img class="bp-icon-img" src="assets/img/benefits/community.svg" alt="" aria-hidden="true" />
+						<img class="bp-icon-img" src="assets/img/benefits/community.png" alt="" aria-hidden="true" width="32" height="32" />
 						<div class="bp-text">
 							<strong>Show Where You Belong</strong>
 							<span>Choose a namespace that says something about you.</span>
@@ -334,35 +338,35 @@
 			<div class="section-header">
 				<p class="section-eyebrow">Curated picks</p>
 				<h2 id="top-picks-title" class="section-headline">Top Picks</h2>
-				<p class="section-subline">Start with clean names, AI agent tags, and strong onchain identity signals.</p>
+				<p class="section-subline">The most requested namespaces for identity, meme culture, and SI agents.</p>
 			</div>
 
 			<div class="top-picks-carousel" aria-label="Featured registrar picks">
 				<a class="domain-card active" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer" data-theme="identity" aria-label="Register a mytag.sns subdomain">
 					<div class="card-topline"><span class="card-badge">Identity</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>mytag.sns</strong></div>
-					<p><span>A clean name tag</span><span>for simple identity.</span></p>
+					<p><span>The universal name tag</span><span>for everyday identity.</span></p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 
-				<a class="domain-card" href="https://v1.sns.id/sub-registrar/aitag" target="_blank" rel="noopener noreferrer" data-theme="ai" aria-label="Register an aitag.sns subdomain">
-					<div class="card-topline"><span class="card-badge">AI</span></div>
+				<a class="domain-card" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer" data-theme="meme" aria-label="Register a gbonk.sns subdomain">
+					<div class="card-topline"><span class="card-badge">Meme</span></div>
+					<div class="domain-name"><span>yourname.</span><strong>gbonk.sns</strong></div>
+					<p><span>A BONK-native tag</span><span>for the community.</span></p>
+					<span class="card-cta">Register on SNS</span>
+				</a>
+
+				<a class="domain-card" href="https://v1.sns.id/sub-registrar/siagent" target="_blank" rel="noopener noreferrer" data-theme="si" aria-label="Register a siagent.sns subdomain">
+					<div class="card-topline"><span class="card-badge">SI</span></div>
+					<div class="domain-name"><span>yourname.</span><strong>siagent.sns</strong></div>
+					<p><span>Built for SI agents</span><span>that need a readable name.</span></p>
+					<span class="card-cta">Register on SNS</span>
+				</a>
+
+				<a class="domain-card" href="https://v1.sns.id/sub-registrar/aitag" target="_blank" rel="noopener noreferrer" data-theme="si" aria-label="Register an aitag.sns subdomain">
+					<div class="card-topline"><span class="card-badge">SI</span></div>
 					<div class="domain-name"><span>yourname.</span><strong>aitag.sns</strong></div>
-					<p><span>A clear identity tag</span><span>for AI agents.</span></p>
-					<span class="card-cta">Register on SNS</span>
-				</a>
-
-				<a class="domain-card" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer" data-theme="identity" aria-label="Register a walletlink.sns subdomain">
-					<div class="card-topline"><span class="card-badge">Utility</span></div>
-					<div class="domain-name"><span>yourname.</span><strong>walletlink.sns</strong></div>
-					<p><span>A wallet payment tag</span><span>for receiving crypto.</span></p>
-					<span class="card-cta">Register on SNS</span>
-				</a>
-
-				<a class="domain-card" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer" data-theme="community" aria-label="Register an ogclub.sns subdomain">
-					<div class="card-topline"><span class="card-badge">Community</span></div>
-					<div class="domain-name"><span>yourname.</span><strong>ogclub.sns</strong></div>
-					<p><span>An OG club name</span><span>for early believers.</span></p>
+					<p><span>An agent-ready tag</span><span>for automated identities.</span></p>
 					<span class="card-cta">Register on SNS</span>
 				</a>
 			</div>
@@ -371,9 +375,9 @@
 				<button class="top-picks-arrow top-picks-arrow--prev" type="button" aria-label="Show previous top pick"></button>
 				<div class="top-picks-dots">
 					<button class="top-pick-dot active" type="button" aria-label="Show mytag.sns" data-pick-index="0"></button>
-					<button class="top-pick-dot" type="button" aria-label="Show aitag.sns" data-pick-index="1"></button>
-					<button class="top-pick-dot" type="button" aria-label="Show walletlink.sns" data-pick-index="2"></button>
-					<button class="top-pick-dot" type="button" aria-label="Show ogclub.sns" data-pick-index="3"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show gbonk.sns" data-pick-index="1"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show siagent.sns" data-pick-index="2"></button>
+					<button class="top-pick-dot" type="button" aria-label="Show aitag.sns" data-pick-index="3"></button>
 				</div>
 				<button class="top-picks-arrow top-picks-arrow--next" type="button" aria-label="Show next top pick"></button>
 			</div>
@@ -399,12 +403,12 @@
 				<div class="browser-filters" role="group" aria-label="Filter by category">
 					<button class="filter-pill active" type="button" data-filter="all">All</button>
 					<button class="filter-pill" type="button" data-filter="identity">Identity</button>
+					<button class="filter-pill" type="button" data-filter="si">SI</button>
 					<button class="filter-pill" type="button" data-filter="community">Community</button>
 					<button class="filter-pill" type="button" data-filter="meme">Meme</button>
 					<button class="filter-pill" type="button" data-filter="gaming">Gaming</button>
-					<button class="filter-pill" type="button" data-filter="ai">AI</button>
-					<button class="filter-pill" type="button" data-filter="finance">Finance</button>
 					<button class="filter-pill" type="button" data-filter="creator">Creator</button>
+					<button class="filter-pill" type="button" data-filter="finance">Finance</button>
 					<button class="filter-pill" type="button" data-filter="business">Business</button>
 				</div>
 
@@ -413,22 +417,24 @@
 
 			<div class="browser-grid" id="browser-grid" aria-live="polite">
 				<a class="bc" href="https://v1.sns.id/sub-registrar/mytag" target="_blank" rel="noopener noreferrer" data-cat="identity" data-name="mytag"><span class="bc-badge">Identity</span><div class="bc-name"><span>yourname.</span><strong>mytag.sns</strong></div><p>A universal name tag: clean, simple, for everyone.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/aitag" target="_blank" rel="noopener noreferrer" data-cat="ai" data-name="aitag"><span class="bc-badge">AI</span><div class="bc-name"><span>yourname.</span><strong>aitag.sns</strong></div><p>A clear onchain tag for AI agents and automated identities.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer" data-cat="identity" data-name="walletlink"><span class="bc-badge">Identity</span><div class="bc-name"><span>yourname.</span><strong>walletlink.sns</strong></div><p>A wallet name that is easier to share and receive with.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/mystory" target="_blank" rel="noopener noreferrer" data-cat="identity" data-name="mystory"><span class="bc-badge">Identity</span><div class="bc-name"><span>yourname.</span><strong>mystory.sns</strong></div><p>A personal name for your story on Solana.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/walletlink" target="_blank" rel="noopener noreferrer" data-cat="identity" data-name="walletlink"><span class="bc-badge">Identity</span><div class="bc-name"><span>yourname.</span><strong>walletlink.sns</strong></div><p>A wallet name that is easier to share.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/fames" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="fames"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>fames.sns</strong></div><p>A standout name for people building a reputation.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/sitag" target="_blank" rel="noopener noreferrer" data-cat="si" data-name="sitag"><span class="bc-badge">SI</span><div class="bc-name"><span>yourname.</span><strong>sitag.sns</strong></div><p>A clear onchain tag for SI agents and automated identities.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/siagent" target="_blank" rel="noopener noreferrer" data-cat="si" data-name="siagent"><span class="bc-badge">SI</span><div class="bc-name"><span>yourname.</span><strong>siagent.sns</strong></div><p>Built for SI agents that need a readable Solana identity.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/aitag" target="_blank" rel="noopener noreferrer" data-cat="si" data-name="aitag"><span class="bc-badge">SI</span><div class="bc-name"><span>yourname.</span><strong>aitag.sns</strong></div><p>An agent-ready name tag for automated and AI-native identities.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/aicreator" target="_blank" rel="noopener noreferrer" data-cat="si" data-name="aicreator"><span class="bc-badge">SI</span><div class="bc-name"><span>yourname.</span><strong>aicreator.sns</strong></div><p>For creators and builders shipping with SI tools.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/snsclub" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="snsclub"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>snsclub.sns</strong></div><p>For SNS believers. Show your roots onchain.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/gen-z" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="gen-z"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>gen-z.sns</strong></div><p>For the generation that grew up online. Claim your spot.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/ogclub" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="ogclub"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>ogclub.sns</strong></div><p>An OG club name for early believers.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/ogwallet" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="ogwallet"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>ogwallet.sns</strong></div><p>A wallet tag with an OG signal.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/gen-z" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="gen-z"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>gen-z.sns</strong></div><p>For the generation that grew up online. Claim your spot.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/snsclub" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="snsclub"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>snsclub.sns</strong></div><p>For SNS believers. Show your roots onchain.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/bonkog" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="bonkog"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>bonkog.sns</strong></div><p>BONK OG energy, carried onchain.</p><span class="bc-cta">Register on SNS</span></a>
-				<div class="bc bc-paused" data-cat="meme" data-name="gbonk" role="status" aria-label="gbonk.sns is currently unavailable"><span class="bc-badge">Paused</span><div class="bc-name"><span>yourname.</span><strong>gbonk.sns</strong></div><p>Currently unavailable while the namespace is being reviewed.</p><span class="bc-cta">Not available</span></div>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/fames" target="_blank" rel="noopener noreferrer" data-cat="community" data-name="fames"><span class="bc-badge">Community</span><div class="bc-name"><span>yourname.</span><strong>fames.sns</strong></div><p>A standout name for people building a reputation.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/bonktag" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="bonktag"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>bonktag.sns</strong></div><p>Your BONK identity. Simple, loud, unmistakable.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/bonkog" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="bonkog"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>bonkog.sns</strong></div><p>BONK OG energy, carried onchain.</p><span class="bc-cta">Register on SNS</span></a>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/gbonk" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="gbonk"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>gbonk.sns</strong></div><p>A BONK-native namespace for the community.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/memecoinape" target="_blank" rel="noopener noreferrer" data-cat="meme" data-name="memecoinape"><span class="bc-badge">Meme</span><div class="bc-name"><span>yourname.</span><strong>memecoinape.sns</strong></div><p>Proud meme coin degen? Put it onchain. No apologies.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/gametag" target="_blank" rel="noopener noreferrer" data-cat="gaming" data-name="gametag"><span class="bc-badge">Gaming</span><div class="bc-name"><span>yourname.</span><strong>gametag.sns</strong></div><p>Your gamer tag, now onchain.</p><span class="bc-cta">Register on SNS</span></a>
-				<div class="bc bc-paused" data-cat="gaming" data-name="playverse" role="status" aria-label="playverse.sns is currently unavailable"><span class="bc-badge">Paused</span><div class="bc-name"><span>yourname.</span><strong>playverse.sns</strong></div><p>Currently unavailable while the namespace is being reviewed.</p><span class="bc-cta">Not available</span></div>
+				<a class="bc" href="https://v1.sns.id/sub-registrar/playverse" target="_blank" rel="noopener noreferrer" data-cat="gaming" data-name="playverse"><span class="bc-badge">Gaming</span><div class="bc-name"><span>yourname.</span><strong>playverse.sns</strong></div><p>A play-ready name for gamers and game worlds.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/artistlink" target="_blank" rel="noopener noreferrer" data-cat="creator" data-name="artistlink"><span class="bc-badge">Creator</span><div class="bc-name"><span>yourname.</span><strong>artistlink.sns</strong></div><p>Your art, your name, your link. The creator's onchain home.</p><span class="bc-cta">Register on SNS</span></a>
-				<a class="bc" href="https://v1.sns.id/sub-registrar/aicreator" target="_blank" rel="noopener noreferrer" data-cat="ai" data-name="aicreator"><span class="bc-badge">AI</span><div class="bc-name"><span>yourname.</span><strong>aicreator.sns</strong></div><p>Building with AI? Claim your space at the frontier.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/creatorhub" target="_blank" rel="noopener noreferrer" data-cat="creator" data-name="creatorhub"><span class="bc-badge">Creator</span><div class="bc-name"><span>yourname.</span><strong>creatorhub.sns</strong></div><p>The hub for creators building in public on Solana.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/assetlink" target="_blank" rel="noopener noreferrer" data-cat="finance" data-name="assetlink"><span class="bc-badge">Finance</span><div class="bc-name"><span>yourname.</span><strong>assetlink.sns</strong></div><p>One clean name for onchain assets.</p><span class="bc-cta">Register on SNS</span></a>
 				<a class="bc" href="https://v1.sns.id/sub-registrar/businesslink" target="_blank" rel="noopener noreferrer" data-cat="business" data-name="businesslink"><span class="bc-badge">Business</span><div class="bc-name"><span>yourname.</span><strong>businesslink.sns</strong></div><p>Professional, onchain. Your business identity on Solana.</p><span class="bc-cta">Register on SNS</span></a>
@@ -490,7 +496,7 @@
 						<span class="faq-chevron" aria-hidden="true"></span>
 					</button>
 					<div class="faq-a">
-						<p>Listed registrars currently start from <strong>3 USDC</strong> for eligible longer names, plus the SNS fee and Solana transaction fee. Some registrars may use length-based or namespace-specific pricing. Registrations are currently presented as one-time purchases with no annual renewal flow, but pricing, tiers, fees, and registrar settings can change. Always confirm the final amount on <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a> before purchasing.</p>
+						<p>Each registrar sets its own pricing, often with length-based tiers, plus the SNS fee and Solana transaction fee. Registrations are currently presented as one-time purchases with no annual renewal flow, but pricing, tiers, fees, and registrar settings can change. Always confirm the final amount on <a href="https://sns.id" target="_blank" rel="noopener noreferrer">sns.id</a> before purchasing.</p>
 					</div>
 				</div>
 
@@ -532,7 +538,7 @@
 				<div class="section-header section-header--center">
 					<p class="section-eyebrow">Community updates</p>
 					<h2 id="social-title" class="section-headline">Follow Us on &#120143;</h2>
-					<p class="section-subline">New namespaces, registrar updates, and Solana identity notes — including AI agent tags.</p>
+					<p class="section-subline">New namespaces, registrar updates, and Solana identity notes — including SI agent tags.</p>
 				</div>
 				<a class="social-btn" href="https://x.com/mytagsns" target="_blank" rel="noopener noreferrer">@mytagsns on &#120143;</a>
 			</div>
@@ -543,7 +549,7 @@
 	<footer class="site-footer">
 		<div class="footer-inner">
 			<div class="footer-brand">
-				<img class="footer-logo" src="assets/img/logo.png" alt="mytag.sns logo" loading="lazy" />
+				<img class="footer-logo" src="assets/img/logo.png" alt="mytag.sns logo" width="44" height="44" loading="lazy" decoding="async" />
 				<p class="footer-tagline">Your Name Tag. On Solana.</p>
 			</div>
 
@@ -569,7 +575,7 @@
 		</div>
 
 		<div class="footer-footnotes">
-			<p><sup>1</sup> Listed registrars currently start from 3 USDC for eligible longer names, plus the SNS fee and Solana transaction fee. Prices, tiers, fees, accepted tokens, and availability can change at any time without prior notice. Final pricing is shown before purchase. "Less than a coffee" is a simple price comparison; real coffee prices vary by country, city, venue, currency, and date.</p>
+			<p><sup>1</sup> Registrar pricing is set per namespace and may use length-based tiers, plus the SNS fee and Solana transaction fee. Prices, tiers, fees, accepted tokens, and availability can change at any time without prior notice. Final pricing is shown on SNS before purchase. "Less than a coffee" is a simple price comparison; real coffee prices vary by country, city, venue, currency, and date.</p>
 			<p><sup>2</sup> "Assigned to your wallet" reflects the current subdomain registrar flow. SNS documentation notes that subdomains can differ from root .sns domains, including parent-domain and registrar considerations as well as limited wallet support. Subdomains can support transfer and data updates where supported by the relevant tooling.</p>
 		</div>
 

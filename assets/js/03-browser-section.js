@@ -28,12 +28,16 @@
 	var searchDelayMs = 180;
 	var scrollBackDelayMs = 40;
 	var featuredRanks = {
-		mytag: 10,
+		mytag: 12,
+		gbonk: 11,
+		siagent: 10,
 		aitag: 9,
-		ogclub: 8,
-		bonkog: 7,
+		sitag: 8,
+		walletlink: 7,
 		mystory: 6,
-		bonktag: 5
+		snsclub: 5,
+		"gen-z": 4,
+		ogclub: 3
 	};
 
 	if (controls) {
