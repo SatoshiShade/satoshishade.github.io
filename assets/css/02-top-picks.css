@@ -145,7 +145,7 @@
 	width: 118px;
 	height: 118px;
 	border-radius: 0;
-	background: url("../img/tag.png") right top / contain no-repeat;
+	background: url("../img/tag.png?v=2385921f") right top / contain no-repeat;
 	opacity: 0.86;
 	pointer-events: none;
 	transform: scale(1.42);
