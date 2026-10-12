@@ -162,23 +162,66 @@
 		}
 	}
 
-	function calculateInitialLimit() {
-		var visibleCard = cards.find(function (card) {
-			return !card.classList.contains("bc-hidden");
-		}) || cards[0];
-		var gridStyle;
-		var cardWidth;
-		var columnGap;
-		var columns;
+	function getColumnGap() {
+		var gridStyle = window.getComputedStyle(grid);
+		var gap = parseFloat(gridStyle.columnGap);
 
-		if (!visibleCard || grid.clientWidth === 0) {
-			return initialLimit;
+		if (!isNaN(gap) && gap > 0) {
+			return gap;
 		}
 
-		gridStyle = window.getComputedStyle(grid);
-		cardWidth = visibleCard.getBoundingClientRect().width || 255;
-		columnGap = parseFloat(gridStyle.columnGap) || 0;
-		columns = Math.max(1, Math.floor((grid.clientWidth + columnGap) / (cardWidth + columnGap)));
+		return 14.4;
+	}
+
+	function maxColumnsForWidth() {
+		var cardMin = 255;
+		var gap = getColumnGap();
+		var width = grid.clientWidth;
+
+		if (width <= 0) {
+			return 1;
+		}
+
+		return Math.max(1, Math.min(4, Math.floor((width + gap) / (cardMin + gap))));
+	}
+
+	function bestColumnCount(itemCount, maxCols) {
+		var cols;
+		var rem;
+
+		if (itemCount <= 1) {
+			return 1;
+		}
+
+		maxCols = Math.max(1, Math.min(maxCols, itemCount));
+
+		for (cols = maxCols; cols >= 2; cols -= 1) {
+			if (itemCount % cols === 0) {
+				return cols;
+			}
+		}
+
+		for (cols = maxCols; cols >= 2; cols -= 1) {
+			rem = itemCount % cols;
+
+			if (rem !== 1) {
+				return cols;
+			}
+		}
+
+		return maxCols;
+	}
+
+	function syncGridColumns(visibleCount) {
+		var maxCols = maxColumnsForWidth();
+		var cols = bestColumnCount(Math.max(1, visibleCount || 1), maxCols);
+
+		grid.style.setProperty("--browser-cols", String(cols));
+		return cols;
+	}
+
+	function calculateInitialLimit() {
+		var columns = maxColumnsForWidth();
 
 		return Math.max(4, Math.min(8, columns * 2));
 	}
@@ -236,6 +279,7 @@
 			});
 		}, 24);
 
+		syncGridColumns(visible.length);
 		updateMoreControls(matched.length, limited);
 		updateCount(matched.length, visible.length);
 
@@ -321,9 +365,8 @@
 	window.addEventListener("resize", function () {
 		window.clearTimeout(resizeTimer);
 		resizeTimer = window.setTimeout(function () {
-			if (syncInitialLimit()) {
-				update();
-			}
+			syncInitialLimit();
+			update();
 		}, 120);
 	});
 }());
