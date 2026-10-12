@@ -207,30 +207,30 @@
 		linear-gradient(135deg, rgba(38, 16, 92, 0.78), rgba(14, 0, 31, 0.7));
 }
 
-.bc[data-cat="identity"] {
+.bc[data-cat~="identity"] {
 	--bc-accent: rgba(255, 192, 0, 0.3);
 	--bc-accent-soft: rgba(255, 192, 0, 0.045);
 }
 
-.bc[data-cat="community"] {
+.bc[data-cat~="community"] {
 	--bc-accent: rgba(217, 177, 255, 0.34);
 	--bc-accent-soft: rgba(217, 177, 255, 0.065);
 }
 
-.bc[data-cat="meme"] {
+.bc[data-cat~="meme"] {
 	--bc-accent: rgba(255, 159, 45, 0.34);
 	--bc-accent-soft: rgba(255, 159, 45, 0.07);
 }
 
-.bc[data-cat="business"],
-.bc[data-cat="finance"] {
+.bc[data-cat~="business"],
+.bc[data-cat~="finance"] {
 	--bc-accent: rgba(96, 190, 255, 0.28);
 	--bc-accent-soft: rgba(96, 190, 255, 0.055);
 }
 
-.bc[data-cat="creator"],
-.bc[data-cat="gaming"],
-.bc[data-cat="ai"] {
+.bc[data-cat~="creator"],
+.bc[data-cat~="gaming"],
+.bc[data-cat~="si-ai"] {
 	--bc-accent: rgba(120, 255, 214, 0.24);
 	--bc-accent-soft: rgba(120, 255, 214, 0.048);
 }
