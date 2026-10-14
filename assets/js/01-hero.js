@@ -1,7 +1,7 @@
 /*
 	File: assets/js/01-hero.js
 	Description: Interactive hero name preview for external SNS registrar links.
-	Last modified: 2026-10-11
+	Last modified: 2026-10-14
 	Copyright: (c) 2026 mytag.sns Community. All rights reserved.
 */
 
@@ -85,6 +85,11 @@
 	var suppressNextBlurResume = false;
 	var suffixSwitchDelayMs = 220;
 	var resumeSlowStart = false;
+	var typingPace = 1;
+	var selectionHoldMs = 3400;
+	var customHoldMs = 4200;
+	var completedHoldMs = 3600;
+	var postSelectionResume = false;
 
 	if (!input || !suffixLabel || !registerLink || !namePreview) {
 		return;
@@ -716,11 +721,47 @@
 		return index > -1 ? index : 0;
 	}
 
-	function moveRegistrar(direction) {
-		var nextIndex = (activeOptionIndex() + direction + optionButtons.length) % optionButtons.length;
-		var nextButton = optionButtons[nextIndex];
+	function easeTypingPace() {
+		if (typingPace >= 1) {
+			typingPace = 1;
+			resumeSlowStart = false;
+			return;
+		}
 
-		if (!nextButton || pickerMoving) {
+		typingPace = Math.min(1, typingPace + (resumeSlowStart ? 0.045 : 0.09));
+
+		if (typingPace >= 1) {
+			resumeSlowStart = false;
+		}
+	}
+
+	function pacedDelay(baseMs) {
+		var pace = Math.max(0.28, Math.min(1, typingPace));
+
+		return Math.round(baseMs / pace);
+	}
+
+	function showActiveExampleFully() {
+		var current;
+
+		syncExampleToCurrentSuffix();
+		current = examples[exampleIndex];
+		deleting = false;
+
+		if (!current) {
+			return;
+		}
+
+		characterIndex = current.name.length;
+		setExample(current);
+	}
+
+	function selectRegistrar(button) {
+		if (!button) {
+			return;
+		}
+
+		if (pickerMoving && button.dataset.suffix !== currentSuffix) {
 			return;
 		}
 
@@ -733,11 +774,27 @@
 		pickerMoveTimer = window.setTimeout(function () {
 			pickerMoving = false;
 		}, 560);
+
 		userTouched = true;
 		window.clearTimeout(typingTimer);
-		setRegistrar(nextButton.dataset.suffix, nextButton.dataset.url);
+		setRegistrar(button.dataset.suffix, button.dataset.url);
+		showActiveExampleFully();
 		lockConfirmedNameState();
-		schedulePreviewResume();
+		postSelectionResume = true;
+		typingPace = 0.32;
+		resumeSlowStart = true;
+		schedulePreviewResume(customName ? customHoldMs : selectionHoldMs);
+	}
+
+	function moveRegistrar(direction) {
+		var nextIndex = (activeOptionIndex() + direction + optionButtons.length) % optionButtons.length;
+		var nextButton = optionButtons[nextIndex];
+
+		if (!nextButton || pickerMoving) {
+			return;
+		}
+
+		selectRegistrar(nextButton);
 	}
 
 	function schedulePreviewResume(delay) {
@@ -752,12 +809,15 @@
 		}
 
 		queueTyping(function () {
+			var current;
+
 			if (document.activeElement === input) {
 				return;
 			}
 
 			userTouched = false;
 			resumeSlowStart = true;
+			typingPace = Math.min(typingPace, 0.38);
 
 			if (customName) {
 				characterIndex = customName.length;
@@ -765,10 +825,17 @@
 				return;
 			}
 
+			current = examples[exampleIndex];
+
+			if (!current) {
+				return;
+			}
+
 			deleting = true;
-			characterIndex = examples[exampleIndex] ? examples[exampleIndex].name.length : 0;
+			characterIndex = current.name.length;
+			setExample(current);
 			tick();
-		}, delay || 1700);
+		}, delay || selectionHoldMs);
 	}
 
 	function resumeTyping(useCustomInput) {
@@ -781,7 +848,10 @@
 		if (customName) {
 			setExample(examples[exampleIndex]);
 			userTouched = true;
-			schedulePreviewResume(3600);
+			postSelectionResume = true;
+			typingPace = 0.32;
+			resumeSlowStart = true;
+			schedulePreviewResume(customHoldMs);
 			return;
 		}
 
@@ -791,7 +861,9 @@
 			return;
 		}
 
-		queueTyping(tick, 260);
+		typingPace = 0.55;
+		resumeSlowStart = true;
+		queueTyping(tick, 320);
 	}
 
 	function tick() {
@@ -809,7 +881,7 @@
 			characterIndex = customName.length;
 			setExample(current);
 			exampleIndex = (exampleIndex + 1) % examples.length;
-			queueTyping(tick, 2600);
+			queueTyping(tick, pacedDelay(2800));
 			return;
 		}
 
@@ -819,6 +891,7 @@
 			if (characterIndex <= 0) {
 				characterIndex = 0;
 				deleting = false;
+				postSelectionResume = false;
 				setExample(current);
 				queueTyping(function () {
 					exampleIndex = (exampleIndex + 1) % examples.length;
@@ -826,13 +899,16 @@
 						refreshDefaultExamples();
 					}
 					setExample(examples[exampleIndex]);
-					queueTyping(tick, 880);
+					resumeSlowStart = true;
+					typingPace = Math.min(typingPace, 0.42);
+					queueTyping(tick, pacedDelay(980));
 				}, suffixSwitchDelayMs);
 				return;
 			}
 
 			setExample(current);
-			speed = 52;
+			speed = pacedDelay(postSelectionResume ? 92 : 56);
+			easeTypingPace();
 		} else {
 			characterIndex += 1;
 			setExample(current);
@@ -841,37 +917,27 @@
 				queueTyping(function () {
 					deleting = true;
 					tick();
-				}, 3200);
+				}, completedHoldMs);
 				return;
 			}
 
-			speed = resumeSlowStart ? 520 : characterIndex < 4 ? 260 : 116;
-			resumeSlowStart = false;
+			if (resumeSlowStart || typingPace < 1) {
+				speed = pacedDelay(characterIndex < 3 ? 340 : 210);
+			} else if (characterIndex < 4) {
+				speed = 260;
+			} else {
+				speed = 116;
+			}
+
+			easeTypingPace();
 		}
 
-		queueTyping(tick, speed + Math.random() * 30 - 8);
+		queueTyping(tick, speed + Math.random() * 28 - 8);
 	}
 
 	optionButtons.forEach(function (button) {
 		button.addEventListener("click", function () {
-			if (pickerMoving && button.dataset.suffix !== currentSuffix) {
-				return;
-			}
-
-			if (document.activeElement === input) {
-				input.blur();
-			}
-
-			pickerMoving = true;
-			window.clearTimeout(pickerMoveTimer);
-			pickerMoveTimer = window.setTimeout(function () {
-				pickerMoving = false;
-			}, 560);
-			userTouched = true;
-			window.clearTimeout(typingTimer);
-			setRegistrar(button.dataset.suffix, button.dataset.url);
-			lockConfirmedNameState();
-			schedulePreviewResume();
+			selectRegistrar(button);
 		});
 	});
 
